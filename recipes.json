@@ -1,29 +1,76 @@
 [
   {
-    "id": 1746006619125,
-    "name": "Halloumiburger med tartarsauce",
-    "category": "Other",
+    "id": 1746008780094,
+    "name": "Kua Kling – sydøstasiatisk biksemad",
+    "category": [
+      "Ris",
+      "Asiatisk"
+    ],
     "servings": "4",
-    "ingredients": "https://vegetariskhverdag.dk/2020/08/halloumiburger-med-tartarsauce/\n+ avokado\n+ grillede squash",
-    "instructions": ".",
-    "lastModified": "2025-04-30T09:50:19.125Z"
+    "ingredients": "https://vegetariskhverdag.dk/2024/03/kua-kling-sydoestasiatisk-biksemad/\n\n÷ for meget chili",
+    "instructions": "",
+    "rating": "3",
+    "lastModified": "2025-04-30T10:26:20.094Z"
   },
   {
-    "id": "1746002931247",
+    "id": 1746008628936,
+    "name": "Halloumi Stroganoff",
+    "category": [
+      "Ris"
+    ],
+    "servings": "4",
+    "ingredients": "https://vegetariskhverdag.dk/2019/10/halloumi-stroganoff/",
+    "instructions": "",
+    "rating": "4.5",
+    "lastModified": "2025-04-30T10:23:48.936Z"
+  },
+  {
+    "id": 1746002931247,
     "name": "Chickpea Spinach Curry with Coconut Milk",
-    "category": "Ris",
+    "category": [
+      "Ris"
+    ],
     "servings": "4",
     "ingredients": "https://vancouverwithlove.com/chickpea-spinach-curry/",
-    "instructions": ".",
-    "lastModified": "2025-04-30T09:49:40.362Z"
+    "instructions": "",
+    "rating": "2",
+    "lastModified": "2025-04-30T10:21:26.684Z"
+  },
+  {
+    "id": 1746006619125,
+    "name": "Halloumiburger med tartarsauce",
+    "category": [
+      "Other"
+    ],
+    "servings": "4",
+    "ingredients": "https://vegetariskhverdag.dk/2020/08/halloumiburger-med-tartarsauce/\n+ avokado\n+ grillede squash",
+    "instructions": "",
+    "rating": "3.5",
+    "lastModified": "2025-04-30T10:20:39.122Z"
   },
   {
     "id": 1746006671218,
     "name": "Fajitas",
-    "category": "Mexi",
+    "category": [
+      "Ris",
+      "Mexi"
+    ],
     "servings": "4",
-    "ingredients": "https://vegetariskhverdag.dk/2020/08/fajitas-i-ovnen/\n+ veggi kylling",
-    "instructions": ".",
-    "lastModified": "2025-04-30T09:51:11.218Z"
+    "ingredients": "https://vegetariskhverdag.dk/2020/08/fajitas-i-ovnen/\n+ veggi kylling\n\nevt. erstat mexi pandekager med ris",
+    "instructions": "",
+    "rating": "4.5",
+    "lastModified": "2025-04-30T10:20:16.769Z"
+  },
+  {
+    "id": 1746008865801,
+    "name": "Pirogger",
+    "category": [
+      "Other"
+    ],
+    "servings": "1",
+    "ingredients": "https://spisbedre.dk/opskrifter/pirogger-med-oksekodsfyld",
+    "instructions": "",
+    "rating": "4",
+    "lastModified": "2025-04-30T10:27:45.801Z"
   }
 ]
