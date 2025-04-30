@@ -227,16 +227,55 @@
         
         <div id="success-message" class="success-message"></div>
 
-        <div class="form-container">
-            <div style="margin-bottom: 20px; padding: 10px; background-color: #e3f2fd; border-radius: 4px;">
-                <p><strong>How to use:</strong></p>
-                <ol style="margin-left: 20px;">
+        <div style="margin-bottom: 20px; display: flex; gap: 10px;">
+            <button type="button" onclick="openAddRecipeModal()" style="background-color: #4CAF50;">Add Recipe</button>
+            <button type="button" onclick="openHowToUseModal()" style="background-color: #2196F3;">How to Use</button>
+        </div>
+
+        <div class="search-container">
+            <button onclick="loadRecipes()">Refresh Recipes</button>
+            <input type="text" id="search-input" placeholder="Search recipes..." oninput="filterRecipes()">
+            <select id="category-filter" onchange="filterRecipes()">
+                <option value="all">All Categories</option>
+                <option value="Morgenmad">Morgenmad</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Ris">Ris</option>
+                <option value="Mexi">Mexi</option>
+                <option value="Asiatisk">Asiatisk</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div id="recipes-container" class="recipes-container"></div>
+    </div>
+
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <div id="howto-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeHowToUseModal()">&times;</span>
+            <div id="howto-content">
+                <h2>How to Use Recipe Organizer</h2>
+                <ol style="margin-left: 20px; line-height: 1.6;">
                     <li>When you add or modify recipes, a new recipes.json file will be downloaded</li>
                     <li>Replace your existing recipes.json file with the new downloaded one</li>
                     <li>Keep the recipes.json file in the same folder as this HTML file</li>
                     <li>Click "Refresh Recipes" to load the latest recipes from your recipes.json file</li>
                 </ol>
             </div>
+        </div>
+    </div>
+
+    <div id="add-recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddRecipeModal()">&times;</span>
+            <h2 style="margin-bottom: 20px;">Add New Recipe</h2>
             <form id="recipe-form">
                 <div class="form-group">
                     <label for="recipe-name">Recipe Name</label>
@@ -245,11 +284,13 @@
                 <div class="form-group">
                     <label for="recipe-category">Category</label>
                     <select id="recipe-category" required>
-                        <option value="Breakfast">Breakfast</option>
-                        <option value="Lunch">Lunch</option>
-                        <option value="Dinner">Dinner</option>
-                        <option value="Dessert">Dessert</option>
-                        <option value="Snack">Snack</option>
+                        <option value="Morgenmad">Morgenmad</option>
+                        <option value="Pasta">Pasta</option>
+                        <option value="Ris">Ris</option>
+                        <option value="Mexi">Mexi</option>
+                        <option value="Asiatisk">Asiatisk</option>
+                        <option value="Snacks">Snacks</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -276,28 +317,6 @@
                 </div>
                 <button type="submit">Add Recipe</button>
             </form>
-        </div>
-
-        <div class="search-container">
-            <button>Refresh Recipes</button>
-            <input type="text" id="search-input" placeholder="Search recipes..." oninput="filterRecipes()">
-            <select id="category-filter" onchange="filterRecipes()">
-                <option value="all">All Categories</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Snack">Snack</option>
-            </select>
-        </div>
-
-        <div id="recipes-container" class="recipes-container"></div>
-    </div>
-
-    <div id="recipe-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modal-content"></div>
         </div>
     </div>
 
@@ -337,38 +356,6 @@
             
             showSuccess('Recipe saved! Download the recipes.json file and replace your existing one to update your recipe collection.');
         }
-
-        // Form submission handler
-        document.getElementById('recipe-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const recipe = {
-                id: editingId || Date.now(),
-                name: document.getElementById('recipe-name').value,
-                category: document.getElementById('recipe-category').value,
-                servings: document.getElementById('recipe-servings').value,
-                ingredients: document.getElementById('recipe-ingredients').value,
-                instructions: document.getElementById('recipe-instructions').value,
-                lastModified: new Date().toISOString()
-            };
-
-            if (editingId) {
-                // Update existing recipe
-                const index = recipes.findIndex(r => r.id === editingId);
-                if (index !== -1) {
-                    recipes[index] = recipe;
-                }
-                editingId = null;
-                document.querySelector('button[type="submit"]').textContent = 'Add Recipe';
-            } else {
-                // Add new recipe
-                recipes.push(recipe);
-            }
-
-            saveRecipes();
-            this.reset();
-            displayRecipes();
-        });
 
         // Display recipes
         function displayRecipes(filteredRecipes = recipes) {
@@ -474,20 +461,72 @@
             document.getElementById('recipe-modal').style.display = 'none';
         }
 
-        // Close modal when clicking outside
+        // How to Use Modal functions
+        function openHowToUseModal() {
+            document.getElementById('howto-modal').style.display = 'block';
+        }
+
+        function closeHowToUseModal() {
+            document.getElementById('howto-modal').style.display = 'none';
+        }
+
+        // Add Recipe Modal functions
+        function openAddRecipeModal() {
+            document.getElementById('add-recipe-modal').style.display = 'block';
+        }
+
+        function closeAddRecipeModal() {
+            document.getElementById('add-recipe-modal').style.display = 'none';
+        }
+
+        // Update window click handler to close all modals
         window.onclick = function(event) {
-            const modal = document.getElementById('recipe-modal');
-            if (event.target === modal) {
+            const recipeModal = document.getElementById('recipe-modal');
+            const howtoModal = document.getElementById('howto-modal');
+            const addRecipeModal = document.getElementById('add-recipe-modal');
+            if (event.target === recipeModal) {
                 closeModal();
+            }
+            if (event.target === howtoModal) {
+                closeHowToUseModal();
+            }
+            if (event.target === addRecipeModal) {
+                closeAddRecipeModal();
             }
         }
 
-        // Add a refresh button
-        const refreshButton = document.createElement('button');
-        refreshButton.textContent = 'Refresh Recipes';
-        refreshButton.style.marginBottom = '20px';
-        refreshButton.onclick = loadRecipes;
-        document.querySelector('.search-container').insertBefore(refreshButton, document.querySelector('.search-container').firstChild);
+        // After successful recipe submission, close the modal
+        document.getElementById('recipe-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const recipe = {
+                id: editingId || Date.now(),
+                name: document.getElementById('recipe-name').value,
+                category: document.getElementById('recipe-category').value,
+                servings: document.getElementById('recipe-servings').value,
+                ingredients: document.getElementById('recipe-ingredients').value,
+                instructions: document.getElementById('recipe-instructions').value,
+                lastModified: new Date().toISOString()
+            };
+
+            if (editingId) {
+                // Update existing recipe
+                const index = recipes.findIndex(r => r.id === editingId);
+                if (index !== -1) {
+                    recipes[index] = recipe;
+                }
+                editingId = null;
+                document.querySelector('button[type="submit"]').textContent = 'Add Recipe';
+            } else {
+                // Add new recipe
+                recipes.push(recipe);
+            }
+
+            saveRecipes();
+            this.reset();
+            displayRecipes();
+            closeAddRecipeModal(); // Close the modal after saving
+        });
 
         // Load recipes initially
         loadRecipes();
