@@ -1,5 +1,114 @@
 [
   {
+    "id": 1746016505068,
+    "name": "Rødbede bøf burger",
+    "category": [
+      "Other"
+    ],
+    "servings": "4",
+    "ingredients": "300g rødbeder, groftrevne\n50g gulerødder, fintrevne\n1 dåse kigærter, stavblendede\n50g fine havregryn\n1 rødløg, finthakket\n2 fed hvidløg, finthakket\n2 æg\n2 tsk dijonsennep\nsalt og peber\n\nburger ingredienser",
+    "instructions": "bland alle ingredienser sammen og form 6-8 bøffer på bagepapir beklædt bageplade\npensel med olie og evt. ekstra squish salt og peber\nbag ved 190 grader varmluft i 25 min, og vendes halvejs",
+    "rating": "3.5",
+    "lastModified": "2025-04-30T12:35:05.068Z"
+  },
+  {
+    "id": 1746015845944,
+    "name": "Nachos",
+    "category": [
+      "Mexi"
+    ],
+    "servings": "1",
+    "ingredients": "nachos (chili)\nmozaralla\ncheddar\nveggie kylling\ntomatillo\n\nguac\ncreme fraiche\nsalsa",
+    "instructions": "",
+    "rating": "3",
+    "lastModified": "2025-04-30T12:24:05.944Z"
+  },
+  {
+    "id": 1746015637108,
+    "name": "Mexi pandekager",
+    "category": [
+      "Mexi"
+    ],
+    "servings": "1",
+    "ingredients": "mexi pandekager\ntaco skaller\n\nkød: okse, kylling, veggie kød\nrevet ost\nnatchos\n\ngrønt:\nagurk\ntomat\npeberfrugt\nmajs\nbønner\n\nguac\ncreme fraiche\nsalsa",
+    "instructions": "",
+    "rating": "3.5",
+    "lastModified": "2025-04-30T12:20:37.108Z"
+  },
+  {
+    "id": 1746015358272,
+    "name": "Rispapirsruller",
+    "category": [
+      "Ris",
+      "Asiatisk"
+    ],
+    "servings": "1",
+    "ingredients": "rispapir\nris\n\nrevet tofu\nsoya\nsirup\nchili sovs\ncitronsaft\n\ngrønt:\nagurk\npeberfrugt\navokado\nmajs\nbønner\ngulerødder\n\nsursødsovs\njonas' magic tahin?",
+    "instructions": "",
+    "rating": "4.5",
+    "lastModified": "2025-04-30T12:15:58.272Z"
+  },
+  {
+    "id": 1746014874862,
+    "name": "Frossen grønt",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "1",
+    "ingredients": "random pose frossen grønt\npasta",
+    "instructions": "",
+    "rating": "1",
+    "lastModified": "2025-04-30T12:07:54.862Z"
+  },
+  {
+    "id": 1746014733933,
+    "name": "Pasta tomatsovs",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "1",
+    "ingredients": "pasta\ndåse tomater/færdig pastasovs\n\nrandom blanding af alt godt på dåser\nkikærter\nkidneybønner\nsorte bønner\n\nevt. veggie kød",
+    "instructions": "",
+    "rating": "1.5",
+    "lastModified": "2025-04-30T12:39:08.682Z"
+  },
+  {
+    "id": 1746014607330,
+    "name": "Pesto pasta",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "1",
+    "ingredients": "pasta\npesto\nkigærter",
+    "instructions": "",
+    "rating": "2",
+    "lastModified": "2025-04-30T12:03:27.330Z"
+  },
+  {
+    "id": 1746014141342,
+    "name": "Svamps Risotto",
+    "category": [
+      "Ris"
+    ],
+    "servings": "4",
+    "ingredients": "1 løg\nnoget hvidløg\n400g aborio/grød ris\n400g svamps\n1-1,25L bullion\nparmasan\nolie\nsmør\ncitronsaft\nveggie snitzler\nevt. frisk persille",
+    "instructions": "skær svampe i skiver og tørsteg på varm pande til alt væsken er fordampet, hvorefter der tilføjes en god klat smør, og steges videre til gylden brune\nimens hakkes løg og hvidløg fint som steges bløde i en gryde med olie (7), hvorefter ris tilføjes i et lille minut\nimens blandes 1L varmt vand med 2 tsk. bullion pulver og 1dl tilføjes til risene med en bløb citronsaft, mens varmen holdes på mellem. når væsken er optaget i risene/fordampet tilføjes 1dl mere indtil alt bullion er brugt. tilføj evt. mere varmt vand hvis risene er for ukogte\nimens steges veggie snitzler på panden (7) i noget olie\ntil sidst tilføjes en god klat smør og parmasan til risene hvorefter svampene tilføjes",
+    "rating": "4",
+    "lastModified": "2025-04-30T12:01:45.288Z"
+  },
+  {
+    "id": 1746008865801,
+    "name": "Pirogger",
+    "category": [
+      "Other"
+    ],
+    "servings": "1",
+    "ingredients": "https://spisbedre.dk/opskrifter/pirogger-med-oksekodsfyld",
+    "instructions": "",
+    "rating": "4",
+    "lastModified": "2025-04-30T10:27:45.801Z"
+  },
+  {
     "id": 1746008780094,
     "name": "Kua Kling – sydøstasiatisk biksemad",
     "category": [
@@ -60,17 +169,5 @@
     "instructions": "",
     "rating": "4.5",
     "lastModified": "2025-04-30T10:20:16.769Z"
-  },
-  {
-    "id": 1746008865801,
-    "name": "Pirogger",
-    "category": [
-      "Other"
-    ],
-    "servings": "1",
-    "ingredients": "https://spisbedre.dk/opskrifter/pirogger-med-oksekodsfyld",
-    "instructions": "",
-    "rating": "4",
-    "lastModified": "2025-04-30T10:27:45.801Z"
   }
 ]
