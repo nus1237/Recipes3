@@ -276,7 +276,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeAddRecipeModal()">&times;</span>
             <h2 style="margin-bottom: 20px;">Add New Recipe</h2>
-            <form id="recipe-form">
+            <form id="recipe-form" onsubmit="handleRecipeSubmit(event, false)">
                 <div class="form-group">
                     <label for="recipe-name">Recipe Name</label>
                     <input type="text" id="recipe-name" required>
@@ -316,6 +316,55 @@
                     <textarea id="recipe-instructions" required></textarea>
                 </div>
                 <button type="submit">Add Recipe</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="edit-recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditRecipeModal()">&times;</span>
+            <h2 style="margin-bottom: 20px;">Edit Recipe</h2>
+            <form id="edit-recipe-form" onsubmit="handleRecipeSubmit(event, true)">
+                <input type="hidden" id="edit-recipe-id">
+                <div class="form-group">
+                    <label for="edit-recipe-name">Recipe Name</label>
+                    <input type="text" id="edit-recipe-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-recipe-category">Category</label>
+                    <select id="edit-recipe-category" required>
+                        <option value="Morgenmad">Morgenmad</option>
+                        <option value="Pasta">Pasta</option>
+                        <option value="Ris">Ris</option>
+                        <option value="Mexi">Mexi</option>
+                        <option value="Asiatisk">Asiatisk</option>
+                        <option value="Snacks">Snacks</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-recipe-servings">Number of Servings</label>
+                    <select id="edit-recipe-servings" required>
+                        <option value="1">1 person</option>
+                        <option value="2">2 personer</option>
+                        <option value="3">3 personer</option>
+                        <option value="4">4 personer</option>
+                        <option value="5">5 personer</option>
+                        <option value="6">6 personer</option>
+                        <option value="8">8 personer</option>
+                        <option value="10">10 personer</option>
+                        <option value="12">12 personer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-recipe-ingredients">Ingredients</label>
+                    <textarea id="edit-recipe-ingredients" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit-recipe-instructions">Instructions</label>
+                    <textarea id="edit-recipe-instructions" required></textarea>
+                </div>
+                <button type="submit">Update Recipe</button>
             </form>
         </div>
     </div>
@@ -387,17 +436,13 @@
         function editRecipe(id) {
             const recipe = recipes.find(r => r.id === id);
             if (recipe) {
-                document.getElementById('recipe-name').value = recipe.name;
-                document.getElementById('recipe-category').value = recipe.category;
-                document.getElementById('recipe-servings').value = recipe.servings;
-                document.getElementById('recipe-ingredients').value = recipe.ingredients;
-                document.getElementById('recipe-instructions').value = recipe.instructions;
-                editingId = id;
-                document.querySelector('button[type="submit"]').textContent = 'Update Recipe';
-                document.getElementById('recipe-form').scrollIntoView({ behavior: 'smooth' });
-                if (window.innerWidth <= 768) {
-                    closeModal();
-                }
+                document.getElementById('edit-recipe-id').value = recipe.id;
+                document.getElementById('edit-recipe-name').value = recipe.name;
+                document.getElementById('edit-recipe-category').value = recipe.category;
+                document.getElementById('edit-recipe-servings').value = recipe.servings;
+                document.getElementById('edit-recipe-ingredients').value = recipe.ingredients;
+                document.getElementById('edit-recipe-instructions').value = recipe.instructions;
+                openEditRecipeModal();
             }
         }
 
@@ -479,11 +524,54 @@
             document.getElementById('add-recipe-modal').style.display = 'none';
         }
 
+        // Edit Recipe Modal functions
+        function openEditRecipeModal() {
+            document.getElementById('edit-recipe-modal').style.display = 'block';
+        }
+
+        function closeEditRecipeModal() {
+            document.getElementById('edit-recipe-modal').style.display = 'none';
+            document.getElementById('edit-recipe-form').reset();
+        }
+
+        // Handle recipe form submission (both add and edit)
+        function handleRecipeSubmit(e, isEdit) {
+            e.preventDefault();
+            
+            const formPrefix = isEdit ? 'edit-recipe-' : 'recipe-';
+            const recipe = {
+                id: isEdit ? document.getElementById('edit-recipe-id').value : Date.now(),
+                name: document.getElementById(formPrefix + 'name').value,
+                category: document.getElementById(formPrefix + 'category').value,
+                servings: document.getElementById(formPrefix + 'servings').value,
+                ingredients: document.getElementById(formPrefix + 'ingredients').value,
+                instructions: document.getElementById(formPrefix + 'instructions').value,
+                lastModified: new Date().toISOString()
+            };
+
+            if (isEdit) {
+                const index = recipes.findIndex(r => r.id == recipe.id);
+                if (index !== -1) {
+                    recipes[index] = recipe;
+                }
+                closeEditRecipeModal();
+            } else {
+                recipes.push(recipe);
+                closeAddRecipeModal();
+            }
+
+            saveRecipes();
+            e.target.reset();
+            displayRecipes();
+        }
+
         // Update window click handler to close all modals
         window.onclick = function(event) {
             const recipeModal = document.getElementById('recipe-modal');
             const howtoModal = document.getElementById('howto-modal');
             const addRecipeModal = document.getElementById('add-recipe-modal');
+            const editRecipeModal = document.getElementById('edit-recipe-modal');
+            
             if (event.target === recipeModal) {
                 closeModal();
             }
@@ -493,40 +581,10 @@
             if (event.target === addRecipeModal) {
                 closeAddRecipeModal();
             }
-        }
-
-        // After successful recipe submission, close the modal
-        document.getElementById('recipe-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const recipe = {
-                id: editingId || Date.now(),
-                name: document.getElementById('recipe-name').value,
-                category: document.getElementById('recipe-category').value,
-                servings: document.getElementById('recipe-servings').value,
-                ingredients: document.getElementById('recipe-ingredients').value,
-                instructions: document.getElementById('recipe-instructions').value,
-                lastModified: new Date().toISOString()
-            };
-
-            if (editingId) {
-                // Update existing recipe
-                const index = recipes.findIndex(r => r.id === editingId);
-                if (index !== -1) {
-                    recipes[index] = recipe;
-                }
-                editingId = null;
-                document.querySelector('button[type="submit"]').textContent = 'Add Recipe';
-            } else {
-                // Add new recipe
-                recipes.push(recipe);
+            if (event.target === editRecipeModal) {
+                closeEditRecipeModal();
             }
-
-            saveRecipes();
-            this.reset();
-            displayRecipes();
-            closeAddRecipeModal(); // Close the modal after saving
-        });
+        }
 
         // Load recipes initially
         loadRecipes();
