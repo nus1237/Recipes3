@@ -465,10 +465,11 @@
 
         // Edit recipe
         function editRecipe(id) {
-            const recipe = recipes.find(r => r.id === id);
+            const recipe = recipes.find(r => r.id == id);
             if (recipe) {
-                document.getElementById('edit-recipe-id').value = recipe.id;
-                document.getElementById('edit-recipe-name').value = recipe.name;
+                // Set default values for all fields
+                document.getElementById('edit-recipe-id').value = recipe.id || '';
+                document.getElementById('edit-recipe-name').value = recipe.name || '';
                 
                 // Handle multiple categories
                 const categorySelect = document.getElementById('edit-recipe-category');
@@ -477,9 +478,11 @@
                     option.selected = categories.includes(option.value);
                 });
                 
-                document.getElementById('edit-recipe-servings').value = recipe.servings;
+                document.getElementById('edit-recipe-servings').value = recipe.servings || '1';
                 document.getElementById('edit-recipe-ingredients').value = recipe.ingredients || '';
                 document.getElementById('edit-recipe-instructions').value = recipe.instructions || '';
+                
+                // Open the modal
                 openEditRecipeModal();
             }
         }
@@ -588,12 +591,12 @@
             const selectedCategories = Array.from(categorySelect.selectedOptions).map(option => option.value);
 
             const recipe = {
-                id: isEdit ? document.getElementById('edit-recipe-id').value : Date.now(),
-                name: document.getElementById(formPrefix + 'name').value,
+                id: isEdit ? parseInt(document.getElementById('edit-recipe-id').value) : Date.now(),
+                name: document.getElementById(formPrefix + 'name').value.trim(),
                 category: selectedCategories,
                 servings: document.getElementById(formPrefix + 'servings').value,
-                ingredients: document.getElementById(formPrefix + 'ingredients').value || '',
-                instructions: document.getElementById(formPrefix + 'instructions').value || '',
+                ingredients: document.getElementById(formPrefix + 'ingredients').value.trim() || '',
+                instructions: document.getElementById(formPrefix + 'instructions').value.trim() || '',
                 lastModified: new Date().toISOString()
             };
 
