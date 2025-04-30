@@ -282,8 +282,8 @@
                     <input type="text" id="recipe-name" required>
                 </div>
                 <div class="form-group">
-                    <label for="recipe-category">Category</label>
-                    <select id="recipe-category" required>
+                    <label for="recipe-category">Categories (Hold Ctrl/Cmd to select multiple)</label>
+                    <select id="recipe-category" multiple required style="height: 150px;">
                         <option value="Morgenmad">Morgenmad</option>
                         <option value="Pasta">Pasta</option>
                         <option value="Ris">Ris</option>
@@ -308,12 +308,12 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="recipe-ingredients">Ingredients</label>
-                    <textarea id="recipe-ingredients" required></textarea>
+                    <label for="recipe-ingredients">Ingredients (Optional)</label>
+                    <textarea id="recipe-ingredients"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="recipe-instructions">Instructions</label>
-                    <textarea id="recipe-instructions" required></textarea>
+                    <label for="recipe-instructions">Instructions (Optional)</label>
+                    <textarea id="recipe-instructions"></textarea>
                 </div>
                 <button type="submit">Add Recipe</button>
             </form>
@@ -331,8 +331,8 @@
                     <input type="text" id="edit-recipe-name" required>
                 </div>
                 <div class="form-group">
-                    <label for="edit-recipe-category">Category</label>
-                    <select id="edit-recipe-category" required>
+                    <label for="edit-recipe-category">Categories (Hold Ctrl/Cmd to select multiple)</label>
+                    <select id="edit-recipe-category" multiple required style="height: 150px;">
                         <option value="Morgenmad">Morgenmad</option>
                         <option value="Pasta">Pasta</option>
                         <option value="Ris">Ris</option>
@@ -357,12 +357,12 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="edit-recipe-ingredients">Ingredients</label>
-                    <textarea id="edit-recipe-ingredients" required></textarea>
+                    <label for="edit-recipe-ingredients">Ingredients (Optional)</label>
+                    <textarea id="edit-recipe-ingredients"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="edit-recipe-instructions">Instructions</label>
-                    <textarea id="edit-recipe-instructions" required></textarea>
+                    <label for="edit-recipe-instructions">Instructions (Optional)</label>
+                    <textarea id="edit-recipe-instructions"></textarea>
                 </div>
                 <button type="submit">Update Recipe</button>
             </form>
@@ -411,16 +411,21 @@
             const container = document.getElementById('recipes-container');
             container.innerHTML = '';
 
-            // Sort recipes by last modified date
             filteredRecipes.sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified));
 
             filteredRecipes.forEach(recipe => {
                 const card = document.createElement('div');
                 card.className = 'recipe-card';
+                
+                // Create category tags HTML
+                const categoryTags = Array.isArray(recipe.category) 
+                    ? recipe.category.map(cat => `<span class="category-tag">${cat}</span>`).join('')
+                    : `<span class="category-tag">${recipe.category}</span>`;
+
                 card.innerHTML = `
                     <div class="recipe-card-left" onclick="openModal(${JSON.stringify(recipe).replace(/"/g, '&quot;')})">
                         <h3>${recipe.name}</h3>
-                        <span class="category-tag">${recipe.category}</span>
+                        ${categoryTags}
                         <span class="servings-tag">${recipe.servings} person${recipe.servings > 1 ? 'er' : ''}</span>
                     </div>
                     <div class="recipe-card-right">
@@ -438,10 +443,17 @@
             if (recipe) {
                 document.getElementById('edit-recipe-id').value = recipe.id;
                 document.getElementById('edit-recipe-name').value = recipe.name;
-                document.getElementById('edit-recipe-category').value = recipe.category;
+                
+                // Handle multiple categories
+                const categorySelect = document.getElementById('edit-recipe-category');
+                const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
+                Array.from(categorySelect.options).forEach(option => {
+                    option.selected = categories.includes(option.value);
+                });
+                
                 document.getElementById('edit-recipe-servings').value = recipe.servings;
-                document.getElementById('edit-recipe-ingredients').value = recipe.ingredients;
-                document.getElementById('edit-recipe-instructions').value = recipe.instructions;
+                document.getElementById('edit-recipe-ingredients').value = recipe.ingredients || '';
+                document.getElementById('edit-recipe-instructions').value = recipe.instructions || '';
                 openEditRecipeModal();
             }
         }
@@ -473,10 +485,11 @@
 
             let filteredRecipes = recipes.filter(recipe => {
                 const matchesSearch = recipe.name.toLowerCase().includes(searchTerm) ||
-                                    recipe.ingredients.toLowerCase().includes(searchTerm) ||
-                                    recipe.instructions.toLowerCase().includes(searchTerm);
+                                    (recipe.ingredients && recipe.ingredients.toLowerCase().includes(searchTerm)) ||
+                                    (recipe.instructions && recipe.instructions.toLowerCase().includes(searchTerm));
                 
-                const matchesCategory = categoryFilter === 'all' || recipe.category === categoryFilter;
+                const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
+                const matchesCategory = categoryFilter === 'all' || categories.includes(categoryFilter);
                 
                 return matchesSearch && matchesCategory;
             });
@@ -491,7 +504,7 @@
             
             modalContent.innerHTML = `
                 <h2>${recipe.name}</h2>
-                <p><strong>Category:</strong> ${recipe.category}</p>
+                <p><strong>Category:</strong> ${recipe.category.join(', ')}</p>
                 <p><strong>Servings:</strong> ${recipe.servings}</p>
                 <h3>Ingredients:</h3>
                 <pre>${recipe.ingredients}</pre>
@@ -539,13 +552,16 @@
             e.preventDefault();
             
             const formPrefix = isEdit ? 'edit-recipe-' : 'recipe-';
+            const categorySelect = document.getElementById(formPrefix + 'category');
+            const selectedCategories = Array.from(categorySelect.selectedOptions).map(option => option.value);
+
             const recipe = {
                 id: isEdit ? document.getElementById('edit-recipe-id').value : Date.now(),
                 name: document.getElementById(formPrefix + 'name').value,
-                category: document.getElementById(formPrefix + 'category').value,
+                category: selectedCategories,
                 servings: document.getElementById(formPrefix + 'servings').value,
-                ingredients: document.getElementById(formPrefix + 'ingredients').value,
-                instructions: document.getElementById(formPrefix + 'instructions').value,
+                ingredients: document.getElementById(formPrefix + 'ingredients').value || '',
+                instructions: document.getElementById(formPrefix + 'instructions').value || '',
                 lastModified: new Date().toISOString()
             };
 
