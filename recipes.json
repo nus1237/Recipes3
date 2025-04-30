@@ -1,11 +1,29 @@
 [
   {
-    "id": 1746002931247,
-    "name": "test 4.0",
-    "category": "Breakfast",
-    "servings": "1",
-    "ingredients": "test 4.0",
-    "instructions": "test 4.0",
-    "lastModified": "2025-04-30T08:48:51.247Z"
+    "id": 1746006619125,
+    "name": "Halloumiburger med tartarsauce",
+    "category": "Other",
+    "servings": "4",
+    "ingredients": "https://vegetariskhverdag.dk/2020/08/halloumiburger-med-tartarsauce/\n+ avokado\n+ grillede squash",
+    "instructions": ".",
+    "lastModified": "2025-04-30T09:50:19.125Z"
+  },
+  {
+    "id": "1746002931247",
+    "name": "Chickpea Spinach Curry with Coconut Milk",
+    "category": "Ris",
+    "servings": "4",
+    "ingredients": "https://vancouverwithlove.com/chickpea-spinach-curry/",
+    "instructions": ".",
+    "lastModified": "2025-04-30T09:49:40.362Z"
+  },
+  {
+    "id": 1746006671218,
+    "name": "Fajitas",
+    "category": "Mexi",
+    "servings": "4",
+    "ingredients": "https://vegetariskhverdag.dk/2020/08/fajitas-i-ovnen/\n+ veggi kylling",
+    "instructions": ".",
+    "lastModified": "2025-04-30T09:51:11.218Z"
   }
 ]
