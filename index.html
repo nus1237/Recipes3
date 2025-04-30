@@ -422,17 +422,8 @@
                     ? recipe.category.map(cat => `<span class="category-tag">${cat}</span>`).join('')
                     : `<span class="category-tag">${recipe.category}</span>`;
 
-                const recipeForModal = {
-                    id: recipe.id,
-                    name: recipe.name,
-                    category: recipe.category,
-                    servings: recipe.servings,
-                    ingredients: recipe.ingredients || '',
-                    instructions: recipe.instructions || ''
-                };
-
                 card.innerHTML = `
-                    <div class="recipe-card-left" onclick="openModal(${JSON.stringify(recipeForModal)})">
+                    <div class="recipe-card-left" onclick="viewRecipe(${recipe.id})">
                         <h3>${recipe.name}</h3>
                         ${categoryTags}
                         <span class="servings-tag">${recipe.servings} person${recipe.servings > 1 ? 'er' : ''}</span>
@@ -444,6 +435,32 @@
                 `;
                 container.appendChild(card);
             });
+        }
+
+        function viewRecipe(id) {
+            const recipe = recipes.find(r => r.id == id);
+            if (!recipe) return;
+
+            const modal = document.getElementById('recipe-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            const categoryDisplay = Array.isArray(recipe.category) ? recipe.category.join(', ') : recipe.category;
+            
+            modalContent.innerHTML = `
+                <h2>${recipe.name}</h2>
+                <p><strong>Categories:</strong> ${categoryDisplay}</p>
+                <p><strong>Servings:</strong> ${recipe.servings} person${recipe.servings > 1 ? 'er' : ''}</p>
+                ${recipe.ingredients ? `
+                    <h3>Ingredients:</h3>
+                    <pre>${recipe.ingredients}</pre>
+                ` : ''}
+                ${recipe.instructions ? `
+                    <h3>Instructions:</h3>
+                    <pre>${recipe.instructions}</pre>
+                ` : ''}
+            `;
+            
+            modal.style.display = 'block';
         }
 
         // Edit recipe
