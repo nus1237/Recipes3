@@ -30,6 +30,22 @@
             margin: 0 auto;
         }
 
+        .buttons-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .bottom-row {
+            display: flex;
+            gap: 10px;
+        }
+
         h1 {
             color: #333;
             margin-bottom: 30px;
@@ -369,6 +385,21 @@
             .modal-content {
                 margin: 30px 20px 30px 20px;
             }
+
+            .buttons-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .top-row {
+                display: flex;
+                justify-content: center;
+            }
+
+            .bottom-row {
+                display: flex;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -378,9 +409,14 @@
         
         <div id="success-message" class="success-message"></div>
 
-        <div style="margin-bottom: 20px; display: flex; gap: 10px;">
-            <button type="button" onclick="openAddRecipeModal()" style="background-color: #4CAF50;">Add Recipe</button>
-            <button type="button" onclick="openHowToUseModal()" style="background-color: #2196F3;">How to Use</button>
+        <div class="buttons-container">
+            <div class="top-row">
+                <button type="button" onclick="openHowToUseModal()" style="background-color: #2196F3;">How to Use</button>
+            </div>
+            <div class="bottom-row">
+                <button type="button" onclick="openAddRecipeModal()" style="background-color: #4CAF50;">Add Recipe</button>
+                <button onclick="loadRecipes()">Refresh Recipes</button>
+            </div>
         </div>
 
         <div class="search-container">
