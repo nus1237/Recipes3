@@ -159,6 +159,27 @@
             flex: 1;
         }
 
+        .filters-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .clear-filters-btn {
+            background-color: #666;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .clear-filters-btn:hover {
+            background-color: #555;
+        }
+
         .rating-filter {
             display: flex;
             align-items: center;
@@ -381,8 +402,13 @@
                 flex-direction: column;
             }
 
-            .search-container button {
-                display: none;  /* Hide the Refresh Recipe button in search container on mobile */
+            .search-container button:not(.clear-filters-btn) {
+                display: none;
+            }
+
+            .filters-group {
+                width: 100%;
+                justify-content: space-between;
             }
 
             .recipes-container {
@@ -455,15 +481,18 @@
             <select id="category-filter" onchange="filterRecipes()">
                 <option value="all">All Categories</option>
             </select>
-            <div class="rating-filter">
-                <div class="stars-container" id="rating-filter-stars">
-                    <i class="far fa-star" data-rating="1"></i>
-                    <i class="far fa-star" data-rating="2"></i>
-                    <i class="far fa-star" data-rating="3"></i>
-                    <i class="far fa-star" data-rating="4"></i>
-                    <i class="far fa-star" data-rating="5"></i>
+            <div class="filters-group">
+                <div class="rating-filter">
+                    <div class="stars-container" id="rating-filter-stars">
+                        <i class="far fa-star" data-rating="1"></i>
+                        <i class="far fa-star" data-rating="2"></i>
+                        <i class="far fa-star" data-rating="3"></i>
+                        <i class="far fa-star" data-rating="4"></i>
+                        <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                    <i class="fas fa-times clear-rating" id="clear-rating" title="Clear rating filter"></i>
                 </div>
-                <i class="fas fa-times clear-rating" id="clear-rating" title="Clear rating filter"></i>
+                <button class="clear-filters-btn" onclick="clearAllFilters()">Clear Filters</button>
             </div>
         </div>
 
@@ -1209,6 +1238,20 @@
             initializeRatingFilter();
             loadRecipes();
         });
+
+        function clearAllFilters() {
+            // Clear search input
+            document.getElementById('search-input').value = '';
+            
+            // Reset category filter to "All Categories"
+            document.getElementById('category-filter').value = 'all';
+            
+            // Clear rating filter
+            setRatingFilter(0);
+            
+            // Trigger filter update
+            filterRecipes();
+        }
     </script>
 </body>
 </html> 
