@@ -1,51 +1,134 @@
 [
   {
-    "id": 1746100571197,
-    "name": "Bare pomfritter",
-    "category": [
-      "Other"
-    ],
-    "servings": "1",
-    "ingredients": "pomfritter...",
-    "instructions": "",
-    "rating": "2.5",
-    "lastModified": "2025-05-01T11:56:11.197Z"
-  },
-  {
-    "id": 1746100514751,
-    "name": "Mac & cheese",
+    "id": 1746014607330,
+    "name": "Pesto pasta",
     "category": [
       "Pasta"
     ],
-    "servings": "1",
-    "ingredients": "?",
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "pasta\npesto\nkigærter",
+    "instructions": "",
+    "rating": "2",
+    "lastModified": "2025-05-01T12:37:04.243Z"
+  },
+  {
+    "id": 1746015358272,
+    "name": "Rispapirsruller",
+    "category": [
+      "Ris",
+      "Asiatisk"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "rispapir\nris\n\nrevet tofu\nsoya\nsirup\nchili sovs\ncitronsaft\n\ngrønt:\nagurk\npeberfrugt\navokado\nmajs\nbønner\ngulerødder\n\nsursødsovs\njonas' magic tahin?",
     "instructions": "",
     "rating": "4.5",
-    "lastModified": "2025-05-01T11:55:14.751Z"
+    "lastModified": "2025-05-01T12:36:57.694Z"
   },
   {
-    "id": 1746100364319,
-    "name": "pita pizza",
+    "id": 1746015637108,
+    "name": "Mexi pandekager",
     "category": [
-      "Other"
+      "Mexi"
     ],
-    "servings": "1",
-    "ingredients": "pitabrød\ntomatpuré\nrevet ost\nmozarella\n\nveggie kød\nrødløg\nsvamps\nmajs\nbearnaise sovs\n\npeberfrugt\nrødløg\nsvamps\nmajs",
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "mexi pandekager\ntaco skaller\n\nkød: okse, kylling, veggie kød\nrevet ost\nnatchos\n\ngrønt:\nagurk\ntomat\npeberfrugt\nmajs\nbønner\n\nguac\ncreme fraiche\nsalsa",
     "instructions": "",
-    "rating": "2.5",
-    "lastModified": "2025-05-01T11:52:44.319Z"
+    "rating": "3.5",
+    "lastModified": "2025-05-01T12:36:52.298Z"
   },
   {
-    "id": 1746100261814,
-    "name": "Pitabrød",
+    "id": 1746015845944,
+    "name": "Nachos",
     "category": [
-      "Other"
+      "Mexi"
     ],
-    "servings": "1",
-    "ingredients": "pitabrød\nsalat\ndressing\nevt tusind øer dressing:\ncreme fraiche\nsyltede agurker\nketchup\nsalt, peber, citronsaft",
+    "servings": "4",
+    "servingsUnit": "persons",
+    "ingredients": "3 poser nachos (chili)\nmozaralla\ncheddar\nveggie kylling\ntomatillo\n\nguac\ncreme fraiche\nsalsa",
+    "instructions": "",
+    "rating": "3",
+    "lastModified": "2025-05-01T12:36:46.201Z"
+  },
+  {
+    "id": 1746014733933,
+    "name": "Pasta tomatsovs",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "pasta\ndåse tomater/færdig pastasovs\n\nrandom blanding af alt godt på dåser\nkikærter\nkidneybønner\nsorte bønner\n\nevt. veggie kød",
     "instructions": "",
     "rating": "1.5",
-    "lastModified": "2025-05-01T11:51:01.814Z"
+    "lastModified": "2025-05-01T12:36:10.218Z"
+  },
+  {
+    "id": 1746042601015,
+    "name": "tortellini",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "tortellini\nsvampe\nrosmarin\ngrønne bønner\nfløde\nsmøreost?",
+    "instructions": "",
+    "rating": "3.5",
+    "lastModified": "2025-05-01T12:36:04.482Z"
+  },
+  {
+    "id": 1746042522678,
+    "name": "Frisk pasta i svampe fløde sovs",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "frisk pasta\nsvampe\nfløde\nsmøreost?\nærter",
+    "instructions": "",
+    "rating": "4",
+    "lastModified": "2025-05-01T12:35:56.561Z"
+  },
+  {
+    "id": 1746042698308,
+    "name": "Kartoffel madder",
+    "category": [
+      "Other"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "rugbrød\nkartoffler\ntomat\nagurk\nmayo\npeber og flagesalt\nevt. blødkogte æg\nforårsløg\npurløg\nristede løg",
+    "instructions": "",
+    "rating": "1.5",
+    "lastModified": "2025-05-01T12:35:42.115Z"
+  },
+  {
+    "id": 1746042854214,
+    "name": "Chili sin carne",
+    "category": [
+      "Mexi"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "chili cin carne frossen grønt\nevt. tilføj andet?\nmexi pandekager\ncreme fraiche\nrevet ost",
+    "instructions": "",
+    "rating": "2",
+    "lastModified": "2025-05-01T12:35:33.532Z"
+  },
+  {
+    "id": 1746043126539,
+    "name": "frisk pandegrønt pasta",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "pasta\nrandom grøntsager evt:\nsquash\npeberfrugt\nbønner\nmajs\ntomater\nkikærter\n\nsovs evt:\nsmøreost\nfløde\ntomatpuré\nparmasan\npastavand",
+    "instructions": "wing it!",
+    "rating": "2.5",
+    "lastModified": "2025-05-01T12:35:29.310Z"
   },
   {
     "id": 1746043407524,
@@ -54,35 +137,77 @@
       "Pasta",
       "Asiatisk"
     ],
-    "servings": "1",
+    "servings": "",
+    "servingsUnit": "person",
     "ingredients": "nudler\nfrossen grønt wok blanding\nsoya\nchili sovs\nhoisin sauce\nforårsruller",
     "instructions": "",
     "rating": "2",
-    "lastModified": "2025-04-30T20:03:27.524Z"
+    "lastModified": "2025-05-01T12:35:23.463Z"
   },
   {
-    "id": 1746043126539,
-    "name": "frisk pandegrønt pasta",
+    "id": 1746100261814,
+    "name": "Pitabrød",
+    "category": [
+      "Other"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "pitabrød\nsalat\ndressing\nevt tusind øer dressing:\ncreme fraiche\nsyltede agurker\nketchup\nsalt, peber, citronsaft",
+    "instructions": "",
+    "rating": "1.5",
+    "lastModified": "2025-05-01T12:35:18.149Z"
+  },
+  {
+    "id": 1746100364319,
+    "name": "pita pizza",
+    "category": [
+      "Other"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "pitabrød\ntomatpuré\nrevet ost\nmozarella\n\nveggie kød\nrødløg\nsvamps\nmajs\nbearnaise sovs\n\npeberfrugt\nrødløg\nsvamps\nmajs",
+    "instructions": "",
+    "rating": "2.5",
+    "lastModified": "2025-05-01T12:35:13.744Z"
+  },
+  {
+    "id": 1746100514751,
+    "name": "Mac & cheese",
     "category": [
       "Pasta"
     ],
-    "servings": "1",
-    "ingredients": "pasta\nrandom grøntsager evt:\nsquash\npeberfrugt\nbønner\nmajs\ntomater\nkikærter\n\nsovs evt:\nsmøreost\nfløde\ntomatpuré\nparmasan\npastavand",
-    "instructions": "wing it!",
-    "rating": "2.5",
-    "lastModified": "2025-04-30T19:58:46.539Z"
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "?",
+    "instructions": "",
+    "rating": "4.5",
+    "lastModified": "2025-05-01T12:35:06.227Z"
   },
   {
-    "id": 1746042854214,
-    "name": "Chili sin carne",
+    "id": 1746100571197,
+    "name": "Bare pomfritter",
     "category": [
-      "Mexi"
+      "Other"
     ],
-    "servings": "1",
-    "ingredients": "chili cin carne frossen grønt\nevt. tilføj andet?\nmexi pandekager\ncreme fraiche\nrevet ost",
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "pomfritter...",
     "instructions": "",
-    "rating": "2",
-    "lastModified": "2025-04-30T19:54:14.214Z"
+    "rating": "2.5",
+    "lastModified": "2025-05-01T12:35:01.049Z"
+  },
+  {
+    "id": 1746014874862,
+    "name": "Frossen grønt",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "",
+    "servingsUnit": "person",
+    "ingredients": "random pose frossen grønt\npasta",
+    "instructions": "",
+    "rating": "0.5",
+    "lastModified": "2025-05-01T12:34:53.832Z"
   },
   {
     "id": 1746002931247,
@@ -97,54 +222,6 @@
     "lastModified": "2025-04-30T19:51:59.576Z"
   },
   {
-    "id": 1746042698308,
-    "name": "Kartoffel madder",
-    "category": [
-      "Other"
-    ],
-    "servings": "1",
-    "ingredients": "rugbrød\nkartoffler\ntomat\nagurk\nmayo\npeber og flagesalt\nevt. blødkogte æg\nforårsløg\npurløg\nristede løg",
-    "instructions": "",
-    "rating": "1.5",
-    "lastModified": "2025-04-30T19:51:38.308Z"
-  },
-  {
-    "id": 1746042522678,
-    "name": "Frisk pasta i svampe fløde sovs",
-    "category": [
-      "Pasta"
-    ],
-    "servings": "1",
-    "ingredients": "frisk pasta\nsvampe\nfløde\nsmøreost?\nærter",
-    "instructions": "",
-    "rating": "4",
-    "lastModified": "2025-04-30T19:50:09.400Z"
-  },
-  {
-    "id": 1746042601015,
-    "name": "tortellini",
-    "category": [
-      "Pasta"
-    ],
-    "servings": "1",
-    "ingredients": "tortellini\nsvampe\nrosmarin\ngrønne bønner\nfløde\nsmøreost?",
-    "instructions": "",
-    "rating": "3.5",
-    "lastModified": "2025-04-30T19:50:01.015Z"
-  },
-  {
-    "id": 1746014733933,
-    "name": "Pasta tomatsovs",
-    "category": [
-      "Pasta"
-    ],
-    "servings": "1",
-    "ingredients": "pasta\ndåse tomater/færdig pastasovs\n\nrandom blanding af alt godt på dåser\nkikærter\nkidneybønner\nsorte bønner\n\nevt. veggie kød",
-    "instructions": "",
-    "rating": "1.5",
-    "lastModified": "2025-04-30T12:39:08.682Z"
-  },
-  {
     "id": 1746016505068,
     "name": "Rødbede bøf burger",
     "category": [
@@ -155,67 +232,6 @@
     "instructions": "bland alle ingredienser sammen og form 6-8 bøffer på bagepapir beklædt bageplade\npensel med olie og evt. ekstra squish salt og peber\nbag ved 190 grader varmluft i 25 min, og vendes halvejs",
     "rating": "3.5",
     "lastModified": "2025-04-30T12:35:05.068Z"
-  },
-  {
-    "id": 1746015845944,
-    "name": "Nachos",
-    "category": [
-      "Mexi"
-    ],
-    "servings": "1",
-    "ingredients": "nachos (chili)\nmozaralla\ncheddar\nveggie kylling\ntomatillo\n\nguac\ncreme fraiche\nsalsa",
-    "instructions": "",
-    "rating": "3",
-    "lastModified": "2025-04-30T12:24:05.944Z"
-  },
-  {
-    "id": 1746015637108,
-    "name": "Mexi pandekager",
-    "category": [
-      "Mexi"
-    ],
-    "servings": "1",
-    "ingredients": "mexi pandekager\ntaco skaller\n\nkød: okse, kylling, veggie kød\nrevet ost\nnatchos\n\ngrønt:\nagurk\ntomat\npeberfrugt\nmajs\nbønner\n\nguac\ncreme fraiche\nsalsa",
-    "instructions": "",
-    "rating": "3.5",
-    "lastModified": "2025-04-30T12:20:37.108Z"
-  },
-  {
-    "id": 1746015358272,
-    "name": "Rispapirsruller",
-    "category": [
-      "Ris",
-      "Asiatisk"
-    ],
-    "servings": "1",
-    "ingredients": "rispapir\nris\n\nrevet tofu\nsoya\nsirup\nchili sovs\ncitronsaft\n\ngrønt:\nagurk\npeberfrugt\navokado\nmajs\nbønner\ngulerødder\n\nsursødsovs\njonas' magic tahin?",
-    "instructions": "",
-    "rating": "4.5",
-    "lastModified": "2025-04-30T12:15:58.272Z"
-  },
-  {
-    "id": 1746014874862,
-    "name": "Frossen grønt",
-    "category": [
-      "Pasta"
-    ],
-    "servings": "1",
-    "ingredients": "random pose frossen grønt\npasta",
-    "instructions": "",
-    "rating": "0.5",
-    "lastModified": "2025-05-01T11:58:07.906Z"
-  },
-  {
-    "id": 1746014607330,
-    "name": "Pesto pasta",
-    "category": [
-      "Pasta"
-    ],
-    "servings": "1",
-    "ingredients": "pasta\npesto\nkigærter",
-    "instructions": "",
-    "rating": "2",
-    "lastModified": "2025-04-30T12:03:27.330Z"
   },
   {
     "id": 1746014141342,
@@ -235,11 +251,12 @@
     "category": [
       "Other"
     ],
-    "servings": "1",
+    "servings": "17",
+    "servingsUnit": "stk.",
     "ingredients": "https://spisbedre.dk/opskrifter/pirogger-med-oksekodsfyld",
     "instructions": "",
     "rating": "4",
-    "lastModified": "2025-04-30T10:27:45.801Z"
+    "lastModified": "2025-05-01T12:37:21.749Z"
   },
   {
     "id": 1746008780094,
