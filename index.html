@@ -378,6 +378,10 @@
                 flex-direction: column;
             }
 
+            .search-container button {
+                width: 100%;
+            }
+
             .recipes-container {
                 grid-template-columns: 1fr;
             }
@@ -393,12 +397,11 @@
 
             .top-row {
                 display: flex;
-                justify-content: center;
+                gap: 10px;
             }
 
-            .bottom-row {
-                display: flex;
-                gap: 10px;
+            .top-row button {
+                flex: 1;
             }
         }
     </style>
@@ -411,11 +414,8 @@
 
         <div class="buttons-container">
             <div class="top-row">
-                <button type="button" onclick="openHowToUseModal()" style="background-color: #2196F3;">How to Use</button>
-            </div>
-            <div class="bottom-row">
                 <button type="button" onclick="openAddRecipeModal()" style="background-color: #4CAF50;">Add Recipe</button>
-                <button onclick="loadRecipes()">Refresh Recipes</button>
+                <button type="button" onclick="openHowToUseModal()" style="background-color: #2196F3;">How to Use</button>
             </div>
         </div>
 
