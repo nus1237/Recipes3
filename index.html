@@ -738,7 +738,7 @@
             });
 
             // Keep the "All Categories" option
-            categoryFilter.innerHTML = '<option value="all">All Categories</option>';
+            categoryFilter.innerHTML = `<option value="all">All Categories (${recipes.length})</option>`;
 
             // Add categories with counts
             categories.forEach(category => {
