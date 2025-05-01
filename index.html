@@ -210,6 +210,37 @@
             max-height: 80vh;
             overflow-y: auto;
             position: relative;
+            word-wrap: break-word;
+            overflow-x: hidden;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content h3 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+        }
+
+        .modal-content pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: inherit;
+            margin-bottom: 30px;
+        }
+
+        .modal-content .recipe-section {
+            margin-bottom: 40px;
+        }
+
+        .modal-content .recipe-section:last-child {
+            margin-bottom: 0;
         }
 
         .close {
@@ -538,6 +569,16 @@
             });
         }
 
+        function formatInstructions(instructions) {
+            if (!instructions) return '';
+            
+            // Split by newlines and filter out empty lines
+            const steps = instructions.split('\n').filter(step => step.trim());
+            
+            // Number each step
+            return steps.map((step, index) => `${index + 1}. ${step.trim()}`).join('\n');
+        }
+
         function viewRecipe(id) {
             const recipe = recipes.find(r => r.id == id);
             if (!recipe) return;
@@ -552,16 +593,22 @@
             
             modalContent.innerHTML = `
                 <h2>${recipe.name}</h2>
-                <p><strong>Categories:</strong> ${categoryDisplay}</p>
-                ${servingsDisplay}
-                <p><strong>Rating:</strong> <span class="stars-container">${displayStars(parseFloat(recipe.rating || 0))}</span></p>
+                <div class="recipe-section">
+                    <p><strong>Categories:</strong> ${categoryDisplay}</p>
+                    ${servingsDisplay}
+                    <p><strong>Rating:</strong> <span class="stars-container">${displayStars(parseFloat(recipe.rating || 0))}</span></p>
+                </div>
                 ${recipe.ingredients ? `
-                    <h3>Ingredients:</h3>
-                    <pre>${recipe.ingredients}</pre>
+                    <div class="recipe-section">
+                        <h3>Ingredients:</h3>
+                        <pre>${recipe.ingredients}</pre>
+                    </div>
                 ` : ''}
                 ${recipe.instructions ? `
-                    <h3>Instructions:</h3>
-                    <pre>${recipe.instructions}</pre>
+                    <div class="recipe-section">
+                        <h3>Instructions:</h3>
+                        <pre>${formatInstructions(recipe.instructions)}</pre>
+                    </div>
                 ` : ''}
             `;
             
@@ -697,6 +744,10 @@
             const servingsAmount = document.getElementById(formPrefix + 'servings').value;
             const servingsUnit = document.getElementById(formPrefix + 'servings-unit').value;
 
+            // Get the instructions and remove any existing numbering
+            let instructions = document.getElementById(formPrefix + 'instructions').value.trim();
+            instructions = instructions.replace(/^\d+\.\s*/gm, ''); // Remove existing numbering if present
+
             const recipe = {
                 id: isEdit ? parseInt(document.getElementById('edit-recipe-id').value) : Date.now(),
                 name: document.getElementById(formPrefix + 'name').value.trim(),
@@ -704,7 +755,7 @@
                 servings: servingsAmount,
                 servingsUnit: servingsUnit,
                 ingredients: document.getElementById(formPrefix + 'ingredients').value.trim() || '',
-                instructions: document.getElementById(formPrefix + 'instructions').value.trim() || '',
+                instructions: instructions,
                 rating: document.getElementById(formPrefix + 'rating').value,
                 lastModified: new Date().toISOString()
             };
