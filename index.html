@@ -258,13 +258,6 @@
             <input type="text" id="search-input" placeholder="Search recipes..." oninput="filterRecipes()">
             <select id="category-filter" onchange="filterRecipes()">
                 <option value="all">All Categories</option>
-                <option value="Morgenmad">Morgenmad</option>
-                <option value="Pasta">Pasta</option>
-                <option value="Ris">Ris</option>
-                <option value="Mexi">Mexi</option>
-                <option value="Asiatisk">Asiatisk</option>
-                <option value="Snacks">Snacks</option>
-                <option value="Other">Other</option>
             </select>
         </div>
 
@@ -440,6 +433,7 @@
                 console.error('Error loading recipes:', error);
                 recipes = [];
             }
+            updateCategoryFilter();
             displayRecipes();
         }
 
@@ -719,6 +713,41 @@
             }
             
             return starsHtml;
+        }
+
+        // Update category filter with counts
+        function updateCategoryFilter() {
+            const categoryFilter = document.getElementById('category-filter');
+            const categories = [
+                'Morgenmad',
+                'Pasta',
+                'Ris',
+                'Mexi',
+                'Asiatisk',
+                'Snacks',
+                'Other'
+            ];
+
+            // Count recipes per category
+            const categoryCounts = {};
+            recipes.forEach(recipe => {
+                const recipeCategories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
+                recipeCategories.forEach(category => {
+                    categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+                });
+            });
+
+            // Keep the "All Categories" option
+            categoryFilter.innerHTML = '<option value="all">All Categories</option>';
+
+            // Add categories with counts
+            categories.forEach(category => {
+                const count = categoryCounts[category] || 0;
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = `${category} (${count})`;
+                categoryFilter.appendChild(option);
+            });
         }
 
         // Load recipes initially
