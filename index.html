@@ -509,6 +509,19 @@
         let recipes = [];
         let editingId = null;
 
+        // Add variables to track interaction timing
+        let interactionStartTime = 0;
+        const CLICK_THRESHOLD = 500; // 500ms = half a second
+
+        // Track when the interaction starts
+        window.onmousedown = function(event) {
+            interactionStartTime = Date.now();
+        };
+
+        window.ontouchstart = function(event) {
+            interactionStartTime = Date.now();
+        };
+
         // Load recipes from recipes.json
         async function loadRecipes() {
             try {
@@ -802,6 +815,32 @@
             displayRecipes();
         }
 
+        // Handle modal clicks and touches
+        function handleModalClick(event) {
+            const interactionDuration = Date.now() - interactionStartTime;
+            
+            // Only process if it was a short interaction (click rather than scroll)
+            if (interactionDuration <= CLICK_THRESHOLD) {
+                const recipeModal = document.getElementById('recipe-modal');
+                const howtoModal = document.getElementById('howto-modal');
+                const addRecipeModal = document.getElementById('add-recipe-modal');
+                const editRecipeModal = document.getElementById('edit-recipe-modal');
+                
+                if (event.target === recipeModal) {
+                    closeModal();
+                }
+                if (event.target === howtoModal) {
+                    closeHowToUseModal();
+                }
+                if (event.target === addRecipeModal) {
+                    closeAddRecipeModal();
+                }
+                if (event.target === editRecipeModal) {
+                    closeEditRecipeModal();
+                }
+            }
+        }
+
         // Update window click handler to close all modals
         window.onclick = function(event) {
             handleModalClick(event);
@@ -811,26 +850,6 @@
         window.ontouchend = function(event) {
             handleModalClick(event);
         };
-
-        function handleModalClick(event) {
-            const recipeModal = document.getElementById('recipe-modal');
-            const howtoModal = document.getElementById('howto-modal');
-            const addRecipeModal = document.getElementById('add-recipe-modal');
-            const editRecipeModal = document.getElementById('edit-recipe-modal');
-            
-            if (event.target === recipeModal) {
-                closeModal();
-            }
-            if (event.target === howtoModal) {
-                closeHowToUseModal();
-            }
-            if (event.target === addRecipeModal) {
-                closeAddRecipeModal();
-            }
-            if (event.target === editRecipeModal) {
-                closeEditRecipeModal();
-            }
-        }
 
         function displayStars(rating) {
             const fullStars = Math.floor(rating);
