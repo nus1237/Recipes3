@@ -132,11 +132,46 @@
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            align-items: center;
         }
 
         .search-container input,
         .search-container select {
             flex: 1;
+        }
+
+        .rating-filter {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating-filter .stars-container {
+            display: flex;
+            gap: 2px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .rating-filter .stars-container i {
+            color: #ddd;
+            transition: color 0.2s;
+        }
+
+        .rating-filter .stars-container i.active {
+            color: gold;
+        }
+
+        .rating-filter .clear-rating {
+            color: #666;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 0 5px;
+            display: none;
+        }
+
+        .rating-filter .clear-rating.visible {
+            display: inline;
         }
 
         .recipes-container {
@@ -350,10 +385,20 @@
 
         <div class="search-container">
             <button onclick="loadRecipes()">Refresh Recipes</button>
-            <input type="text" id="search-input" placeholder="Search recipes..." oninput="filterRecipes()">
+            <input type="text" id="search-input" placeholder="Search recipes or ingredients..." oninput="filterRecipes()">
             <select id="category-filter" onchange="filterRecipes()">
                 <option value="all">All Categories</option>
             </select>
+            <div class="rating-filter">
+                <div class="stars-container" id="rating-filter-stars">
+                    <i class="far fa-star" data-rating="1"></i>
+                    <i class="far fa-star" data-rating="2"></i>
+                    <i class="far fa-star" data-rating="3"></i>
+                    <i class="far fa-star" data-rating="4"></i>
+                    <i class="far fa-star" data-rating="5"></i>
+                </div>
+                <i class="fas fa-times clear-rating" id="clear-rating" title="Clear rating filter"></i>
+            </div>
         </div>
 
         <div id="recipes-container" class="recipes-container"></div>
@@ -549,6 +594,53 @@
             interactionStartTime = Date.now();
         };
 
+        let currentRatingFilter = 0;
+
+        function initializeRatingFilter() {
+            const starsContainer = document.getElementById('rating-filter-stars');
+            const clearButton = document.getElementById('clear-rating');
+            const stars = starsContainer.getElementsByTagName('i');
+
+            Array.from(stars).forEach(star => {
+                star.addEventListener('click', () => {
+                    const rating = parseInt(star.dataset.rating);
+                    setRatingFilter(rating);
+                });
+
+                star.addEventListener('mouseover', () => {
+                    const rating = parseInt(star.dataset.rating);
+                    updateStarsDisplay(rating, true);
+                });
+            });
+
+            starsContainer.addEventListener('mouseout', () => {
+                updateStarsDisplay(currentRatingFilter, false);
+            });
+
+            clearButton.addEventListener('click', () => {
+                setRatingFilter(0);
+            });
+        }
+
+        function setRatingFilter(rating) {
+            currentRatingFilter = rating;
+            updateStarsDisplay(rating, false);
+            document.getElementById('clear-rating').classList.toggle('visible', rating > 0);
+            filterRecipes();
+        }
+
+        function updateStarsDisplay(rating, isHover) {
+            const stars = document.getElementById('rating-filter-stars').getElementsByTagName('i');
+            Array.from(stars).forEach(star => {
+                const starRating = parseInt(star.dataset.rating);
+                if (starRating <= rating) {
+                    star.className = 'fas fa-star active';
+                } else {
+                    star.className = 'far fa-star';
+                }
+            });
+        }
+
         // Load recipes from recipes.json
         async function loadRecipes() {
             try {
@@ -737,7 +829,10 @@
                 const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
                 const matchesCategory = categoryFilter === 'all' || categories.includes(categoryFilter);
                 
-                return matchesSearch && matchesCategory;
+                const recipeRating = parseFloat(recipe.rating || 0);
+                const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
+                
+                return matchesSearch && matchesCategory && matchesRating;
             });
 
             displayRecipes(filteredRecipes);
@@ -1033,8 +1128,11 @@
             updateServingsUnit('edit-recipe-servings', 'edit-recipe-servings-unit');
         });
 
-        // Load recipes initially
-        loadRecipes();
+        // Initialize rating filter when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeRatingFilter();
+            loadRecipes();
+        });
     </script>
 </body>
 </html> 
