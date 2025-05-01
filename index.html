@@ -48,6 +48,50 @@
             margin-bottom: 15px;
         }
 
+        .category-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .category-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .category-circle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .category-circle.selected {
+            background-color: #4CAF50;
+            position: relative;
+        }
+
+        .category-circle.selected::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .category-label {
+            color: #555;
+        }
+
         label {
             display: block;
             margin-bottom: 5px;
@@ -347,16 +391,8 @@
                     <input type="text" id="recipe-name" required>
                 </div>
                 <div class="form-group">
-                    <label for="recipe-category">Categories (Hold Ctrl/Cmd to select multiple)</label>
-                    <select id="recipe-category" multiple required style="height: 150px;">
-                        <option value="Morgenmad">Morgenmad</option>
-                        <option value="Pasta">Pasta</option>
-                        <option value="Ris">Ris</option>
-                        <option value="Mexi">Mexi</option>
-                        <option value="Asiatisk">Asiatisk</option>
-                        <option value="Snacks">Snacks</option>
-                        <option value="Other">Other</option>
-                    </select>
+                    <label for="recipe-category">Categories</label>
+                    <div id="recipe-category-options" class="category-options"></div>
                 </div>
                 <div class="form-group">
                     <label for="recipe-servings">Servings</label>
@@ -431,16 +467,8 @@
                     <input type="text" id="edit-recipe-name" required>
                 </div>
                 <div class="form-group">
-                    <label for="edit-recipe-category">Categories (Hold Ctrl/Cmd to select multiple)</label>
-                    <select id="edit-recipe-category" multiple required style="height: 150px;">
-                        <option value="Morgenmad">Morgenmad</option>
-                        <option value="Pasta">Pasta</option>
-                        <option value="Ris">Ris</option>
-                        <option value="Mexi">Mexi</option>
-                        <option value="Asiatisk">Asiatisk</option>
-                        <option value="Snacks">Snacks</option>
-                        <option value="Other">Other</option>
-                    </select>
+                    <label for="edit-recipe-category">Categories</label>
+                    <div id="edit-recipe-category-options" class="category-options"></div>
                 </div>
                 <div class="form-group">
                     <label for="edit-recipe-servings">Servings</label>
@@ -527,6 +555,15 @@
                 const response = await fetch('recipes.json');
                 if (response.ok) {
                     recipes = await response.json();
+                    // Migrate old categories to new ones
+                    recipes = recipes.map(recipe => {
+                        if (Array.isArray(recipe.category)) {
+                            recipe.category = recipe.category.map(cat => migrateCategory(cat));
+                        } else if (recipe.category) {
+                            recipe.category = [migrateCategory(recipe.category)];
+                        }
+                        return recipe;
+                    });
                 } else {
                     console.log('No existing recipes.json found, starting with empty recipe list');
                     recipes = [];
@@ -653,11 +690,9 @@
                 document.getElementById('edit-recipe-id').value = recipe.id || '';
                 document.getElementById('edit-recipe-name').value = recipe.name || '';
                 
-                const categorySelect = document.getElementById('edit-recipe-category');
+                // Create category options with selected categories
                 const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
-                Array.from(categorySelect.options).forEach(option => {
-                    option.selected = categories.includes(option.value);
-                });
+                createCategoryOptions('edit-recipe-category-options', categories);
                 
                 document.getElementById('edit-recipe-servings').value = recipe.servings || '';
                 document.getElementById('edit-recipe-servings-unit').value = recipe.servingsUnit || (recipe.servings === "1" ? "person" : "persons");
@@ -752,6 +787,7 @@
         function openAddRecipeModal() {
             document.getElementById('add-recipe-modal').style.display = 'block';
             document.body.classList.add('modal-open');
+            createCategoryOptions('recipe-category-options');
         }
 
         function closeAddRecipeModal() {
@@ -776,8 +812,10 @@
             e.preventDefault();
             
             const formPrefix = isEdit ? 'edit-recipe-' : 'recipe-';
-            const categorySelect = document.getElementById(formPrefix + 'category');
-            const selectedCategories = Array.from(categorySelect.selectedOptions).map(option => option.value);
+            
+            // Get selected categories
+            const selectedCategories = Array.from(document.querySelectorAll(`#${formPrefix}category-options .category-circle.selected`))
+                .map(circle => circle.dataset.category);
 
             const servingsAmount = document.getElementById(formPrefix + 'servings').value;
             const servingsUnit = document.getElementById(formPrefix + 'servings-unit').value;
@@ -812,6 +850,63 @@
             saveRecipes();
             e.target.reset();
             displayRecipes();
+        }
+
+        function toggleCategory(circle) {
+            circle.classList.toggle('selected');
+        }
+
+        function createCategoryOptions(containerId, selectedCategories = []) {
+            const categories = [
+                'All Categories',
+                'Breakfast/Lunch',
+                'Dinner',
+                'Pasta',
+                'Rice',
+                'Mexi',
+                'Asian',
+                'Fast Food',
+                'Frozen',
+                'Bread/Cakes',
+                'Other'
+            ];
+
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            container.className = 'category-options';
+
+            categories.forEach(category => {
+                const option = document.createElement('div');
+                option.className = 'category-option';
+                
+                const circle = document.createElement('div');
+                circle.className = `category-circle${selectedCategories.includes(category) ? ' selected' : ''}`;
+                circle.dataset.category = category;
+                circle.onclick = () => toggleCategory(circle);
+
+                const label = document.createElement('span');
+                label.className = 'category-label';
+                label.textContent = category;
+                label.onclick = () => toggleCategory(circle);
+
+                option.appendChild(circle);
+                option.appendChild(label);
+                container.appendChild(option);
+            });
+        }
+
+        // Migration function for old categories
+        function migrateCategory(oldCategory) {
+            const categoryMappings = {
+                'Morgenmad': 'Breakfast/Lunch',
+                'Pasta': 'Pasta',
+                'Ris': 'Rice',
+                'Mexi': 'Mexi',
+                'Asiatisk': 'Asian',
+                'Other': 'Other'
+            };
+            
+            return categoryMappings[oldCategory] || oldCategory;
         }
 
         // Handle modal clicks and touches
@@ -879,12 +974,16 @@
         function updateCategoryFilter() {
             const categoryFilter = document.getElementById('category-filter');
             const categories = [
-                'Morgenmad',
+                'All Categories',
+                'Breakfast/Lunch',
+                'Dinner',
                 'Pasta',
-                'Ris',
+                'Rice',
                 'Mexi',
-                'Asiatisk',
-                'Snacks',
+                'Asian',
+                'Fast Food',
+                'Frozen',
+                'Bread/Cakes',
                 'Other'
             ];
 
@@ -901,7 +1000,7 @@
             categoryFilter.innerHTML = `<option value="all">All Categories (${recipes.length})</option>`;
 
             // Add categories with counts
-            categories.forEach(category => {
+            categories.slice(1).forEach(category => {
                 const count = categoryCounts[category] || 0;
                 const option = document.createElement('option');
                 option.value = category;
