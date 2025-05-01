@@ -114,13 +114,18 @@
             color: #333;
         }
 
+        .recipe-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
         .category-tag,
         .servings-tag {
             display: inline-block;
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 12px;
-            margin-right: 8px;
         }
 
         .category-tag {
@@ -516,8 +521,10 @@
                 card.innerHTML = `
                     <div class="recipe-card-left">
                         <h3>${recipe.name}</h3>
-                        ${categoryTags}
-                        ${servingsTag}
+                        <div class="recipe-card-tags">
+                            ${categoryTags}
+                            ${servingsTag}
+                        </div>
                     </div>
                     <div class="recipe-card-right">
                         <button class="edit-btn" onclick="event.stopPropagation(); editRecipe(${recipe.id})">Edit</button>
