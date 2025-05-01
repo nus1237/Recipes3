@@ -235,6 +235,15 @@
             margin-bottom: 30px;
         }
 
+        .instruction-step {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .instruction-step:last-child {
+            margin-bottom: 0;
+        }
+
         .modal-content .recipe-section {
             margin-bottom: 40px;
         }
@@ -575,8 +584,10 @@
             // Split by newlines and filter out empty lines
             const steps = instructions.split('\n').filter(step => step.trim());
             
-            // Number each step
-            return steps.map((step, index) => `${index + 1}. ${step.trim()}`).join('\n');
+            // Number each step and wrap in span for styling
+            return steps.map((step, index) => 
+                `<span class="instruction-step">${index + 1}. ${step.trim()}</span>`
+            ).join('');
         }
 
         function viewRecipe(id) {
