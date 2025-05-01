@@ -133,17 +133,27 @@
             gap: 10px;
             margin-bottom: 20px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
-        .search-container input,
+        .search-container button {
+            flex: 0 0 auto;
+        }
+
+        .search-container input {
+            flex: 1 1 200px;
+        }
+
         .search-container select {
-            flex: 1;
+            flex: 1 1 200px;
         }
 
         .rating-filter {
             display: flex;
             align-items: center;
             gap: 5px;
+            flex: 0 0 auto;
+            order: 2;
         }
 
         .rating-filter .stars-container {
@@ -359,7 +369,18 @@
 
         @media (max-width: 768px) {
             .search-container {
-                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-container button,
+            .search-container input,
+            .search-container .rating-filter,
+            .search-container select {
+                margin: 0;
+            }
+
+            .rating-filter {
+                order: 2;
             }
 
             .recipes-container {
@@ -386,9 +407,6 @@
         <div class="search-container">
             <button onclick="loadRecipes()">Refresh Recipes</button>
             <input type="text" id="search-input" placeholder="Search recipes or ingredients..." oninput="filterRecipes()">
-            <select id="category-filter" onchange="filterRecipes()">
-                <option value="all">All Categories</option>
-            </select>
             <div class="rating-filter">
                 <div class="stars-container" id="rating-filter-stars">
                     <i class="far fa-star" data-rating="1"></i>
@@ -399,6 +417,9 @@
                 </div>
                 <i class="fas fa-times clear-rating" id="clear-rating" title="Clear rating filter"></i>
             </div>
+            <select id="category-filter" onchange="filterRecipes()">
+                <option value="all">All Categories</option>
+            </select>
         </div>
 
         <div id="recipes-container" class="recipes-container"></div>
