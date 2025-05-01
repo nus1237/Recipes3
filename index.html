@@ -18,6 +18,13 @@
             padding: 20px;
         }
 
+        body.modal-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -207,13 +214,11 @@
             padding: 20px;
             border-radius: 8px;
             max-width: 600px;
-            height: auto;
             max-height: 80vh;
+            overflow-y: auto;
             position: relative;
             word-wrap: break-word;
             overflow-x: hidden;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
         }
 
         .modal-content h2 {
@@ -626,6 +631,7 @@
             `;
             
             modal.style.display = 'block';
+            document.body.classList.add('modal-open');
         }
 
         // Edit recipe
@@ -716,33 +722,40 @@
 
         function closeModal() {
             document.getElementById('recipe-modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
         }
 
         // How to Use Modal functions
         function openHowToUseModal() {
             document.getElementById('howto-modal').style.display = 'block';
+            document.body.classList.add('modal-open');
         }
 
         function closeHowToUseModal() {
             document.getElementById('howto-modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
         }
 
         // Add Recipe Modal functions
         function openAddRecipeModal() {
             document.getElementById('add-recipe-modal').style.display = 'block';
+            document.body.classList.add('modal-open');
         }
 
         function closeAddRecipeModal() {
             document.getElementById('add-recipe-modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
         }
 
         // Edit Recipe Modal functions
         function openEditRecipeModal() {
             document.getElementById('edit-recipe-modal').style.display = 'block';
+            document.body.classList.add('modal-open');
         }
 
         function closeEditRecipeModal() {
             document.getElementById('edit-recipe-modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
             document.getElementById('edit-recipe-form').reset();
         }
 
