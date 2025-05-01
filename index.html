@@ -720,6 +720,15 @@
 
         // Update window click handler to close all modals
         window.onclick = function(event) {
+            handleModalClick(event);
+        };
+
+        // Add touch event handler for mobile devices
+        window.ontouchend = function(event) {
+            handleModalClick(event);
+        };
+
+        function handleModalClick(event) {
             const recipeModal = document.getElementById('recipe-modal');
             const howtoModal = document.getElementById('howto-modal');
             const addRecipeModal = document.getElementById('add-recipe-modal');
