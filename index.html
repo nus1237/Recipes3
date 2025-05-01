@@ -308,18 +308,37 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="recipe-servings">Number of Servings</label>
-                    <select id="recipe-servings" required>
-                        <option value="1">1 person</option>
-                        <option value="2">2 personer</option>
-                        <option value="3">3 personer</option>
-                        <option value="4">4 personer</option>
-                        <option value="5">5 personer</option>
-                        <option value="6">6 personer</option>
-                        <option value="8">8 personer</option>
-                        <option value="10">10 personer</option>
-                        <option value="12">12 personer</option>
-                    </select>
+                    <label for="recipe-servings">Servings</label>
+                    <div style="display: flex; gap: 10px;">
+                        <select id="recipe-servings" required style="flex: 1;">
+                            <option value="">Amount</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                        </select>
+                        <select id="recipe-servings-unit" style="flex: 1;">
+                            <option value="person">person</option>
+                            <option value="persons">persons</option>
+                            <option value="stk.">stk.</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="recipe-rating">Rating</label>
@@ -373,18 +392,37 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="edit-recipe-servings">Number of Servings</label>
-                    <select id="edit-recipe-servings" required>
-                        <option value="1">1 person</option>
-                        <option value="2">2 personer</option>
-                        <option value="3">3 personer</option>
-                        <option value="4">4 personer</option>
-                        <option value="5">5 personer</option>
-                        <option value="6">6 personer</option>
-                        <option value="8">8 personer</option>
-                        <option value="10">10 personer</option>
-                        <option value="12">12 personer</option>
-                    </select>
+                    <label for="edit-recipe-servings">Servings</label>
+                    <div style="display: flex; gap: 10px;">
+                        <select id="edit-recipe-servings" required style="flex: 1;">
+                            <option value="">Amount</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                        </select>
+                        <select id="edit-recipe-servings-unit" style="flex: 1;">
+                            <option value="person">person</option>
+                            <option value="persons">persons</option>
+                            <option value="stk.">stk.</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="edit-recipe-rating">Rating</label>
@@ -469,11 +507,16 @@
                     ? recipe.category.map(cat => `<span class="category-tag">${cat}</span>`).join('')
                     : `<span class="category-tag">${recipe.category}</span>`;
 
+                // Create servings tag HTML only if servings is specified
+                const servingsTag = recipe.servings && recipe.servings !== "" 
+                    ? `<span class="servings-tag">${recipe.servings} ${recipe.servingsUnit || 'person' + (recipe.servings !== "1" ? 's' : '')}</span>`
+                    : '';
+
                 card.innerHTML = `
                     <div class="recipe-card-left" onclick="viewRecipe(${recipe.id})">
                         <h3>${recipe.name}</h3>
                         ${categoryTags}
-                        <span class="servings-tag">${recipe.servings} person${recipe.servings > 1 ? 'er' : ''}</span>
+                        ${servingsTag}
                     </div>
                     <div class="recipe-card-right">
                         <button class="edit-btn" onclick="event.stopPropagation(); editRecipe(${recipe.id})">Edit</button>
@@ -495,11 +538,14 @@
             const modalContent = document.getElementById('modal-content');
             
             const categoryDisplay = Array.isArray(recipe.category) ? recipe.category.join(', ') : recipe.category;
+            const servingsDisplay = recipe.servings && recipe.servings !== "" 
+                ? `<p><strong>Servings:</strong> ${recipe.servings} ${recipe.servingsUnit || 'person' + (recipe.servings !== "1" ? 's' : '')}</p>`
+                : '';
             
             modalContent.innerHTML = `
                 <h2>${recipe.name}</h2>
                 <p><strong>Categories:</strong> ${categoryDisplay}</p>
-                <p><strong>Servings:</strong> ${recipe.servings} person${recipe.servings > 1 ? 'er' : ''}</p>
+                ${servingsDisplay}
                 <p><strong>Rating:</strong> <span class="stars-container">${displayStars(parseFloat(recipe.rating || 0))}</span></p>
                 ${recipe.ingredients ? `
                     <h3>Ingredients:</h3>
@@ -518,23 +564,21 @@
         function editRecipe(id) {
             const recipe = recipes.find(r => r.id == id);
             if (recipe) {
-                // Set default values for all fields
                 document.getElementById('edit-recipe-id').value = recipe.id || '';
                 document.getElementById('edit-recipe-name').value = recipe.name || '';
                 
-                // Handle multiple categories
                 const categorySelect = document.getElementById('edit-recipe-category');
                 const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
                 Array.from(categorySelect.options).forEach(option => {
                     option.selected = categories.includes(option.value);
                 });
                 
-                document.getElementById('edit-recipe-servings').value = recipe.servings || '1';
+                document.getElementById('edit-recipe-servings').value = recipe.servings || '';
+                document.getElementById('edit-recipe-servings-unit').value = recipe.servingsUnit || (recipe.servings === "1" ? "person" : "persons");
                 document.getElementById('edit-recipe-ingredients').value = recipe.ingredients || '';
                 document.getElementById('edit-recipe-instructions').value = recipe.instructions || '';
                 document.getElementById('edit-recipe-rating').value = recipe.rating || '0';
                 
-                // Open the modal
                 openEditRecipeModal();
             }
         }
@@ -642,11 +686,15 @@
             const categorySelect = document.getElementById(formPrefix + 'category');
             const selectedCategories = Array.from(categorySelect.selectedOptions).map(option => option.value);
 
+            const servingsAmount = document.getElementById(formPrefix + 'servings').value;
+            const servingsUnit = document.getElementById(formPrefix + 'servings-unit').value;
+
             const recipe = {
                 id: isEdit ? parseInt(document.getElementById('edit-recipe-id').value) : Date.now(),
                 name: document.getElementById(formPrefix + 'name').value.trim(),
                 category: selectedCategories,
-                servings: document.getElementById(formPrefix + 'servings').value,
+                servings: servingsAmount,
+                servingsUnit: servingsUnit,
                 ingredients: document.getElementById(formPrefix + 'ingredients').value.trim() || '',
                 instructions: document.getElementById(formPrefix + 'instructions').value.trim() || '',
                 rating: document.getElementById(formPrefix + 'rating').value,
@@ -749,6 +797,29 @@
                 categoryFilter.appendChild(option);
             });
         }
+
+        // Update servings unit based on amount
+        function updateServingsUnit(amountSelectId, unitSelectId) {
+            const amount = document.getElementById(amountSelectId).value;
+            const unitSelect = document.getElementById(unitSelectId);
+            
+            if (amount === "" || !amount) {
+                return;
+            }
+
+            if (unitSelect.value === "person" || unitSelect.value === "persons") {
+                unitSelect.value = amount === "1" ? "person" : "persons";
+            }
+        }
+
+        // Add event listeners for servings amount changes
+        document.getElementById('recipe-servings').addEventListener('change', () => {
+            updateServingsUnit('recipe-servings', 'recipe-servings-unit');
+        });
+
+        document.getElementById('edit-recipe-servings').addEventListener('change', () => {
+            updateServingsUnit('edit-recipe-servings', 'edit-recipe-servings-unit');
+        });
 
         // Load recipes initially
         loadRecipes();
