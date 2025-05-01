@@ -501,6 +501,7 @@
             filteredRecipes.forEach(recipe => {
                 const card = document.createElement('div');
                 card.className = 'recipe-card';
+                card.onclick = () => viewRecipe(recipe.id);
                 
                 // Create category tags HTML
                 const categoryTags = Array.isArray(recipe.category) 
@@ -513,7 +514,7 @@
                     : '';
 
                 card.innerHTML = `
-                    <div class="recipe-card-left" onclick="viewRecipe(${recipe.id})">
+                    <div class="recipe-card-left">
                         <h3>${recipe.name}</h3>
                         ${categoryTags}
                         ${servingsTag}
