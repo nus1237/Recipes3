@@ -1069,6 +1069,7 @@
         // Update category filter with counts
         function updateCategoryFilter() {
             const categoryFilter = document.getElementById('category-filter');
+            const currentSelection = categoryFilter.value; // Store current selection
             const categories = [
                 'All Categories',
                 'Breakfast/Lunch',
@@ -1109,6 +1110,9 @@
                 option.textContent = `${category} (${count})`;
                 categoryFilter.appendChild(option);
             });
+
+            // Restore previous selection
+            categoryFilter.value = currentSelection;
         }
 
         // Update servings unit based on amount
