@@ -1130,10 +1130,15 @@
         }
 
         function viewRecipe(id) {
+            // Prevent opening a recipe if the modal is already open
+            const modal = document.getElementById('recipe-modal');
+            if (modal && modal.style.display === 'block') {
+                return;
+            }
+
             const recipe = recipes.find(r => r.id == id);
             if (!recipe) return;
 
-            const modal = document.getElementById('recipe-modal');
             const modalContent = document.getElementById('modal-content');
             
             const categoryDisplay = Array.isArray(recipe.category) ? recipe.category.join(', ') : recipe.category;
