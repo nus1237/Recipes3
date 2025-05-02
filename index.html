@@ -1484,41 +1484,61 @@
             updateServingsUnit('edit-recipe-servings', 'edit-recipe-servings-unit');
         });
 
-        // Initialize rating filter when page loads
+        // Helper to get currently filtered recipes
+        function getFilteredRecipes() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const categoryFilter = document.getElementById('category-filter').value;
+
+            return recipes.filter(recipe => {
+                const matchesSearch = recipe.name.toLowerCase().includes(searchTerm) ||
+                    (recipe.ingredients && recipe.ingredients.toLowerCase().includes(searchTerm)) ||
+                    (recipe.instructions && recipe.instructions.toLowerCase().includes(searchTerm));
+                
+                const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
+                const matchesCategory = categoryFilter === 'all' || categories.includes(categoryFilter);
+                
+                const recipeRating = parseFloat(recipe.rating || 0);
+                const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
+
+                const difficultyOrder = { easy: 1, medium: 2, hard: 3 };
+                const selectedMax = currentDifficulty ? difficultyOrder[currentDifficulty] : 0;
+                const matchesDifficulty = !currentDifficulty || (difficultyOrder[recipe.difficulty] && difficultyOrder[recipe.difficulty] <= selectedMax);
+                
+                return matchesSearch && matchesCategory && matchesRating && matchesDifficulty;
+            });
+        }
+
+        // Helper to open a recipe modal
+        function openRecipeModal(recipe) {
+            viewRecipe(recipe.id);
+        }
+
+        // Dice button logic: animate, wait, then open random recipe modal
         document.addEventListener('DOMContentLoaded', function() {
             initializeRatingFilter();
             initializeDifficultyFilter();
             loadRecipes();
 
-            // Dice roll animation
             const diceBtn = document.getElementById('dice-btn');
             if (diceBtn) {
                 diceBtn.addEventListener('click', function() {
-                    // Add the rolling class to start the animation
                     this.classList.add('dice-rolling');
-
-                    // Disable the button to prevent multiple clicks during animation
                     this.disabled = true;
 
                     setTimeout(() => {
-                        // Remove the animation class
                         this.classList.remove('dice-rolling');
                         this.disabled = false;
 
-                        // Get the filtered recipes (replace with your actual function/variable)
-                        const filteredRecipes = getFilteredRecipes(); // <-- implement this if needed
-
-                        if (filteredRecipes.length > 0) {
-                            // Pick a random recipe
-                            const randomIndex = Math.floor(Math.random() * filteredRecipes.length);
-                            const randomRecipe = filteredRecipes[randomIndex];
-
-                            // Open the modal with the random recipe
-                            openRecipeModal(randomRecipe); // <-- implement this if needed
-                        } else {
+                        const filteredRecipes = getFilteredRecipes();
+                        if (!filteredRecipes || !filteredRecipes.length) {
                             alert('No recipes match your filters!');
+                            return;
                         }
-                    }, 350); // 350ms matches the animation duration
+
+                        const randomIndex = Math.floor(Math.random() * filteredRecipes.length);
+                        const randomRecipe = filteredRecipes[randomIndex];
+                        openRecipeModal(randomRecipe);
+                    }, 350);
                 });
             }
         });
