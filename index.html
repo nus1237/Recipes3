@@ -35,6 +35,7 @@
             display: flex;
             gap: 10px;
             justify-content: flex-start;
+            align-items: center;
         }
 
         .bottom-row {
@@ -539,6 +540,8 @@
             .mobile-bottom-row {
                 display: flex;
                 gap: 10px;
+                justify-content: flex-end;
+                align-items: center;
             }
 
             .mobile-bottom-row button {
@@ -546,6 +549,10 @@
                 height: 39px; /* Match the height of other buttons */
                 white-space: nowrap; /* Prevent text wrapping */
                 padding: 10px 15px; /* Adjust padding to ensure text fits */
+            }
+
+            #dice-btn-mobile {
+                margin-left: auto;
             }
         }
 
@@ -556,6 +563,10 @@
 
             .top-row {
                 flex-direction: row;
+            }
+
+            #dice-btn {
+                margin-left: auto;
             }
         }
     </style>
@@ -570,10 +581,12 @@
             <div class="top-row">
                 <button type="button" onclick="openAddRecipeModal()" style="background-color: #4CAF50;">Add Recipe</button>
                 <button type="button" onclick="openHowToUseModal()" style="background-color: #2196F3;">How to Use</button>
+                <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 28px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; margin-left: auto; cursor: pointer; padding: 0;">🎲</button>
             </div>
             <div class="mobile-bottom-row">
                 <button type="button" onclick="openAddRecipeModal()" style="background-color: #4CAF50;">Add Recipe</button>
                 <button onclick="loadRecipes()">Refresh</button>
+                <button id="dice-btn-mobile" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 28px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; margin-left: auto; cursor: pointer; padding: 0;">🎲</button>
             </div>
         </div>
 
