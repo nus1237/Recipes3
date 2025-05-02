@@ -626,6 +626,17 @@
             display: block;
             margin: 25px auto 0 auto;
         }
+
+        @keyframes scale-bounce {
+            0%   { transform: scale(1); }
+            30%  { transform: scale(1.25); }
+            60%  { transform: scale(0.92); }
+            100% { transform: scale(1); }
+        }
+        .star-animate,
+        .chef-animate {
+            animation: scale-bounce 0.32s cubic-bezier(.36,1.56,.64,1) 1;
+        }
     </style>
 </head>
 <body>
@@ -905,6 +916,14 @@
                     } else {
                         setRatingFilter(rating);
                     }
+                    // Animate all stars up to and including the clicked one
+                    Array.from(stars).forEach((s, idx) => {
+                        if (idx < rating) {
+                            s.classList.remove('star-animate'); // reset if needed
+                            void s.offsetWidth; // force reflow for restart
+                            s.classList.add('star-animate');
+                        }
+                    });
                 });
 
                 star.addEventListener('mouseover', () => {
@@ -972,6 +991,14 @@
                     }
                     updateCategoryFilter();
                     filterRecipes();
+                    // Animate all chefs up to and including the clicked one
+                    Array.from(chefs).forEach((c, i) => {
+                        if (i <= idx) {
+                            c.classList.remove('chef-animate'); // reset if needed
+                            void c.offsetWidth; // force reflow for restart
+                            c.classList.add('chef-animate');
+                        }
+                    });
                 });
             });
             // Initial state
