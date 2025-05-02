@@ -1121,7 +1121,9 @@
                 const recipeRating = parseFloat(recipe.rating || 0);
                 const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
 
-                const matchesDifficulty = !currentDifficulty || recipe.difficulty === currentDifficulty;
+                const difficultyOrder = { easy: 1, medium: 2, hard: 3 };
+                const selectedMax = currentDifficulty ? difficultyOrder[currentDifficulty] : 0;
+                const matchesDifficulty = !currentDifficulty || (difficultyOrder[recipe.difficulty] && difficultyOrder[recipe.difficulty] <= selectedMax);
                 
                 return matchesSearch && matchesCategory && matchesRating && matchesDifficulty;
             });
@@ -1381,7 +1383,9 @@
             const recipesMatchingFilters = recipes.filter(recipe => {
                 const recipeRating = parseFloat(recipe.rating || 0);
                 const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
-                const matchesDifficulty = !currentDifficulty || recipe.difficulty === currentDifficulty;
+                const difficultyOrder = { easy: 1, medium: 2, hard: 3 };
+                const selectedMax = currentDifficulty ? difficultyOrder[currentDifficulty] : 0;
+                const matchesDifficulty = !currentDifficulty || (difficultyOrder[recipe.difficulty] && difficultyOrder[recipe.difficulty] <= selectedMax);
                 return matchesRating && matchesDifficulty;
             });
 
