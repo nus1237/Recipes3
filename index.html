@@ -1494,12 +1494,31 @@
             const diceBtn = document.getElementById('dice-btn');
             if (diceBtn) {
                 diceBtn.addEventListener('click', function() {
-                    this.classList.remove('dice-rolling'); // reset if already animating
-                    void this.offsetWidth; // force reflow
+                    // Add the rolling class to start the animation
                     this.classList.add('dice-rolling');
-                });
-                diceBtn.addEventListener('animationend', function() {
-                    this.classList.remove('dice-rolling');
+
+                    // Disable the button to prevent multiple clicks during animation
+                    this.disabled = true;
+
+                    setTimeout(() => {
+                        // Remove the animation class
+                        this.classList.remove('dice-rolling');
+                        this.disabled = false;
+
+                        // Get the filtered recipes (replace with your actual function/variable)
+                        const filteredRecipes = getFilteredRecipes(); // <-- implement this if needed
+
+                        if (filteredRecipes.length > 0) {
+                            // Pick a random recipe
+                            const randomIndex = Math.floor(Math.random() * filteredRecipes.length);
+                            const randomRecipe = filteredRecipes[randomIndex];
+
+                            // Open the modal with the random recipe
+                            openRecipeModal(randomRecipe); // <-- implement this if needed
+                        } else {
+                            alert('No recipes match your filters!');
+                        }
+                    }, 350); // 350ms matches the animation duration
                 });
             }
         });
