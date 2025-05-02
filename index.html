@@ -831,15 +831,23 @@
             Array.from(stars).forEach(star => {
                 star.addEventListener('click', () => {
                     const rating = parseInt(star.dataset.rating);
-                    setRatingFilter(rating);
+                    if (currentRatingFilter === rating) {
+                        setRatingFilter(0);
+                    } else {
+                        setRatingFilter(rating);
+                    }
                 });
 
                 star.addEventListener('mouseover', () => {
                     const rating = parseInt(star.dataset.rating);
                     Array.from(stars).forEach((s, idx) => {
                         if (idx < rating) {
+                            s.classList.add('hovered');
+                            s.classList.remove('active');
                             s.className = 'fas fa-star hovered';
                         } else {
+                            s.classList.remove('hovered');
+                            s.classList.remove('active');
                             s.className = 'far fa-star';
                         }
                     });
@@ -855,26 +863,6 @@
 
             clearButton.addEventListener('click', () => {
                 setRatingFilter(0);
-            });
-        }
-
-        function setRatingFilter(rating) {
-            currentRatingFilter = rating;
-            updateStarsDisplay(rating, false);
-            document.getElementById('clear-rating').classList.toggle('visible', rating > 0);
-            updateCategoryFilter();
-            filterRecipes();
-        }
-
-        function updateStarsDisplay(rating, isHover) {
-            const stars = document.getElementById('rating-filter-stars').getElementsByTagName('i');
-            Array.from(stars).forEach(star => {
-                const starRating = parseInt(star.dataset.rating);
-                if (starRating <= rating) {
-                    star.className = 'fas fa-star active';
-                } else {
-                    star.className = 'far fa-star';
-                }
             });
         }
 
@@ -1468,6 +1456,26 @@
                 html += `<span class="chef-symbol${filled > 0 && i <= filled ? ' active' : ''}">🧑‍🍳</span>`;
             }
             return html;
+        }
+
+        function updateStarsDisplay(rating, isHover) {
+            const stars = document.getElementById('rating-filter-stars').getElementsByTagName('i');
+            Array.from(stars).forEach(star => {
+                const starRating = parseInt(star.dataset.rating);
+                if (starRating <= rating) {
+                    star.className = 'fas fa-star active';
+                    star.classList.remove('hovered');
+                } else {
+                    star.className = 'far fa-star';
+                    star.classList.remove('hovered');
+                }
+            });
+        }
+
+        function setRatingFilter(rating) {
+            currentRatingFilter = rating;
+            updateStarsDisplay(rating, false);
+            filterRecipes();
         }
     </script>
 </body>
