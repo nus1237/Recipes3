@@ -920,6 +920,9 @@
         let currentRatingFilter = 0;
         let currentDifficulty = null;
 
+        // Block recipe card clicks for a short time after closing modal
+        let blockRecipeClicksUntil = 0;
+
         function initializeRatingFilter() {
             const starsContainer = document.getElementById('rating-filter-stars');
             const clearButton = document.getElementById('clear-rating');
@@ -1136,16 +1139,15 @@
             ).join('');
         }
 
+        // Patch viewRecipe to ignore clicks if blocked
         function viewRecipe(id) {
-            // Prevent opening a recipe if the modal is already open
-            const modal = document.getElementById('recipe-modal');
-            if (modal && modal.style.display === 'block') {
-                return;
+            if (Date.now() < blockRecipeClicksUntil) {
+                return; // Ignore "fall-through" clicks
             }
-
             const recipe = recipes.find(r => r.id == id);
             if (!recipe) return;
 
+            const modal = document.getElementById('recipe-modal');
             const modalContent = document.getElementById('modal-content');
             
             const categoryDisplay = Array.isArray(recipe.category) ? recipe.category.join(', ') : recipe.category;
@@ -1248,32 +1250,11 @@
         }
 
         // Modal functions
-        function openModal(recipe) {
-            const modal = document.getElementById('recipe-modal');
-            const modalContent = document.getElementById('modal-content');
-            
-            const categoryDisplay = Array.isArray(recipe.category) ? recipe.category.join(', ') : recipe.category;
-            
-            modalContent.innerHTML = `
-                <h2>${recipe.name}</h2>
-                <p><strong>Categories:</strong> ${categoryDisplay}</p>
-                <p><strong>Servings:</strong> ${recipe.servings} person${recipe.servings > 1 ? 'er' : ''}</p>
-                ${recipe.ingredients ? `
-                    <h3>Ingredients:</h3>
-                    <pre>${recipe.ingredients}</pre>
-                ` : ''}
-                ${recipe.instructions ? `
-                    <h3>Instructions:</h3>
-                    <pre>${recipe.instructions}</pre>
-                ` : ''}
-            `;
-            
-            modal.style.display = 'block';
-        }
-
+        // Patch closeModal to block clicks for 300ms after closing
         function closeModal() {
             document.getElementById('recipe-modal').style.display = 'none';
             document.body.classList.remove('modal-open');
+            blockRecipeClicksUntil = Date.now() + 300;
         }
 
         // How to Use Modal functions
