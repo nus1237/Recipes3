@@ -581,6 +581,22 @@
                 margin-left: auto;
             }
         }
+
+        /* Dice roll animation */
+        @keyframes dice-roll {
+            0%   { transform: rotate(0deg) scale(1); }
+            12.5% { transform: rotate(45deg) scale(1.12); }
+            25%  { transform: rotate(90deg) scale(1.18); }
+            37.5% { transform: rotate(135deg) scale(1.12); }
+            50%  { transform: rotate(180deg) scale(0.9); }
+            62.5% { transform: rotate(225deg) scale(1.12); }
+            75%  { transform: rotate(270deg) scale(1.18); }
+            87.5% { transform: rotate(315deg) scale(1.12); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .dice-rolling {
+            animation: dice-roll 0.35s cubic-bezier(.36,1.56,.64,1) 1;
+        }
     </style>
 </head>
 <body>
@@ -1450,6 +1466,19 @@
             initializeRatingFilter();
             initializeDifficultyFilter();
             loadRecipes();
+
+            // Dice roll animation
+            const diceBtn = document.getElementById('dice-btn');
+            if (diceBtn) {
+                diceBtn.addEventListener('click', function() {
+                    this.classList.remove('dice-rolling'); // reset if already animating
+                    void this.offsetWidth; // force reflow
+                    this.classList.add('dice-rolling');
+                });
+                diceBtn.addEventListener('animationend', function() {
+                    this.classList.remove('dice-rolling');
+                });
+            }
         });
 
         function clearAllFilters() {
