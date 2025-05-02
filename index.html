@@ -771,8 +771,7 @@
                             <option value="20">20</option>
                         </select>
                         <select id="recipe-servings-unit" style="flex: 1;">
-                            <option value="person">person</option>
-                            <option value="persons">persons</option>
+                            <option value="person(s)">person(s)</option>
                             <option value="stk.">stk.</option>
                         </select>
                     </div>
@@ -856,8 +855,7 @@
                             <option value="20">20</option>
                         </select>
                         <select id="edit-recipe-servings-unit" style="flex: 1;">
-                            <option value="person">person</option>
-                            <option value="persons">persons</option>
+                            <option value="person(s)">person(s)</option>
                             <option value="stk.">stk.</option>
                         </select>
                     </div>
@@ -1043,12 +1041,16 @@
                 const response = await fetch('recipes.json');
                 if (response.ok) {
                     recipes = await response.json();
-                    // Migrate old categories to new ones
+                    // Migrate old categories to new ones and normalize servingsUnit
                     recipes = recipes.map(recipe => {
                         if (Array.isArray(recipe.category)) {
                             recipe.category = recipe.category.map(cat => migrateCategory(cat));
                         } else if (recipe.category) {
                             recipe.category = [migrateCategory(recipe.category)];
+                        }
+                        // Normalize servingsUnit
+                        if (recipe.servingsUnit === "person" || recipe.servingsUnit === "persons") {
+                            recipe.servingsUnit = "person(s)";
                         }
                         return recipe;
                     });
@@ -1099,7 +1101,7 @@
 
                 // Create servings tag HTML only if servings is specified
                 const servingsTag = recipe.servings && recipe.servings !== "" 
-                    ? `<span class="servings-tag">${recipe.servings} ${recipe.servingsUnit || 'person' + (recipe.servings !== "1" ? 's' : '')}</span>`
+                    ? `<span class="servings-tag">${getServingsDisplay(recipe.servings, recipe.servingsUnit)}</span>`
                     : '';
 
                 card.innerHTML = `
@@ -1152,7 +1154,7 @@
             
             const categoryDisplay = Array.isArray(recipe.category) ? recipe.category.join(', ') : recipe.category;
             const servingsDisplay = recipe.servings && recipe.servings !== "" 
-                ? `<p><strong>Servings:</strong> ${recipe.servings} ${recipe.servingsUnit || 'person' + (recipe.servings !== "1" ? 's' : '')}</p>`
+                ? `<p><strong>Servings:</strong> ${getServingsDisplay(recipe.servings, recipe.servingsUnit)}</p>`
                 : '';
             
             modalContent.innerHTML = `
@@ -1641,6 +1643,15 @@
             updateStarsDisplay(rating, false);
             updateCategoryFilter();
             filterRecipes();
+        }
+
+        // Helper to display correct singular/plural for servings
+        function getServingsDisplay(servings, servingsUnit) {
+            if (!servings || servings === "") return "";
+            if (servingsUnit === "person(s)" || servingsUnit === "person" || servingsUnit === "persons") {
+                return `${servings} ${servings === "1" ? "person" : "persons"}`;
+            }
+            return `${servings} ${servingsUnit}`;
         }
     </script>
 </body>
