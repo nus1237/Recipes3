@@ -809,6 +809,7 @@
     <script>
         let recipes = [];
         let editingId = null;
+        let lastScrollY = 0;
 
         // Add variables to track interaction timing
         let interactionStartTime = 0;
@@ -1030,6 +1031,9 @@
             const recipe = recipes.find(r => r.id == id);
             if (!recipe) return;
 
+            // Store scroll position
+            lastScrollY = window.scrollY;
+
             const modal = document.getElementById('recipe-modal');
             const modalContent = document.getElementById('modal-content');
             
@@ -1159,6 +1163,8 @@
         function closeModal() {
             document.getElementById('recipe-modal').style.display = 'none';
             document.body.classList.remove('modal-open');
+            // Restore scroll position
+            window.scrollTo({ top: lastScrollY });
         }
 
         // How to Use Modal functions
