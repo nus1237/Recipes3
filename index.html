@@ -1375,14 +1375,16 @@
                 'Other'
             ];
 
-            // Count recipes per category that match the rating filter
+            // Count recipes per category that match the rating and difficulty filters
             const categoryCounts = {};
-            const recipesMatchingRating = recipes.filter(recipe => {
+            const recipesMatchingFilters = recipes.filter(recipe => {
                 const recipeRating = parseFloat(recipe.rating || 0);
-                return currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
+                const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
+                const matchesDifficulty = !currentDifficulty || recipe.difficulty === currentDifficulty;
+                return matchesRating && matchesDifficulty;
             });
 
-            recipesMatchingRating.forEach(recipe => {
+            recipesMatchingFilters.forEach(recipe => {
                 const recipeCategories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
                 recipeCategories.forEach(category => {
                     categoryCounts[category] = (categoryCounts[category] || 0) + 1;
@@ -1390,7 +1392,7 @@
             });
 
             // Keep the "All Categories" option
-            categoryFilter.innerHTML = `<option value="all">All Categories (${recipesMatchingRating.length})</option>`;
+            categoryFilter.innerHTML = `<option value="all">All Categories (${recipesMatchingFilters.length})</option>`;
 
             // Add categories with counts
             categories.slice(1).forEach(category => {
