@@ -658,7 +658,7 @@
             87.5% { transform: rotate(315deg) scale(1.12); }
             100% { transform: rotate(360deg) scale(1); }
         }
-        .dice-rolling {
+        .dice-emoji.dice-rolling {
             animation: dice-roll 0.35s cubic-bezier(.36,1.56,.64,1) 1;
         }
 
@@ -737,7 +737,7 @@
             <div class="top-row">
                 <button type="button" onclick="openAddRecipeModal()" style="background-color: var(--color-primary); color: var(--color-white);">Add Recipe</button>
                 <button type="button" onclick="openHowToUseModal()" style="background-color: var(--color-primary); color: var(--color-white);">How to Use</button>
-                <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 39px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; margin-left: auto; cursor: pointer; padding: 0;">🎲</button>
+                <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 39px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; margin-left: auto; cursor: pointer; padding: 0;"><span class="dice-emoji">🎲</span></button>
             </div>
             <div class="mobile-bottom-row">
                 <button type="button" onclick="openAddRecipeModal()" style="background-color: var(--color-primary); color: var(--color-white);">Add Recipe</button>
@@ -1643,13 +1643,14 @@
 
             const diceBtn = document.getElementById('dice-btn');
             if (diceBtn) {
+                const diceEmoji = diceBtn.querySelector('.dice-emoji');
                 diceBtn.addEventListener('click', function() {
-                    this.classList.add('dice-rolling');
-                    this.disabled = true;
+                    diceEmoji.classList.remove('dice-rolling');
+                    void diceEmoji.offsetWidth; // Force reflow to restart animation
+                    diceEmoji.classList.add('dice-rolling');
 
                     setTimeout(() => {
-                        this.classList.remove('dice-rolling');
-                        this.disabled = false;
+                        diceEmoji.classList.remove('dice-rolling');
 
                         const filteredRecipes = getFilteredRecipes();
                         if (!filteredRecipes || !filteredRecipes.length) {
