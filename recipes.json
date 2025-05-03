@@ -1,5 +1,21 @@
 [
   {
+    "id": 1746006671218,
+    "name": "Fajitas",
+    "category": [
+      "Dinner",
+      "Mexi",
+      "Rice"
+    ],
+    "servings": "4",
+    "servingsUnit": "person(s)",
+    "ingredients": "https://vegetariskhverdag.dk/2020/08/fajitas-i-ovnen/\n+ veggi kylling\n\nevt. erstat mexi pandekager med ris\nevt. frisk lavet maxi pandekager",
+    "instructions": "",
+    "rating": "4.5",
+    "difficulty": "medium",
+    "lastModified": "2025-05-02T15:05:25.977Z"
+  },
+  {
     "id": 1746114669518,
     "name": "Pasta Salat",
     "category": [
@@ -7,7 +23,7 @@
       "Pasta"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "pasta\nsalat\ntoppings\ntusind øer dressing:\ncreme fraiche\nsyltede agurker\nketchup\nsalt, peber, citronsaft",
     "instructions": "",
     "rating": "2",
@@ -22,7 +38,7 @@
       "Mexi"
     ],
     "servings": "4",
-    "servingsUnit": "persons",
+    "servingsUnit": "person(s)",
     "ingredients": "3 poser nachos (chili)\nmozaralla\ncheddar\nveggie kylling\ntomatillo\n\nguac\ncreme fraiche\nsalsa",
     "instructions": "",
     "rating": "3",
@@ -37,7 +53,7 @@
       "Other"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "rugbrød\nkartoffler\ntomat\nagurk\nmayo\npeber og flagesalt\nevt. blødkogte æg\nforårsløg\npurløg\nristede løg",
     "instructions": "",
     "rating": "1.5",
@@ -52,12 +68,12 @@
       "Fast Food"
     ],
     "servings": "",
-    "servingsUnit": "person",
-    "ingredients": "pomfritter...",
+    "servingsUnit": "person(s)",
+    "ingredients": "pomfritter...\nevt. snitzel",
     "instructions": "",
     "rating": "2.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T15:03:05.958Z"
+    "lastModified": "2025-05-03T09:54:35.618Z"
   },
   {
     "id": 1746043407524,
@@ -69,7 +85,7 @@
       "Frozen"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "nudler\nfrossen grønt wok blanding\nsoya\nchili sovs\nhoisin sauce\nforårsruller",
     "instructions": "",
     "rating": "2",
@@ -85,7 +101,7 @@
       "Rice"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "rispapir\nris\n\nrevet tofu\nsoya\nsirup\nchili sovs\ncitronsaft\n\ngrønt:\nagurk\npeberfrugt\navokado\nmajs\nbønner\ngulerødder\n\nsursødsovs\njonas' magic tahin?",
     "instructions": "",
     "rating": "4.5",
@@ -99,7 +115,7 @@
       "Breakfast/Lunch"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "mexi pangekage\n\nrandom blanding af fx:\næg\nost\nsvampe\nløg\navokado\ntomat",
     "instructions": "",
     "rating": "4",
@@ -113,7 +129,7 @@
       "Breakfast/Lunch"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "",
     "instructions": "",
     "rating": "3.5",
@@ -127,7 +143,7 @@
       "Breakfast/Lunch"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "",
     "instructions": "",
     "rating": "3",
@@ -141,7 +157,7 @@
       "Breakfast/Lunch"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "",
     "instructions": "",
     "rating": "2.5",
@@ -155,7 +171,7 @@
       "Breakfast/Lunch"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "",
     "instructions": "",
     "rating": "1",
@@ -169,7 +185,7 @@
       "Breakfast/Lunch"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "",
     "instructions": "",
     "rating": "3.5",
@@ -183,7 +199,7 @@
       "Breakfast/Lunch"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "brød\næg\navokado",
     "instructions": "",
     "rating": "5",
@@ -197,7 +213,7 @@
       "Breakfast/Lunch"
     ],
     "servings": "1",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "1 banan\n1-2 æg (tykke/mini)\n\nrandom blanding af:\nmel\nhavregryn\nkanel\nkakao pulver\nvaniljesukker\nmælk/plantemælk\nsalt\nevt. bagepulver",
     "instructions": "",
     "rating": "3.5",
@@ -211,12 +227,12 @@
       "Breakfast/Lunch"
     ],
     "servings": "1",
-    "servingsUnit": "person",
-    "ingredients": "1dl havregryn\n2dl væske: mælk, plantemælk, vand\n\nrandom blanding af:\npeanutbutter\nkanel\nkakaopulver\nvanilje sukker\nbrun farin\nrosiner\nfrugt\nsalt",
+    "servingsUnit": "person(s)",
+    "ingredients": "1dl havregryn\n2dl væske: mælk, plantemælk, vand\n\nrandom blanding af:\npeanutbutter\nkanel\nkakaopulver\nvanilje sukker\nbrun farin\nmystisk æbel syltetøj/grød\nrosiner\nfrugt\nsalt",
     "instructions": "",
     "rating": "3",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T11:02:06.589Z"
+    "lastModified": "2025-05-03T09:54:19.876Z"
   },
   {
     "id": 1746008865801,
@@ -242,7 +258,7 @@
       "Canned Food"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "pasta\npesto\nkigærter",
     "instructions": "",
     "rating": "2",
@@ -257,7 +273,7 @@
       "Mexi"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "mexi pandekager\ntaco skaller\n\nkød: okse, kylling, veggie kød\nrevet ost\nnatchos\n\ngrønt:\nagurk\ntomat\npeberfrugt\nmajs\nbønner\n\nguac\ncreme fraiche\nsalsa",
     "instructions": "",
     "rating": "3.5",
@@ -273,7 +289,7 @@
       "Canned Food"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "pasta\ndåse tomater/færdig pastasovs\n\nrandom blanding af alt godt på dåser\nkikærter\nkidneybønner\nsorte bønner\n\nevt. veggie kød",
     "instructions": "",
     "rating": "1.5",
@@ -288,7 +304,7 @@
       "Pasta"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "tortellini\nsvampe\nrosmarin\ngrønne bønner\nfløde\nsmøreost?",
     "instructions": "",
     "rating": "3.5",
@@ -303,7 +319,7 @@
       "Pasta"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "frisk pasta\nsvampe\nfløde\nsmøreost?\nærter",
     "instructions": "",
     "rating": "4",
@@ -319,7 +335,7 @@
       "Frozen"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "chili cin carne frossen grønt\nevt. tilføj andet?\nmexi pandekager\ncreme fraiche\nrevet ost",
     "instructions": "",
     "rating": "2",
@@ -334,7 +350,7 @@
       "Pasta"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "pasta\nrandom grøntsager evt:\nsquash\npeberfrugt\nbønner\nmajs\ntomater\nkikærter\n\nsovs evt:\nsmøreost\nfløde\ntomatpuré\nparmasan\npastavand",
     "instructions": "wing it!",
     "rating": "2.5",
@@ -349,7 +365,7 @@
       "Other"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "pitabrød\nsalat\ndressing\nevt tusind øer dressing:\ncreme fraiche\nsyltede agurker\nketchup\nsalt, peber, citronsaft",
     "instructions": "",
     "rating": "1.5",
@@ -364,7 +380,7 @@
       "Fast Food"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "pitabrød\ntomatpuré\nrevet ost\nmozarella\n\nveggie kød\nrødløg\nsvamps\nmajs\nbearnaise sovs\n\npeberfrugt\nrødløg\nsvamps\nmajs",
     "instructions": "",
     "rating": "2.5",
@@ -379,7 +395,7 @@
       "Pasta"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "?",
     "instructions": "",
     "rating": "4.5",
@@ -395,7 +411,7 @@
       "Frozen"
     ],
     "servings": "",
-    "servingsUnit": "person",
+    "servingsUnit": "person(s)",
     "ingredients": "random pose frossen grønt\npasta",
     "instructions": "",
     "rating": "0.5",
@@ -411,7 +427,7 @@
       "Canned Food"
     ],
     "servings": "4",
-    "servingsUnit": "persons",
+    "servingsUnit": "person(s)",
     "ingredients": "https://vancouverwithlove.com/chickpea-spinach-curry/",
     "instructions": "",
     "rating": "2.5",
@@ -426,7 +442,7 @@
       "Fast Food"
     ],
     "servings": "4",
-    "servingsUnit": "persons",
+    "servingsUnit": "person(s)",
     "ingredients": "300g rødbeder, groftrevne\n50g gulerødder, fintrevne\n1 dåse kigærter, stavblendede\n50g fine havregryn\n1 rødløg, finthakket\n2 fed hvidløg, finthakket\n2 æg\n2 tsk dijonsennep\nsalt og peber\n\nburger ingredienser",
     "instructions": "bland alle ingredienser sammen og form 6-8 bøffer på bagepapir beklædt bageplade\npensel med olie og evt. ekstra squish salt og peber\nbag ved 190 grader varmluft i 25 min, og vendes halvejs",
     "rating": "3.5",
@@ -441,7 +457,7 @@
       "Rice"
     ],
     "servings": "4",
-    "servingsUnit": "persons",
+    "servingsUnit": "person(s)",
     "ingredients": "1 løg\nnoget hvidløg\n400g aborio/grød ris\n400g svamps\n1-1,25L bullion\nparmasan\nolie\nsmør\ncitronsaft\nveggie snitzler\nevt. frisk persille",
     "instructions": "skær svampe i skiver og tørsteg på varm pande til alt væsken er fordampet, hvorefter der tilføjes en god klat smør, og steges videre til gylden brune\nimens hakkes løg og hvidløg fint som steges bløde i en gryde med olie (7), hvorefter ris tilføjes i et lille minut\nimens blandes 1L varmt vand med 2 tsk. bullion pulver og 1dl tilføjes til risene med en bløb citronsaft, mens varmen holdes på mellem. når væsken er optaget i risene/fordampet tilføjes 1dl mere indtil alt bullion er brugt. tilføj evt. mere varmt vand hvis risene er for ukogte\nimens steges veggie snitzler på panden (7) i noget olie\ntil sidst tilføjes en god klat smør og parmasan til risene hvorefter svampene tilføjes",
     "rating": "4",
@@ -457,7 +473,7 @@
       "Rice"
     ],
     "servings": "4",
-    "servingsUnit": "persons",
+    "servingsUnit": "person(s)",
     "ingredients": "https://vegetariskhverdag.dk/2024/03/kua-kling-sydoestasiatisk-biksemad/\n\n÷ for meget chili",
     "instructions": "",
     "rating": "3",
@@ -472,7 +488,7 @@
       "Rice"
     ],
     "servings": "4",
-    "servingsUnit": "persons",
+    "servingsUnit": "person(s)",
     "ingredients": "https://vegetariskhverdag.dk/2019/10/halloumi-stroganoff/",
     "instructions": "",
     "rating": "4.5",
@@ -487,27 +503,11 @@
       "Fast Food"
     ],
     "servings": "4",
-    "servingsUnit": "persons",
+    "servingsUnit": "person(s)",
     "ingredients": "https://vegetariskhverdag.dk/2020/08/halloumiburger-med-tartarsauce/\n+ avokado\n+ grillede squash",
     "instructions": "",
     "rating": "3.5",
     "difficulty": "hard",
     "lastModified": "2025-05-02T10:57:55.008Z"
-  },
-  {
-    "id": 1746006671218,
-    "name": "Fajitas",
-    "category": [
-      "Dinner",
-      "Mexi",
-      "Rice"
-    ],
-    "servings": "4",
-    "servingsUnit": "persons",
-    "ingredients": "https://vegetariskhverdag.dk/2020/08/fajitas-i-ovnen/\n+ veggi kylling\n\nevt. erstat mexi pandekager med ris\nevt. frisk lavet maxi pandekager",
-    "instructions": "",
-    "rating": "4.5",
-    "difficulty": "medium",
-    "lastModified": "2025-05-02T15:05:25.977Z"
   }
 ]
