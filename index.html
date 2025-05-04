@@ -1209,7 +1209,9 @@
             `;
             
             modal.style.display = 'block';
-            document.body.classList.add('modal-open');
+            scrollPosition = window.scrollY; // Store the current scroll position
+            document.body.style.position = 'fixed'; // Fix the body position
+            document.body.style.top = `-${scrollPosition}px`; // Set the top to the negative scroll position
         }
 
         // Edit recipe
@@ -1285,7 +1287,9 @@
         function closeModal() {
             document.getElementById('recipe-modal').style.display = 'none';
             document.body.classList.remove('modal-open');
-            blockRecipeClicksUntil = Date.now() + 300;
+            document.body.style.position = ''; // Reset body position
+            document.body.style.top = ''; // Reset top
+            window.scrollTo(0, scrollPosition); // Restore scroll position
         }
 
         // Add Recipe Modal functions
