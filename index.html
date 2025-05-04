@@ -493,16 +493,21 @@
             .modal-content {
                 max-width: 90%;
             }
-            .recipe-card:hover {
-                /* Disable hover effect on mobile */
-                box-shadow: none !important;
-                transform: none !important;
+            .recipe-card {
+                /* Always have the small shadow on mobile */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transform: none;
+                transition: box-shadow 0.18s cubic-bezier(.4,1.3,.6,1), transform 0.18s cubic-bezier(.4,1.3,.6,1);
             }
             .recipe-card.touch-active {
-                /* Apply the hover effect only when touch is active */
-                box-shadow: 0 8px 24px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.10) !important;
-                transform: scale(1.025) !important;
-                transition: box-shadow 0.18s cubic-bezier(.4,1.3,.6,1), transform 0.18s cubic-bezier(.4,1.3,.6,1);
+                /* Only apply the hover effect when touched */
+                box-shadow: 0 8px 24px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.10);
+                transform: scale(1.025);
+            }
+            .recipe-card:hover {
+                /* Disable hover effect on mobile */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transform: none;
             }
         }
 
@@ -1057,8 +1062,6 @@
                 `;
                 container.appendChild(card);
             });
-
-            enableMobileRecipeCardTouchEffect();
         }
 
         function formatInstructions(instructions) {
@@ -1598,20 +1601,27 @@
         }
 
         function enableMobileRecipeCardTouchEffect() {
-            if (window.innerWidth > 768) return; // Only for mobile
-
-            document.querySelectorAll('.recipe-card').forEach(card => {
-                card.addEventListener('touchstart', function() {
-                    card.classList.add('touch-active');
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                document.querySelectorAll('.recipe-card').forEach(card => {
+                    card.addEventListener('touchstart', function() {
+                        card.classList.add('touch-active');
+                    });
+                    card.addEventListener('touchend', function() {
+                        card.classList.remove('touch-active');
+                    });
+                    card.addEventListener('touchcancel', function() {
+                        card.classList.remove('touch-active');
+                    });
                 });
-                card.addEventListener('touchend', function() {
-                    card.classList.remove('touch-active');
-                });
-                card.addEventListener('touchcancel', function() {
-                    card.classList.remove('touch-active');
-                });
-            });
+            }
         }
+
+        // Call this after rendering recipe cards
+        document.addEventListener('DOMContentLoaded', function() {
+            enableMobileRecipeCardTouchEffect();
+        });
+
+        // If you re-render recipe cards dynamically, call enableMobileRecipeCardTouchEffect() after each render.
     </script>
 </body>
 </html> 
