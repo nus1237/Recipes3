@@ -553,9 +553,18 @@
                 grid-row-gap: 10px;
                 align-items: center;
             }
-            #add-btn { grid-area: add-btn; }
-            #refresh-btn { grid-area: refresh-btn; }
-            #dice-btn { grid-area: dice-btn; }
+            #add-btn { 
+                grid-area: add-btn; 
+                width: 100%; /* Ensure it takes full width */
+            }
+            #refresh-btn { 
+                grid-area: refresh-btn; 
+                text-align: center; /* Center the text */
+            }
+            #dice-btn { 
+                grid-area: dice-btn; 
+                justify-self: end; /* Align to the right */
+            }
             .search-input { grid-area: search-input; }
             .category-filter { grid-area: category-filter; }
             .filters-group.filters-row-mobile { grid-area: filters-group; }
