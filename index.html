@@ -951,44 +951,6 @@
 
         let scrollPosition = 0; // Variable to store the scroll position
 
-        let isFingerOnScreen = false; // Variable to track if the finger is on the screen
-
-        // Detect if the finger is on the screen
-        window.ontouchstart = function(event) {
-            isFingerOnScreen = true; // Finger is on the screen
-        };
-
-        window.ontouchend = function(event) {
-            isFingerOnScreen = false; // Finger is off the screen
-        };
-
-        // Function to remove hover effects
-        function removeHoverEffects() {
-            const recipeCards = document.querySelectorAll('.recipe-card');
-            const clearFiltersBtn = document.querySelector('.clear-filters-btn');
-            const buttons = document.querySelectorAll('button');
-
-            // Remove hover effects from recipe cards
-            recipeCards.forEach(card => {
-                card.classList.remove('hover'); // Assuming you have a hover class
-            });
-
-            // Remove hover effects from buttons
-            buttons.forEach(button => {
-                button.classList.remove('hover'); // Assuming you have a hover class
-            });
-
-            // Reset styles if needed
-            clearFiltersBtn.style.boxShadow = 'none'; // Reset shadow or any other styles
-        }
-
-        // Set up a timer to check the finger state every 100ms
-        setInterval(() => {
-            if (!isFingerOnScreen) {
-                removeHoverEffects(); // Remove hover effects if finger is off the screen
-            }
-        }, 100);
-
         function initializeRatingFilter() {
             const starsContainer = document.getElementById('rating-filter-stars');
             const clearButton = document.getElementById('clear-rating');
