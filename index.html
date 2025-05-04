@@ -956,6 +956,8 @@
 
         let scrollPosition = 0; // Variable to store the scroll position
 
+        let isHovering = false; // Global variable to track hover state
+
         function initializeRatingFilter() {
             const starsContainer = document.getElementById('rating-filter-stars');
             const clearButton = document.getElementById('clear-rating');
@@ -1704,11 +1706,15 @@
 
         // Add touch event listeners for mobile
         clearFiltersBtn.addEventListener('touchstart', () => {
-            clearFiltersBtn.classList.add('hover'); // Add hover class on touch
+            if (isHovering) {
+                clearFiltersBtn.classList.add('hover'); // Add hover class on touch
+            }
         });
 
         clearFiltersBtn.addEventListener('touchend', () => {
-            clearFiltersBtn.classList.remove('hover'); // Remove hover class when touch ends
+            if (isHovering) {
+                clearFiltersBtn.classList.remove('hover'); // Remove hover class when touch ends
+            }
         });
 
         clearFiltersBtn.addEventListener('touchcancel', () => {
