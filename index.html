@@ -951,16 +951,16 @@
 
         let scrollPosition = 0; // Variable to store the scroll position
 
-        let isTouching = false; // Variable to track if the finger is on the screen
+        let isFingerOnScreen = false; // Variable to track if the finger is on the screen
 
-        // Detect touch events
-        window.addEventListener('touchstart', () => {
-            isTouching = true; // Finger is on the screen
-        });
+        // Detect if the finger is on the screen
+        window.ontouchstart = function(event) {
+            isFingerOnScreen = true; // Finger is on the screen
+        };
 
-        window.addEventListener('touchend', () => {
-            isTouching = false; // Finger is off the screen
-        });
+        window.ontouchend = function(event) {
+            isFingerOnScreen = false; // Finger is off the screen
+        };
 
         // Function to remove hover effects
         function removeHoverEffects() {
@@ -970,21 +970,21 @@
 
             // Remove hover effects from recipe cards
             recipeCards.forEach(card => {
-                card.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)'; // Reset to default shadow
-                card.style.transform = 'scale(1)'; // Reset to default scale
+                card.classList.remove('hover'); // Assuming you have a hover class
             });
 
             // Remove hover effects from buttons
             buttons.forEach(button => {
-                button.style.backgroundColor = 'var(--color-primary)'; // Reset to default background
-                button.style.boxShadow = 'none'; // Reset to default shadow
-                button.style.transform = 'scale(1)'; // Reset to default scale
+                button.classList.remove('hover'); // Assuming you have a hover class
             });
+
+            // Reset styles if needed
+            clearFiltersBtn.style.boxShadow = 'none'; // Reset shadow or any other styles
         }
 
-        // Set up a timer to check the touch state every 100ms
+        // Set up a timer to check the finger state every 100ms
         setInterval(() => {
-            if (!isTouching) {
+            if (!isFingerOnScreen) {
                 removeHoverEffects(); // Remove hover effects if finger is off the screen
             }
         }, 100);
