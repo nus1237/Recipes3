@@ -948,6 +948,8 @@
         // Block recipe card clicks for a short time after closing modal
         let blockRecipeClicksUntil = 0;
 
+        let scrollPosition = 0; // Variable to store the scroll position
+
         function initializeRatingFilter() {
             const starsContainer = document.getElementById('rating-filter-stars');
             const clearButton = document.getElementById('clear-rating');
@@ -1288,26 +1290,32 @@
 
         // Add Recipe Modal functions
         function openAddRecipeModal() {
+            scrollPosition = window.scrollY; // Store the current scroll position
             document.getElementById('add-recipe-modal').style.display = 'block';
             document.body.classList.add('modal-open');
             createCategoryOptions('recipe-category-options');
+            window.scrollTo(0, scrollPosition); // Restore scroll position
         }
 
         function closeAddRecipeModal() {
             document.getElementById('add-recipe-modal').style.display = 'none';
             document.body.classList.remove('modal-open');
+            window.scrollTo(0, scrollPosition); // Restore scroll position
         }
 
         // Edit Recipe Modal functions
         function openEditRecipeModal() {
+            scrollPosition = window.scrollY; // Store the current scroll position
             document.getElementById('edit-recipe-modal').style.display = 'block';
             document.body.classList.add('modal-open');
+            window.scrollTo(0, scrollPosition); // Restore scroll position
         }
 
         function closeEditRecipeModal() {
             document.getElementById('edit-recipe-modal').style.display = 'none';
             document.body.classList.remove('modal-open');
             document.getElementById('edit-recipe-form').reset();
+            window.scrollTo(0, scrollPosition); // Restore scroll position
         }
 
         // Handle recipe form submission (both add and edit)
