@@ -542,22 +542,31 @@
 
         @media (max-width: 768px) {
             .search-container {
-                flex-direction: column; /* Stack items vertically */
+                display: grid;
+                grid-template-areas:
+                    "add-btn refresh-btn dice-btn"
+                    "search-input search-input search-input"
+                    "category-filter category-filter category-filter"
+                    "filters-group filters-group filters-group"
+                    "clear-filters-btn clear-filters-btn clear-filters-btn";
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-row-gap: 10px;
+                align-items: center;
             }
-            .top-row {
-                display: flex;
-                justify-content: space-between; /* Space out the buttons */
-                width: 100%; /* Ensure it takes full width */
+            #add-btn { grid-area: add-btn; }
+            #refresh-btn { grid-area: refresh-btn; }
+            #dice-btn { grid-area: dice-btn; }
+            .search-input { grid-area: search-input; }
+            .category-filter { grid-area: category-filter; }
+            .filters-group.filters-row-mobile { grid-area: filters-group; }
+            #clear-filters-btn { grid-area: clear-filters-btn; }
+            .search-container > * {
+                margin-bottom: 0 !important;
             }
-            .filters-group {
-                display: flex;
-                flex-direction: column; /* Stack filters vertically */
-                width: 100%; /* Ensure it takes full width */
-            }
-            .filters-row {
-                display: flex;
-                justify-content: space-between; /* Space out the filters */
-                width: 100%; /* Ensure it takes full width */
+            .filters-group.filters-row-mobile {
+                flex-direction: row !important;
+                justify-content: flex-start;
+                gap: 10px !important;
             }
             .title-underline-svg {
                 height: 48px;
@@ -659,21 +668,15 @@
         <div id="success-message" class="success-message"></div>
 
         <div class="search-container">
-            <div class="top-row">
-                <button type="button" onclick="openAddRecipeModal()" title="Add Recipe" style="background-color: var(--color-primary); color: var(--color-white); padding: 10px 16px;">
-                    <i class="fas fa-plus"></i>
-                </button>
-                <button onclick="loadRecipes()">Refresh Recipes</button>
-                <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 39px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">
-                    <span class="dice-emoji">🎲</span>
-                </button>
-            </div>
-            <input type="text" id="search-input" placeholder="Search recipes or ingredients..." oninput="filterRecipes()">
-            <select id="category-filter" onchange="filterRecipes()">
+            <button type="button" id="add-btn" onclick="openAddRecipeModal()" title="Add Recipe" style="background-color: var(--color-primary); color: var(--color-white); padding: 10px 16px;"><i class="fas fa-plus"></i></button>
+            <button id="refresh-btn" onclick="loadRecipes()">Refresh Recipes</button>
+            <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 39px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;"><span class="dice-emoji">🎲</span></button>
+            <input type="text" id="search-input" class="search-input" placeholder="Search recipes or ingredients..." oninput="filterRecipes()">
+            <select id="category-filter" class="category-filter" onchange="filterRecipes()">
                 <option value="all">All Categories</option>
             </select>
-            <div class="filters-group">
-                <div class="filters-row">
+            <div class="filters-group filters-row-mobile" style="flex-direction: row; gap: 10px; align-items: center;">
+                <div class="filters-row" style="gap: 5px;">
                     <div class="rating-filter">
                         <div class="stars-container" id="rating-filter-stars">
                             <i class="far fa-star" data-rating="1"></i>
@@ -685,7 +688,7 @@
                         <i class="fas fa-times clear-rating" id="clear-rating" title="Clear rating filter"></i>
                     </div>
                 </div>
-                <div class="filters-row">
+                <div class="filters-row" style="gap: 5px;">
                     <div class="difficulty-filter">
                         <div class="difficulty-container" id="difficulty-filter-chefs">
                             <span class="chef-symbol filter" data-difficulty="easy">🧑‍🍳</span>
@@ -695,7 +698,7 @@
                     </div>
                 </div>
             </div>
-            <button class="clear-filters-btn" onclick="clearAllFilters()">Clear Filters</button>
+            <button class="clear-filters-btn" id="clear-filters-btn" onclick="clearAllFilters()">Clear Filters</button>
         </div>
 
         <div id="recipes-container" class="recipes-container"></div>
