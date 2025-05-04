@@ -249,11 +249,6 @@
             box-shadow: 0 4px 12px var(--color-primary);
         }
 
-        .clear-filters-btn.hover {
-            background-color: var(--color-bg);
-            box-shadow: 0 4px 12px var(--color-primary);
-        }
-
         .rating-filter {
             display: flex;
             align-items: center;
@@ -955,8 +950,6 @@
         let blockRecipeClicksUntil = 0;
 
         let scrollPosition = 0; // Variable to store the scroll position
-
-        let isHovering = false; // Global variable to track hover state
 
         function initializeRatingFilter() {
             const starsContainer = document.getElementById('rating-filter-stars');
@@ -1701,59 +1694,6 @@
             }
             return `${servings} ${servingsUnit}`;
         }
-
-        const clearFiltersBtn = document.getElementById('clear-filters-btn');
-
-        // Add touch event listeners for mobile
-        clearFiltersBtn.addEventListener('touchstart', () => {
-            if (isHovering) {
-                clearFiltersBtn.classList.add('hover'); // Add hover class on touch
-            }
-        });
-
-        clearFiltersBtn.addEventListener('touchend', () => {
-            if (isHovering) {
-                clearFiltersBtn.classList.remove('hover'); // Remove hover class when touch ends
-            }
-        });
-
-        clearFiltersBtn.addEventListener('touchcancel', () => {
-            clearFiltersBtn.classList.remove('hover'); // Remove hover class if touch is canceled
-        });
-
-        // Optional: Prevent default behavior if needed
-        clearFiltersBtn.addEventListener('touchmove', (event) => {
-            event.preventDefault(); // Prevent scrolling if necessary
-        });
-
-        // Track when the finger is on the screen
-        window.ontouchstart = function(event) {
-            isHovering = true; // Finger is on the screen
-        };
-
-        window.ontouchend = function(event) {
-            isHovering = false; // Finger is lifted
-        };
-
-        // Function to remove hover effects
-        function removeHoverEffects() {
-            const clearFiltersBtn = document.getElementById('clear-filters-btn');
-            clearFiltersBtn.classList.remove('hover'); // Remove hover class
-
-            // Add similar lines for other buttons or elements that have hover effects
-            // Example:
-            const otherButton = document.getElementById('other-button-id'); // Replace with actual button ID
-            if (otherButton) {
-                otherButton.classList.remove('hover'); // Remove hover class
-            }
-        }
-
-        // Set an interval to check the hover state
-        setInterval(() => {
-            if (!isHovering) {
-                removeHoverEffects(); // Remove hover effects if finger is not on the screen
-            }
-        }, 100); // Check every 100 milliseconds
     </script>
 </body>
 </html> 
