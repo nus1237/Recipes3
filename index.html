@@ -308,21 +308,10 @@
             cursor: pointer;
         }
 
-        /* Hover effect for non-mobile devices */
-        @media (hover: hover) {
-            .recipe-card:hover {
-                box-shadow: 0 8px 24px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.10);
-                transform: scale(1.025);
-                transition: box-shadow 0.18s cubic-bezier(.4,1.3,.6,1), transform 0.18s cubic-bezier(.4,1.3,.6,1);
-            }
-        }
-
-        /* Disable hover effect for mobile devices */
-        @media (hover: none) {
-            .recipe-card:hover {
-                box-shadow: none; /* Remove shadow on hover */
-                transform: none; /* Remove scaling on hover */
-            }
+        .recipe-card:hover {
+            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.10);
+            transform: scale(1.025);
+            transition: box-shadow 0.18s cubic-bezier(.4,1.3,.6,1), transform 0.18s cubic-bezier(.4,1.3,.6,1);
         }
 
         .recipe-card h3 {
@@ -504,116 +493,16 @@
             .modal-content {
                 max-width: 90%;
             }
-        }
-
-        .modal-content h2 {
-            margin-bottom: 20px;
-        }
-
-        .modal-content h3 {
-            margin-top: 30px;
-            margin-bottom: 10px;
-            color: var(--color-primary);
-        }
-
-        .modal-content p {
-            margin-bottom: 15px;
-        }
-
-        .modal-content pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            font-family: inherit;
-            margin-bottom: 30px;
-        }
-
-        .instruction-step {
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .instruction-step:last-child {
-            margin-bottom: 0;
-        }
-
-        .modal-content .recipe-section {
-            margin-bottom: 40px;
-        }
-
-        .modal-content .recipe-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--color-primary);
-        }
-
-        .success-message {
-            display: none;
-            background-color: var(--color-accent);
-            color: var(--color-white);
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .search-container {
-                display: grid;
-                grid-template-areas:
-                    "add-btn refresh-btn dice-btn"
-                    "search-input search-input search-input"
-                    "category-filter category-filter category-filter"
-                    "filters-group filters-group filters-group"
-                    "clear-filters-btn clear-filters-btn clear-filters-btn";
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-row-gap: 10px;
-                align-items: center;
+            .recipe-card:hover {
+                /* Disable hover effect on mobile */
+                box-shadow: none !important;
+                transform: none !important;
             }
-            #add-btn { 
-                grid-area: add-btn; 
-                width: 100%; /* Ensure it takes full width */
-            }
-            #refresh-btn { 
-                grid-area: refresh-btn; 
-                white-space: nowrap; /* Prevent text from wrapping */
-                width: 100%; /* Set a fixed width to ensure it fits in one line */
-                text-align: center; /* Center the text */
-            }
-            #dice-btn { 
-                grid-area: dice-btn; 
-                justify-self: end; /* Align to the right */
-            }
-            #clear-filters-btn {
-                grid-area: clear-filters-btn; 
-                width: auto; /* Set to normal width */
-                justify-self: center; /* Center the button */
-            }
-            .search-input { grid-area: search-input; }
-            .category-filter { grid-area: category-filter; }
-            .filters-group.filters-row-mobile { grid-area: filters-group; }
-            .search-container > * {
-                margin-bottom: 0 !important;
-            }
-            .filters-group.filters-row-mobile {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-            }
-            .rating-filter, .difficulty-filter {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .title-underline-svg {
-                height: 48px;
-                width: 90%;
+            .recipe-card.touch-active {
+                /* Apply the hover effect only when touch is active */
+                box-shadow: 0 8px 24px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.10) !important;
+                transform: scale(1.025) !important;
+                transition: box-shadow 0.18s cubic-bezier(.4,1.3,.6,1), transform 0.18s cubic-bezier(.4,1.3,.6,1);
             }
         }
 
@@ -1168,6 +1057,8 @@
                 `;
                 container.appendChild(card);
             });
+
+            enableMobileRecipeCardTouchEffect();
         }
 
         function formatInstructions(instructions) {
@@ -1704,6 +1595,22 @@
                 return `${servings} ${servings === "1" ? "person" : "persons"}`;
             }
             return `${servings} ${servingsUnit}`;
+        }
+
+        function enableMobileRecipeCardTouchEffect() {
+            if (window.innerWidth > 768) return; // Only for mobile
+
+            document.querySelectorAll('.recipe-card').forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    card.classList.add('touch-active');
+                });
+                card.addEventListener('touchend', function() {
+                    card.classList.remove('touch-active');
+                });
+                card.addEventListener('touchcancel', function() {
+                    card.classList.remove('touch-active');
+                });
+            });
         }
     </script>
 </body>
