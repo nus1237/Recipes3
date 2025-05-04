@@ -1291,29 +1291,35 @@
         // Add Recipe Modal functions
         function openAddRecipeModal() {
             scrollPosition = window.scrollY; // Store the current scroll position
+            document.body.style.position = 'fixed'; // Fix the body position
+            document.body.style.top = `-${scrollPosition}px`; // Set the top to the negative scroll position
             document.getElementById('add-recipe-modal').style.display = 'block';
             document.body.classList.add('modal-open');
             createCategoryOptions('recipe-category-options');
-            window.scrollTo(0, scrollPosition); // Restore scroll position
         }
 
         function closeAddRecipeModal() {
             document.getElementById('add-recipe-modal').style.display = 'none';
             document.body.classList.remove('modal-open');
+            document.body.style.position = ''; // Reset body position
+            document.body.style.top = ''; // Reset top
             window.scrollTo(0, scrollPosition); // Restore scroll position
         }
 
         // Edit Recipe Modal functions
         function openEditRecipeModal() {
             scrollPosition = window.scrollY; // Store the current scroll position
+            document.body.style.position = 'fixed'; // Fix the body position
+            document.body.style.top = `-${scrollPosition}px`; // Set the top to the negative scroll position
             document.getElementById('edit-recipe-modal').style.display = 'block';
             document.body.classList.add('modal-open');
-            window.scrollTo(0, scrollPosition); // Restore scroll position
         }
 
         function closeEditRecipeModal() {
             document.getElementById('edit-recipe-modal').style.display = 'none';
             document.body.classList.remove('modal-open');
+            document.body.style.position = ''; // Reset body position
+            document.body.style.top = ''; // Reset top
             document.getElementById('edit-recipe-form').reset();
             window.scrollTo(0, scrollPosition); // Restore scroll position
         }
