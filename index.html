@@ -1725,6 +1725,35 @@
         clearFiltersBtn.addEventListener('touchmove', (event) => {
             event.preventDefault(); // Prevent scrolling if necessary
         });
+
+        // Track when the finger is on the screen
+        window.ontouchstart = function(event) {
+            isHovering = true; // Finger is on the screen
+        };
+
+        window.ontouchend = function(event) {
+            isHovering = false; // Finger is lifted
+        };
+
+        // Function to remove hover effects
+        function removeHoverEffects() {
+            const clearFiltersBtn = document.getElementById('clear-filters-btn');
+            clearFiltersBtn.classList.remove('hover'); // Remove hover class
+
+            // Add similar lines for other buttons or elements that have hover effects
+            // Example:
+            const otherButton = document.getElementById('other-button-id'); // Replace with actual button ID
+            if (otherButton) {
+                otherButton.classList.remove('hover'); // Remove hover class
+            }
+        }
+
+        // Set an interval to check the hover state
+        setInterval(() => {
+            if (!isHovering) {
+                removeHoverEffects(); // Remove hover effects if finger is not on the screen
+            }
+        }, 100); // Check every 100 milliseconds
     </script>
 </body>
 </html> 
