@@ -570,7 +570,7 @@
             #clear-filters-btn {
                 grid-area: clear-filters-btn; 
                 width: auto; /* Set to normal width */
-                justify-self: start; /* Align to the left */
+                justify-self: center; /* Center the button */
             }
             .search-input { grid-area: search-input; }
             .category-filter { grid-area: category-filter; }
@@ -579,9 +579,14 @@
                 margin-bottom: 0 !important;
             }
             .filters-group.filters-row-mobile {
-                flex-direction: row !important;
-                justify-content: flex-start;
-                gap: 10px !important;
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            .rating-filter, .difficulty-filter {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .title-underline-svg {
                 height: 48px;
