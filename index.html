@@ -37,7 +37,10 @@
         }
 
         body.modal-open {
-            overflow: hidden;
+            overflow: hidden !important; /* Prevent scrolling */
+            position: fixed; /* Fix the position */
+            width: 100vw; /* Ensure full width */
+            overscroll-behavior: contain; /* Prevent touchmove events on mobile */
         }
 
         body.modal-open #recipes-container {
@@ -475,7 +478,7 @@
             margin: 50px auto;
             padding: 20px;
             border-radius: 24px;
-            max-width: 90%;
+            max-width: 600px;
             width: auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-height: 80vh;
@@ -483,6 +486,12 @@
             position: relative;
             word-wrap: break-word;
             overflow-x: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 90%;
+            }
         }
 
         .modal-content h2 {
