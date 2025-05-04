@@ -1290,6 +1290,9 @@
             document.body.style.position = ''; // Reset body position
             document.body.style.top = ''; // Reset top
             window.scrollTo(0, scrollPosition); // Restore scroll position
+
+            // Block clicks for 300ms after closing the modal
+            blockRecipeClicksUntil = Date.now() + 300;
         }
 
         // Add Recipe Modal functions
@@ -1456,11 +1459,17 @@
 
         // Update window click handler to close all modals
         window.onclick = function(event) {
+            if (Date.now() < blockRecipeClicksUntil) {
+                return; // Ignore clicks if blocked
+            }
             handleModalClick(event);
         };
 
         // Add touch event handler for mobile devices
         window.ontouchend = function(event) {
+            if (Date.now() < blockRecipeClicksUntil) {
+                return; // Ignore touch events if blocked
+            }
             handleModalClick(event);
         };
 
