@@ -53,23 +53,7 @@
         }
 
         .buttons-container {
-            margin-bottom: 20px;
-        }
-
-        .top-row {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        .bottom-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        .mobile-bottom-row {
-            display: none;
+            margin-bottom: 0;
         }
 
         h1 {
@@ -558,76 +542,18 @@
 
         @media (max-width: 768px) {
             .search-container {
-                flex-direction: column;
-            }
-
-            .search-container button:not(.clear-filters-btn) {
-                display: none;
-            }
-
-            .filters-group {
-                width: 100%;
-            }
-
-            .filters-row {
-                justify-content: center;
-                text-align: center;
-            }
-
-            .top-row {
-                justify-content: center;
-                position: relative;
-            }
-            #dice-btn {
-                position: absolute;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                margin: auto 0;
-            }
-
-            .recipes-container {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                margin: 30px 20px 30px 20px;
-                border-radius: 24px;
-            }
-
-            .buttons-container {
-                flex-direction: column;
+                flex-wrap: wrap;
+                flex-direction: row;
                 gap: 10px;
-            }
-
-            .top-row {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 10px;
-            }
-
-            .top-row button:first-child {
-                display: none;  /* Hide Add Recipe button in top row on mobile */
-            }
-
-            .mobile-bottom-row {
-                display: flex;
-                gap: 10px;
-                justify-content: flex-end;
                 align-items: center;
             }
-
-            .mobile-bottom-row button {
-                flex: 1;
-                height: 39px; /* Match the height of other buttons */
-                white-space: nowrap; /* Prevent text wrapping */
-                padding: 10px 15px; /* Adjust padding to ensure text fits */
+            .filters-group {
+                width: auto;
             }
-
-            #dice-btn-mobile {
-                margin-left: auto;
+            .filters-row {
+                justify-content: flex-start;
+                text-align: left;
             }
-
             .title-underline-svg {
                 height: 48px;
                 width: 90%;
@@ -637,14 +563,6 @@
         @media (min-width: 769px) {
             .search-container button {
                 display: block;
-            }
-
-            .top-row {
-                flex-direction: row;
-            }
-
-            #dice-btn {
-                margin-left: auto;
             }
         }
 
@@ -735,26 +653,15 @@
         
         <div id="success-message" class="success-message"></div>
 
-        <div class="buttons-container">
-            <div class="top-row">
-                <button type="button" onclick="openAddRecipeModal()" style="background-color: var(--color-primary); color: var(--color-white);">Add Recipe</button>
-                <button type="button" onclick="openHowToUseModal()" style="background-color: var(--color-primary); color: var(--color-white);">How to Use</button>
-                <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 39px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; margin-left: auto; cursor: pointer; padding: 0;"><span class="dice-emoji">🎲</span></button>
-            </div>
-            <div class="mobile-bottom-row">
-                <button type="button" onclick="openAddRecipeModal()" style="background-color: var(--color-primary); color: var(--color-white);">Add Recipe</button>
-                <button onclick="loadRecipes()">Refresh</button>
-            </div>
-        </div>
-
         <div class="search-container">
+            <button type="button" onclick="openAddRecipeModal()" title="Add Recipe" style="background-color: var(--color-primary); color: var(--color-white); padding: 10px 16px;"><i class="fas fa-plus"></i></button>
             <button onclick="loadRecipes()">Refresh Recipes</button>
             <input type="text" id="search-input" placeholder="Search recipes or ingredients..." oninput="filterRecipes()">
             <select id="category-filter" onchange="filterRecipes()">
                 <option value="all">All Categories</option>
             </select>
-            <div class="filters-group">
-                <div class="filters-row">
+            <div class="filters-group" style="flex-direction: row; gap: 10px; align-items: center;">
+                <div class="filters-row" style="gap: 5px;">
                     <div class="rating-filter">
                         <div class="stars-container" id="rating-filter-stars">
                             <i class="far fa-star" data-rating="1"></i>
@@ -766,7 +673,7 @@
                         <i class="fas fa-times clear-rating" id="clear-rating" title="Clear rating filter"></i>
                     </div>
                 </div>
-                <div class="filters-row">
+                <div class="filters-row" style="gap: 5px;">
                     <div class="difficulty-filter">
                         <div class="difficulty-container" id="difficulty-filter-chefs">
                             <span class="chef-symbol filter" data-difficulty="easy">🧑‍🍳</span>
@@ -777,6 +684,7 @@
                 </div>
             </div>
             <button class="clear-filters-btn" onclick="clearAllFilters()">Clear Filters</button>
+            <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 39px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;"><span class="dice-emoji">🎲</span></button>
         </div>
 
         <div id="recipes-container" class="recipes-container"></div>
@@ -786,21 +694,6 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <div id="modal-content"></div>
-        </div>
-    </div>
-
-    <div id="howto-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeHowToUseModal()">&times;</span>
-            <div id="howto-content">
-                <h2>How to Use Recipe Organizer</h2>
-                <ol style="margin-left: 20px; line-height: 1.6;">
-                    <li>When you add or modify recipes, a new recipes.json file will be downloaded</li>
-                    <li>Replace your existing recipes.json file with the new downloaded one</li>
-                    <li>Keep the recipes.json file in the same folder as this HTML file</li>
-                    <li>Click "Refresh Recipes" to load the latest recipes from your recipes.json file</li>
-                </ol>
-            </div>
         </div>
     </div>
 
@@ -1332,17 +1225,6 @@
             blockRecipeClicksUntil = Date.now() + 300;
         }
 
-        // How to Use Modal functions
-        function openHowToUseModal() {
-            document.getElementById('howto-modal').style.display = 'block';
-            document.body.classList.add('modal-open');
-        }
-
-        function closeHowToUseModal() {
-            document.getElementById('howto-modal').style.display = 'none';
-            document.body.classList.remove('modal-open');
-        }
-
         // Add Recipe Modal functions
         function openAddRecipeModal() {
             document.getElementById('add-recipe-modal').style.display = 'block';
@@ -1478,15 +1360,11 @@
             // Only process if it was a short interaction (click rather than scroll)
             if (interactionDuration <= CLICK_THRESHOLD) {
                 const recipeModal = document.getElementById('recipe-modal');
-                const howtoModal = document.getElementById('howto-modal');
                 const addRecipeModal = document.getElementById('add-recipe-modal');
                 const editRecipeModal = document.getElementById('edit-recipe-modal');
                 
                 if (event.target === recipeModal) {
                     closeModal();
-                }
-                if (event.target === howtoModal) {
-                    closeHowToUseModal();
                 }
                 if (event.target === addRecipeModal) {
                     closeAddRecipeModal();
