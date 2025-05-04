@@ -1711,6 +1711,10 @@
             clearFiltersBtn.classList.remove('hover'); // Remove hover class when touch ends
         });
 
+        clearFiltersBtn.addEventListener('touchcancel', () => {
+            clearFiltersBtn.classList.remove('hover'); // Remove hover class if touch is canceled
+        });
+
         // Optional: Prevent default behavior if needed
         clearFiltersBtn.addEventListener('touchmove', (event) => {
             event.preventDefault(); // Prevent scrolling if necessary
