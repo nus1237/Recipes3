@@ -575,8 +575,12 @@
         }
 
         @media (min-width: 769px) {
-            .search-container button {
-                display: block;
+            .search-container {
+                display: flex;
+                justify-content: space-between;
+            }
+            #dice-btn {
+                margin-left: auto;
             }
         }
 
@@ -670,7 +674,6 @@
         <div class="search-container">
             <button type="button" id="add-btn" onclick="openAddRecipeModal()" title="Add Recipe" style="background-color: var(--color-primary); color: var(--color-white); padding: 10px 16px;"><i class="fas fa-plus"></i></button>
             <button id="refresh-btn" onclick="loadRecipes()">Refresh Recipes</button>
-            <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 39px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;"><span class="dice-emoji">🎲</span></button>
             <input type="text" id="search-input" class="search-input" placeholder="Search recipes or ingredients..." oninput="filterRecipes()">
             <select id="category-filter" class="category-filter" onchange="filterRecipes()">
                 <option value="all">All Categories</option>
@@ -699,6 +702,7 @@
                 </div>
             </div>
             <button class="clear-filters-btn" id="clear-filters-btn" onclick="clearAllFilters()">Clear Filters</button>
+            <button id="dice-btn" type="button" title="Surprise me!" style="background: none; border: none; color: #333; font-size: 39px; line-height: 39px; height: 39px; width: 39px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;"><span class="dice-emoji">🎲</span></button>
         </div>
 
         <div id="recipes-container" class="recipes-container"></div>
