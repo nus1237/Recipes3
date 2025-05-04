@@ -1704,14 +1704,18 @@
         const recipeCards = document.querySelectorAll('.recipe-card');
 
         recipeCards.forEach(card => {
+            let hoverTimeout; // Variable to store the timeout ID
+
             card.addEventListener('mouseenter', () => {
                 card.classList.add('hovered'); // Add the hover class
-                setTimeout(() => {
+                // Set a timeout to remove the hover class after 2 seconds
+                hoverTimeout = setTimeout(() => {
                     card.classList.remove('hovered'); // Remove the hover class after 2 seconds
                 }, 2000); // 2000 milliseconds = 2 seconds
             });
 
             card.addEventListener('mouseleave', () => {
+                clearTimeout(hoverTimeout); // Clear the timeout if mouse leaves before 2 seconds
                 card.classList.remove('hovered'); // Remove the hover class immediately on mouse leave
             });
         });
