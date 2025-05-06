@@ -506,7 +506,13 @@
                 align-items: center;
             }
             #add-btn { grid-area: add-btn; }
-            #refresh-btn { grid-area: refresh-btn; text-align: center; }
+            #refresh-btn {
+                grid-area: refresh-btn;
+                white-space: nowrap; /* Prevent text from wrapping */
+                width: auto; /* Ensure it only takes the space it needs */
+                padding: 10px 16px; /* Adjust padding as needed */
+                text-align: center; /* Center the text */
+            }
             #dice-btn { grid-area: dice-btn; justify-self: end; }
             .search-input { grid-area: search-input; }
             #type-filter { grid-area: type-filter; width: 100%; }
@@ -766,6 +772,13 @@
             cursor: default; /* Default cursor */
             user-select: none; /* Prevent text selection */
             pointer-events: none; /* Prevent any pointer events */
+        }
+
+        #refresh-btn {
+            white-space: nowrap; /* Prevent text from wrapping */
+            width: auto; /* Ensure it only takes the space it needs */
+            padding: 10px 16px; /* Adjust padding as needed */
+            text-align: center; /* Center the text */
         }
     </style>
 </head>
