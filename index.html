@@ -1684,6 +1684,9 @@
 
             // Restore previous selection for category filter
             categoryFilter.value = currentSelection;
+
+            // Trigger recipe filtering based on the selected type
+            filterRecipes();
         }
 
         // Update servings unit based on amount
@@ -1841,6 +1844,10 @@
 
         document.getElementById('edit-recipe-type').addEventListener('change', function() {
             createCategoryOptions('edit-recipe-category-options', [], this.value);
+        });
+
+        document.getElementById('type-filter').addEventListener('change', function() {
+            updateCategoryFilter();
         });
     </script>
 </body>
