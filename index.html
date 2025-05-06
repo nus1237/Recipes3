@@ -1383,14 +1383,15 @@
         function filterRecipes() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
             const categoryFilter = document.getElementById('category-filter').value;
+            const typeFilter = document.getElementById('type-filter').value; // Get the selected type
 
             let filteredRecipes = recipes.filter(recipe => {
                 const matchesSearch = recipe.name.toLowerCase().includes(searchTerm) ||
-                                    (recipe.ingredients && recipe.ingredients.toLowerCase().includes(searchTerm)) ||
-                                    (recipe.instructions && recipe.instructions.toLowerCase().includes(searchTerm));
+                    (recipe.ingredients && recipe.ingredients.toLowerCase().includes(searchTerm)) ||
+                    (recipe.instructions && recipe.instructions.toLowerCase().includes(searchTerm));
                 
                 const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
-                const matchesCategory = categoryFilter === 'all' || categories.includes(categoryFilter);
+                const matchesCategory = categoryFilter === 'all' || (categoryFilter === 'Other' && recipe.type === typeFilter && categories.includes(categoryFilter)) || categories.includes(categoryFilter);
                 
                 const recipeRating = parseFloat(recipe.rating || 0);
                 const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
@@ -1637,7 +1638,8 @@
                 "Breakfast/Lunch": 0,
                 "Dinner": 0,
                 "Side Dish": 0,
-                "Bread/Cakes": 0
+                "Bread/Cakes": 0,
+                "Other": 0 // Add count for Other
             };
 
             const recipesMatchingFilters = recipes.filter(recipe => {
@@ -1649,9 +1651,12 @@
                 return matchesRating && matchesDifficulty;
             });
 
-            // Count recipes for each type
+            // Count recipes for each type and for Other
             recipesMatchingFilters.forEach(recipe => {
                 typeCounts[recipe.type] = (typeCounts[recipe.type] || 0) + 1;
+                if (recipe.category.includes("Other") && recipe.type === selectedType) {
+                    typeCounts["Other"] += 1; // Increment Other count for the selected type
+                }
             });
 
             // Update type filter options with counts
@@ -1661,6 +1666,7 @@
                 <option value="Dinner">Dinner (${typeCounts["Dinner"]})</option>
                 <option value="Side Dish">Side Dish (${typeCounts["Side Dish"]})</option>
                 <option value="Bread/Cakes">Bread/Cakes (${typeCounts["Bread/Cakes"]})</option>
+                <option value="Other">Other (${typeCounts["Other"]})</option>
             `;
 
             // Set the selected type in the type filter
