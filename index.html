@@ -1383,7 +1383,6 @@
         function filterRecipes() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
             const categoryFilter = document.getElementById('category-filter').value;
-            const typeFilter = document.getElementById('type-filter').value;
 
             let filteredRecipes = recipes.filter(recipe => {
                 const matchesSearch = recipe.name.toLowerCase().includes(searchTerm) ||
@@ -1393,8 +1392,6 @@
                 const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
                 const matchesCategory = categoryFilter === 'all' || categories.includes(categoryFilter);
                 
-                const matchesType = typeFilter === 'all' || recipe.type === typeFilter;
-
                 const recipeRating = parseFloat(recipe.rating || 0);
                 const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
 
@@ -1402,7 +1399,7 @@
                 const selectedMax = currentDifficulty ? difficultyOrder[currentDifficulty] : 0;
                 const matchesDifficulty = !currentDifficulty || (difficultyOrder[recipe.difficulty] && difficultyOrder[recipe.difficulty] <= selectedMax);
                 
-                return matchesSearch && matchesCategory && matchesType && matchesRating && matchesDifficulty;
+                return matchesSearch && matchesCategory && matchesRating && matchesDifficulty;
             });
 
             displayRecipes(filteredRecipes);
