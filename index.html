@@ -478,7 +478,7 @@
 
         .modal-content {
             background-color: var(--color-white);
-            margin: 50px auto; /* Default margin for larger screens */
+            margin: 50px auto;
             padding: 20px;
             border-radius: 24px;
             max-width: 600px;
@@ -489,13 +489,6 @@
             position: relative;
             word-wrap: break-word;
             overflow-x: hidden;
-        }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                margin: 20px; /* Add margin around the modal on mobile */
-                width: auto; /* Ensure it doesn't take the full width */
-            }
         }
 
         .close {
@@ -511,6 +504,56 @@
         /* Remove the hover effect */
         .close:hover {
             color: black; /* Keep the color the same on hover */
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                display: grid;
+                grid-template-areas:
+                    "add-btn refresh-btn dice-btn"
+                    "search-input search-input search-input"
+                    "type-filter type-filter type-filter"
+                    "category-filter category-filter category-filter"
+                    "filters-group filters-group filters-group"
+                    "clear-filters-btn clear-filters-btn clear-filters-btn";
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-row-gap: 10px;
+                align-items: center;
+            }
+            #add-btn { grid-area: add-btn; }
+            #refresh-btn {
+                grid-area: refresh-btn;
+                white-space: nowrap; /* Prevent text from wrapping */
+                width: auto; /* Ensure it only takes the space it needs */
+                padding: 10px 16px; /* Adjust padding as needed */
+                text-align: center; /* Center the text */
+            }
+            #dice-btn { grid-area: dice-btn; justify-self: end; }
+            .search-input { grid-area: search-input; }
+            #type-filter { grid-area: type-filter; width: 100%; }
+            .category-filter { grid-area: category-filter; }
+            .filters-group.filters-row-mobile { grid-area: filters-group; }
+            #clear-filters-btn { grid-area: clear-filters-btn; width: auto; justify-self: center; }
+            .search-container > * { margin-bottom: 0 !important; }
+            .filters-group.filters-row-mobile {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            .rating-filter, .difficulty-filter {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .title-underline-svg {
+                height: 48px;
+                width: 90%;
+            }
+            .modal-content {
+                margin: 30px 10px; /* Top/bottom 30px, left/right 10px margin */
+                max-width: calc(100vw - 20px); /* Prevents overflow, keeps margin */
+                width: auto;
+            }
         }
 
         @media (min-width: 769px) {
