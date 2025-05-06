@@ -1383,7 +1383,7 @@
         function filterRecipes() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
             const categoryFilter = document.getElementById('category-filter').value;
-            const typeFilter = document.getElementById('type-filter').value; // Get the selected type
+            const typeFilter = document.getElementById('type-filter').value;
 
             let filteredRecipes = recipes.filter(recipe => {
                 const matchesSearch = recipe.name.toLowerCase().includes(searchTerm) ||
@@ -1391,7 +1391,7 @@
                     (recipe.instructions && recipe.instructions.toLowerCase().includes(searchTerm));
                 
                 const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
-                const matchesCategory = categoryFilter === 'all' || (categoryFilter === 'Other' && recipe.type === typeFilter && categories.includes(categoryFilter)) || categories.includes(categoryFilter);
+                const matchesCategory = categoryFilter === 'all' || categories.includes(categoryFilter);
                 
                 const recipeRating = parseFloat(recipe.rating || 0);
                 const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
@@ -1400,7 +1400,10 @@
                 const selectedMax = currentDifficulty ? difficultyOrder[currentDifficulty] : 0;
                 const matchesDifficulty = !currentDifficulty || (difficultyOrder[recipe.difficulty] && difficultyOrder[recipe.difficulty] <= selectedMax);
                 
-                return matchesSearch && matchesCategory && matchesRating && matchesDifficulty;
+                // Ensure that if "Other" is selected, it matches the selected type
+                const matchesType = typeFilter === 'all' || recipe.type === typeFilter;
+
+                return matchesSearch && matchesCategory && matchesRating && matchesDifficulty && matchesType;
             });
 
             displayRecipes(filteredRecipes);
@@ -1638,8 +1641,7 @@
                 "Breakfast/Lunch": 0,
                 "Dinner": 0,
                 "Side Dish": 0,
-                "Bread/Cakes": 0,
-                "Other": 0 // Add count for Other
+                "Bread/Cakes": 0
             };
 
             const recipesMatchingFilters = recipes.filter(recipe => {
@@ -1651,12 +1653,9 @@
                 return matchesRating && matchesDifficulty;
             });
 
-            // Count recipes for each type and for Other
+            // Count recipes for each type
             recipesMatchingFilters.forEach(recipe => {
                 typeCounts[recipe.type] = (typeCounts[recipe.type] || 0) + 1;
-                if (recipe.category.includes("Other") && recipe.type === selectedType) {
-                    typeCounts["Other"] += 1; // Increment Other count for the selected type
-                }
             });
 
             // Update type filter options with counts
@@ -1666,7 +1665,6 @@
                 <option value="Dinner">Dinner (${typeCounts["Dinner"]})</option>
                 <option value="Side Dish">Side Dish (${typeCounts["Side Dish"]})</option>
                 <option value="Bread/Cakes">Bread/Cakes (${typeCounts["Bread/Cakes"]})</option>
-                <option value="Other">Other (${typeCounts["Other"]})</option>
             `;
 
             // Set the selected type in the type filter
@@ -1677,7 +1675,7 @@
             categoryFilter.innerHTML = `<option value="all">All Categories (${recipesMatchingFilters.length})</option>`;
             
             categories.forEach(category => {
-                const count = recipesMatchingFilters.filter(recipe => recipe.category.includes(category)).length;
+                const count = recipesMatchingFilters.filter(recipe => recipe.category.includes(category) && recipe.type === selectedType).length; // Ensure it matches the selected type
                 const option = document.createElement('option');
                 option.value = category;
                 option.textContent = `${category} (${count})`;
