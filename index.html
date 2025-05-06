@@ -481,7 +481,7 @@
             margin: 50px auto;
             padding: 20px;
             border-radius: 24px;
-            max-width: 600px;
+            max-width: 90%;
             width: auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-height: 80vh;
@@ -489,6 +489,21 @@
             position: relative;
             word-wrap: break-word;
             overflow-x: hidden;
+        }
+
+        .close {
+            position: absolute; /* Position it absolutely within the modal content */
+            top: 10px; /* Adjust the distance from the top */
+            right: 10px; /* Adjust the distance from the right */
+            font-size: 24px; /* Adjust the size of the close button */
+            color: black; /* Change color to black */
+            cursor: pointer; /* Change cursor to pointer */
+            transition: none; /* Remove transition for hover effect */
+        }
+
+        /* Remove the hover effect */
+        .close:hover {
+            color: black; /* Keep the color the same on hover */
         }
 
         @media (max-width: 768px) {
@@ -533,6 +548,10 @@
             .title-underline-svg {
                 height: 48px;
                 width: 90%;
+            }
+            .modal-content {
+                margin: 20px; /* Add margin for mobile devices */
+                max-width: 90%; /* Ensure it doesn't take the full width */
             }
         }
 
@@ -857,7 +876,7 @@
 
     <div id="recipe-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal()" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">&times;</span>
             <div id="modal-content"></div>
         </div>
     </div>
