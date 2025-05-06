@@ -1,9 +1,39 @@
 [
   {
+    "id": 1746100571197,
+    "name": "Bare pomfritter",
+    "type": "Dinner",
+    "category": [
+      "Fast Food"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "pomfritter...\nevt. snitzel",
+    "instructions": "",
+    "rating": "2.5",
+    "difficulty": "easy",
+    "lastModified": "2025-05-06T11:59:20.867Z"
+  },
+  {
+    "id": 1746114210209,
+    "name": "Havregrød",
+    "type": "Breakfast/Lunch",
+    "category": [
+      "Other"
+    ],
+    "servings": "1",
+    "servingsUnit": "person(s)",
+    "ingredients": "1dl havregryn\n2dl væske: mælk, plantemælk, vand\n\nrandom blanding af:\npeanutbutter\nkanel\nkakaopulver\nvanilje sukker\nbrun farin\nmystisk æbel syltetøj/grød\nrosiner\nfrugt\nsalt",
+    "instructions": "",
+    "rating": "3",
+    "difficulty": "medium",
+    "lastModified": "2025-05-06T11:59:13.797Z"
+  },
+  {
     "id": 1746006671218,
     "name": "Fajitas",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Mexi",
       "Rice"
     ],
@@ -13,13 +43,13 @@
     "instructions": "",
     "rating": "4.5",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T15:05:25.977Z"
+    "lastModified": "2025-05-06T11:59:05.008Z"
   },
   {
     "id": 1746114669518,
     "name": "Pasta Salat",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Pasta"
     ],
     "servings": "",
@@ -28,13 +58,13 @@
     "instructions": "",
     "rating": "2",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T15:03:51.323Z"
+    "lastModified": "2025-05-06T11:58:55.707Z"
   },
   {
     "id": 1746015845944,
     "name": "Nachos",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Mexi"
     ],
     "servings": "4",
@@ -43,13 +73,13 @@
     "instructions": "",
     "rating": "3",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T15:03:39.482Z"
+    "lastModified": "2025-05-06T11:58:43.460Z"
   },
   {
     "id": 1746042698308,
     "name": "Kartoffel madder",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Other"
     ],
     "servings": "",
@@ -58,28 +88,13 @@
     "instructions": "",
     "rating": "1.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T15:03:27.476Z"
-  },
-  {
-    "id": 1746100571197,
-    "name": "Bare pomfritter",
-    "category": [
-      "Dinner",
-      "Fast Food"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "pomfritter...\nevt. snitzel",
-    "instructions": "",
-    "rating": "2.5",
-    "difficulty": "easy",
-    "lastModified": "2025-05-03T09:54:35.618Z"
+    "lastModified": "2025-05-06T11:58:34.753Z"
   },
   {
     "id": 1746043407524,
     "name": "wok m. forårsruller",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Asian",
       "Pasta",
       "Frozen"
@@ -90,13 +105,13 @@
     "instructions": "",
     "rating": "2",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T11:04:17.034Z"
+    "lastModified": "2025-05-06T11:58:27.685Z"
   },
   {
     "id": 1746015358272,
     "name": "Rispapirsruller",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Asian",
       "Rice"
     ],
@@ -106,13 +121,15 @@
     "instructions": "",
     "rating": "4.5",
     "difficulty": "hard",
-    "lastModified": "2025-05-02T11:04:06.032Z"
+    "lastModified": "2025-05-06T11:58:15.786Z"
   },
   {
     "id": 1746115042550,
     "name": "Breakfast Burrito",
+    "type": "Breakfast/Lunch",
     "category": [
-      "Breakfast/Lunch"
+      "Eggs",
+      "Bread"
     ],
     "servings": "",
     "servingsUnit": "person(s)",
@@ -120,13 +137,14 @@
     "instructions": "",
     "rating": "4",
     "difficulty": "hard",
-    "lastModified": "2025-05-02T11:03:06.471Z"
+    "lastModified": "2025-05-06T11:58:05.126Z"
   },
   {
     "id": 1746114956208,
     "name": "Toast",
+    "type": "Breakfast/Lunch",
     "category": [
-      "Breakfast/Lunch"
+      "Bread"
     ],
     "servings": "",
     "servingsUnit": "person(s)",
@@ -134,13 +152,14 @@
     "instructions": "",
     "rating": "3.5",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T11:02:51.916Z"
+    "lastModified": "2025-05-06T11:57:48.037Z"
   },
   {
     "id": 1746114933520,
     "name": "Brød m. Pålæg",
+    "type": "Breakfast/Lunch",
     "category": [
-      "Breakfast/Lunch"
+      "Bread"
     ],
     "servings": "",
     "servingsUnit": "person(s)",
@@ -148,13 +167,14 @@
     "instructions": "",
     "rating": "3",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:02:47.449Z"
+    "lastModified": "2025-05-06T11:57:40.441Z"
   },
   {
     "id": 1746114829019,
     "name": "Tykmælk",
+    "type": "Breakfast/Lunch",
     "category": [
-      "Breakfast/Lunch"
+      "Other"
     ],
     "servings": "",
     "servingsUnit": "person(s)",
@@ -162,13 +182,14 @@
     "instructions": "",
     "rating": "2.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:02:42.824Z"
+    "lastModified": "2025-05-06T11:57:35.254Z"
   },
   {
     "id": 1746114797724,
     "name": "Havregryn",
+    "type": "Breakfast/Lunch",
     "category": [
-      "Breakfast/Lunch"
+      "Other"
     ],
     "servings": "",
     "servingsUnit": "person(s)",
@@ -176,13 +197,14 @@
     "instructions": "",
     "rating": "1",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:02:37.221Z"
+    "lastModified": "2025-05-06T11:57:28.234Z"
   },
   {
     "id": 1746114837114,
     "name": "Æg",
+    "type": "Breakfast/Lunch",
     "category": [
-      "Breakfast/Lunch"
+      "Eggs"
     ],
     "servings": "",
     "servingsUnit": "person(s)",
@@ -190,13 +212,15 @@
     "instructions": "",
     "rating": "3.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:02:32.685Z"
+    "lastModified": "2025-05-06T11:57:21.951Z"
   },
   {
     "id": 1746114447352,
     "name": "Avokado Toast",
+    "type": "Breakfast/Lunch",
     "category": [
-      "Breakfast/Lunch"
+      "Eggs",
+      "Bread"
     ],
     "servings": "",
     "servingsUnit": "person(s)",
@@ -204,13 +228,14 @@
     "instructions": "",
     "rating": "5",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T11:02:18.912Z"
+    "lastModified": "2025-05-06T11:57:12.325Z"
   },
   {
     "id": 1746114406025,
     "name": "Banan Pandekager",
+    "type": "Breakfast/Lunch",
     "category": [
-      "Breakfast/Lunch"
+      "Other"
     ],
     "servings": "1",
     "servingsUnit": "person(s)",
@@ -218,27 +243,13 @@
     "instructions": "",
     "rating": "3.5",
     "difficulty": "hard",
-    "lastModified": "2025-05-02T11:02:14.129Z"
-  },
-  {
-    "id": 1746114210209,
-    "name": "Havregrød",
-    "category": [
-      "Breakfast/Lunch"
-    ],
-    "servings": "1",
-    "servingsUnit": "person(s)",
-    "ingredients": "1dl havregryn\n2dl væske: mælk, plantemælk, vand\n\nrandom blanding af:\npeanutbutter\nkanel\nkakaopulver\nvanilje sukker\nbrun farin\nmystisk æbel syltetøj/grød\nrosiner\nfrugt\nsalt",
-    "instructions": "",
-    "rating": "3",
-    "difficulty": "medium",
-    "lastModified": "2025-05-03T09:54:19.876Z"
+    "lastModified": "2025-05-06T11:57:02.508Z"
   },
   {
     "id": 1746008865801,
     "name": "Pirogger",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Other"
     ],
     "servings": "17",
@@ -247,13 +258,13 @@
     "instructions": "",
     "rating": "4",
     "difficulty": "hard",
-    "lastModified": "2025-05-02T11:01:59.943Z"
+    "lastModified": "2025-05-06T11:56:51.102Z"
   },
   {
     "id": 1746014607330,
     "name": "Pesto pasta",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Pasta",
       "Canned Food"
     ],
@@ -263,13 +274,13 @@
     "instructions": "",
     "rating": "2",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:01:54.476Z"
+    "lastModified": "2025-05-06T11:56:43.684Z"
   },
   {
     "id": 1746015637108,
     "name": "Mexi pandekager",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Mexi"
     ],
     "servings": "",
@@ -278,13 +289,13 @@
     "instructions": "",
     "rating": "3.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:01:45.547Z"
+    "lastModified": "2025-05-06T11:56:33.914Z"
   },
   {
     "id": 1746014733933,
     "name": "Pasta tomatsovs",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Pasta",
       "Canned Food"
     ],
@@ -294,13 +305,13 @@
     "instructions": "",
     "rating": "1.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:01:25.969Z"
+    "lastModified": "2025-05-06T11:56:27.519Z"
   },
   {
     "id": 1746042601015,
     "name": "tortellini",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Pasta"
     ],
     "servings": "",
@@ -309,13 +320,13 @@
     "instructions": "",
     "rating": "3.5",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T11:00:49.396Z"
+    "lastModified": "2025-05-06T11:56:14.347Z"
   },
   {
     "id": 1746042522678,
     "name": "Frisk pasta i svampe fløde sovs",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Pasta"
     ],
     "servings": "",
@@ -324,13 +335,13 @@
     "instructions": "",
     "rating": "4",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T11:00:41.684Z"
+    "lastModified": "2025-05-06T11:56:07.839Z"
   },
   {
     "id": 1746042854214,
     "name": "Chili sin carne",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Mexi",
       "Frozen"
     ],
@@ -340,13 +351,13 @@
     "instructions": "",
     "rating": "2",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:00:36.523Z"
+    "lastModified": "2025-05-06T11:55:57.803Z"
   },
   {
     "id": 1746043126539,
     "name": "frisk pandegrønt pasta",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Pasta"
     ],
     "servings": "",
@@ -355,13 +366,13 @@
     "instructions": "wing it!",
     "rating": "2.5",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T11:00:21.722Z"
+    "lastModified": "2025-05-06T11:55:28.303Z"
   },
   {
     "id": 1746100261814,
     "name": "Pitabrød",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Other"
     ],
     "servings": "",
@@ -370,13 +381,13 @@
     "instructions": "",
     "rating": "1.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T11:00:01.095Z"
+    "lastModified": "2025-05-06T11:55:21.932Z"
   },
   {
     "id": 1746100364319,
     "name": "pita pizza",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Fast Food"
     ],
     "servings": "",
@@ -385,13 +396,13 @@
     "instructions": "",
     "rating": "2.5",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T10:59:46.747Z"
+    "lastModified": "2025-05-06T11:55:15.169Z"
   },
   {
     "id": 1746100514751,
     "name": "Mac & cheese",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Pasta"
     ],
     "servings": "",
@@ -400,13 +411,13 @@
     "instructions": "",
     "rating": "4.5",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T10:59:41.776Z"
+    "lastModified": "2025-05-06T11:55:08.539Z"
   },
   {
     "id": 1746014874862,
     "name": "Frossen grønt",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Pasta",
       "Frozen"
     ],
@@ -416,13 +427,13 @@
     "instructions": "",
     "rating": "0.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-02T10:59:31.065Z"
+    "lastModified": "2025-05-06T11:55:01.083Z"
   },
   {
     "id": 1746002931247,
     "name": "Chickpea Spinach Curry with Coconut Milk",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Rice",
       "Canned Food"
     ],
@@ -432,13 +443,13 @@
     "instructions": "",
     "rating": "2.5",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T10:59:25.176Z"
+    "lastModified": "2025-05-06T11:54:49.705Z"
   },
   {
     "id": 1746016505068,
     "name": "Rødbede bøf burger",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Fast Food"
     ],
     "servings": "4",
@@ -447,13 +458,13 @@
     "instructions": "bland alle ingredienser sammen og form 6-8 bøffer på bagepapir beklædt bageplade\npensel med olie og evt. ekstra squish salt og peber\nbag ved 190 grader varmluft i 25 min, og vendes halvejs",
     "rating": "3.5",
     "difficulty": "hard",
-    "lastModified": "2025-05-02T10:59:17.211Z"
+    "lastModified": "2025-05-06T11:54:41.906Z"
   },
   {
     "id": 1746014141342,
     "name": "Svamps Risotto",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Rice"
     ],
     "servings": "4",
@@ -462,13 +473,13 @@
     "instructions": "skær svampe i skiver og tørsteg på varm pande til alt væsken er fordampet, hvorefter der tilføjes en god klat smør, og steges videre til gylden brune\nimens hakkes løg og hvidløg fint som steges bløde i en gryde med olie (7), hvorefter ris tilføjes i et lille minut\nimens blandes 1L varmt vand med 2 tsk. bullion pulver og 1dl tilføjes til risene med en bløb citronsaft, mens varmen holdes på mellem. når væsken er optaget i risene/fordampet tilføjes 1dl mere indtil alt bullion er brugt. tilføj evt. mere varmt vand hvis risene er for ukogte\nimens steges veggie snitzler på panden (7) i noget olie\ntil sidst tilføjes en god klat smør og parmasan til risene hvorefter svampene tilføjes",
     "rating": "4",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T10:58:49.974Z"
+    "lastModified": "2025-05-06T11:54:36.026Z"
   },
   {
     "id": 1746008780094,
     "name": "Kua Kling – sydøstasiatisk biksemad",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Asian",
       "Rice"
     ],
@@ -478,13 +489,13 @@
     "instructions": "",
     "rating": "3",
     "difficulty": "medium",
-    "lastModified": "2025-05-02T10:58:43.782Z"
+    "lastModified": "2025-05-06T11:54:23.746Z"
   },
   {
     "id": 1746008628936,
     "name": "Halloumi Stroganoff",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Rice"
     ],
     "servings": "4",
@@ -493,13 +504,13 @@
     "instructions": "",
     "rating": "4.5",
     "difficulty": "hard",
-    "lastModified": "2025-05-02T10:58:37.544Z"
+    "lastModified": "2025-05-06T11:54:14.454Z"
   },
   {
     "id": 1746006619125,
     "name": "Halloumiburger med tartarsauce",
+    "type": "Dinner",
     "category": [
-      "Dinner",
       "Fast Food"
     ],
     "servings": "4",
@@ -508,6 +519,6 @@
     "instructions": "",
     "rating": "3.5",
     "difficulty": "hard",
-    "lastModified": "2025-05-02T10:57:55.008Z"
+    "lastModified": "2025-05-06T11:53:56.399Z"
   }
 ]
