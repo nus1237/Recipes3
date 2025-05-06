@@ -780,6 +780,16 @@
             padding: 10px 16px; /* Adjust padding as needed */
             text-align: center; /* Center the text */
         }
+
+        .success-message {
+            background-color: #FFA500; /* Orange background */
+            color: var(--color-white); /* White text color for contrast */
+            padding: 10px; /* Add some padding */
+            border-radius: 8px; /* Rounded corners */
+            margin: 10px 0; /* Margin for spacing */
+            display: none; /* Initially hidden */
+            transition: opacity 0.3s ease; /* Smooth transition for visibility */
+        }
     </style>
 </head>
 <body>
@@ -1374,8 +1384,12 @@
             const successDiv = document.getElementById('success-message');
             successDiv.textContent = message;
             successDiv.style.display = 'block';
+            successDiv.style.opacity = '1';
             setTimeout(() => {
-                successDiv.style.display = 'none';
+                successDiv.style.opacity = '0';
+                setTimeout(() => {
+                    successDiv.style.display = 'none';
+                }, 300);
             }, 3000);
         }
 
@@ -1671,7 +1685,7 @@
             typeFilter.value = selectedType; // Ensure the correct type is displayed
 
             // Update category filter based on selected type
-            const totalRecipesInType = recipesMatchingFilters.filter(recipe => recipe.type === selectedType).length;
+            const totalRecipesInType = selectedType === 'all' ? recipesMatchingFilters.length : recipesMatchingFilters.filter(recipe => recipe.type === selectedType).length;
             categoryFilter.innerHTML = `<option value="all">All Categories (${totalRecipesInType})</option>`;
             
             categories.forEach(category => {
