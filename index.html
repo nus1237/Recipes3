@@ -298,6 +298,7 @@
         }
 
         .recipe-card {
+            position: relative;
             background: var(--color-white);
             padding: 20px;
             border-radius: 16px;
@@ -306,6 +307,7 @@
             justify-content: space-between;
             align-items: flex-start;
             cursor: pointer;
+            overflow: hidden; /* Hide overflow in corners */
         }
 
         .recipe-card:hover {
@@ -697,6 +699,152 @@
             background-color: var(--color-white); /* Set background color */
             font-size: 24px; /* Increase the icon size */
         }
+
+        .recipe-type {
+            position: absolute; /* Position it absolutely within the card */
+            bottom: 0; /* Adjust to touch the bottom */
+            left: 0; /* Adjust to touch the left */
+            font-size: 14px; /* Adjust font size */
+            color: var(--color-white); /* Change text color to white for contrast */
+            background: #006400; /* Default background for Dinner */
+            padding: 5px 16px; /* Add padding for aesthetics */
+            border-radius: 0 16px 0 16px; /* Round only the top right and bottom left corners */
+            max-width: calc(100% - 20px); /* Ensure it doesn't exceed the card width */
+            overflow: hidden; /* Hide overflow text */
+            text-overflow: ellipsis; /* Add ellipsis for overflow text */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        /* Specific background colors for each type */
+        .recipe-card.breakfast-lunch .recipe-type {
+            background: #FFC300; /* Darker yellow for Breakfast/Lunch */
+        }
+
+        .recipe-card.side-dish .recipe-type {
+            background: #800080; /* Dark purple for Side Dish */
+        }
+
+        .recipe-card.bread-cakes .recipe-type {
+            background: #8B4513; /* Brown for Bread/Cakes */
+        }
+
+        .recipe-card.dinner-type {
+            position: relative;
+            border: none; /* No default border */
+        }
+
+        .recipe-card.dinner-type::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px; /* Match your card's border-radius */
+            padding: 0;
+            pointer-events: none;
+            z-index: 2;
+            border: 2px solid transparent; /* Needed for border-image to work */
+            /* Gradient: dark green at 20 degrees */
+            border-image: linear-gradient(
+                20deg, /* Use the specified angle */
+                #006400ff 0%, 
+                #006400ff 20%, 
+                #00640000 35%, /* Set transparency to start at 35% */
+                #00640000 100% /* Fully transparent from 35% onwards */
+            ) 1;
+        }
+
+        .recipe-card .dinner-type-background {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border-bottom-left-radius: 16px;
+            border-top-right-radius: 16px;
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background: #006400; /* Dark green for Dinner */
+            color: var(--color-white);
+            padding: 5px 16px 5px 10px; /* top, right, bottom, left */
+            max-width: 80%;
+            margin: 0;
+        }
+
+        .recipe-card.breakfast-lunch::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px; /* Match your card's border-radius */
+            padding: 0;
+            pointer-events: none;
+            z-index: 2;
+            border: 2px solid transparent; /* Needed for border-image to work */
+            /* Gradient: darker yellow border */
+            border-image: linear-gradient(
+                20deg, /* Use the specified angle */
+                #FFC300ff 0%, /* Darker yellow */
+                #FFC300ff 20%, 
+                #FFC30000 35%, /* Set transparency to start at 35% */
+                #FFC30000 100% /* Fully transparent from 35% onwards */
+            ) 1;
+        }
+
+        .recipe-card.side-dish::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px; /* Match your card's border-radius */
+            padding: 0;
+            pointer-events: none;
+            z-index: 2;
+            border: 2px solid transparent; /* Needed for border-image to work */
+            /* Gradient: dark purple border */
+            border-image: linear-gradient(
+                20deg, /* Use the specified angle */
+                #800080ff 0%, /* Dark purple */
+                #800080ff 20%, 
+                #80008000 35%, /* Set transparency to start at 35% */
+                #80008000 100% /* Fully transparent from 35% onwards */
+            ) 1;
+        }
+
+        .recipe-card.bread-cakes::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px; /* Match your card's border-radius */
+            padding: 0;
+            pointer-events: none;
+            z-index: 2;
+            border: 2px solid transparent; /* Needed for border-image to work */
+            /* Gradient: brown border */
+            border-image: linear-gradient(
+                20deg, /* Use the specified angle */
+                #8B4513ff 0%, /* Brown */
+                #8B4513ff 20%, 
+                #8B451300 35%, /* Set transparency to start at 35% */
+                #8B451300 100% /* Fully transparent from 35% onwards */
+            ) 1;
+        }
+
+        .recipe-card .breakfast-lunch-background {
+            background: #FFD700; /* Yellow for Breakfast/Lunch */
+        }
+
+        .recipe-card .side-dish-background {
+            background: #800080; /* Dark purple for Side Dish */
+        }
+
+        .recipe-card .bread-cakes-background {
+            background: #8B4513; /* Brown for Bread/Cakes */
+        }
+
+        .category-option.message {
+            color: black; /* Change text color to black */
+            padding: 0; /* No padding */
+            background: none; /* No background */
+            border: none; /* No border */
+            cursor: default; /* Default cursor */
+            user-select: none; /* Prevent text selection */
+            pointer-events: none; /* Prevent any pointer events */
+        }
     </style>
 </head>
 <body>
@@ -719,6 +867,16 @@
             <button type="button" id="add-btn" onclick="openAddRecipeModal()" title="Add Recipe" style="background-color: var(--color-primary); color: var(--color-white); padding: 10px 16px;"><i class="fas fa-plus"></i></button>
             <button id="refresh-btn" onclick="loadRecipes()">Refresh Recipes</button>
             <input type="text" id="search-input" class="search-input" placeholder="Search recipes or ingredients..." oninput="filterRecipes()">
+            
+            <!-- New Type Selection Dropdown -->
+            <select id="type-filter" class="type-filter" onchange="updateCategoryFilter()">
+                <option value="all">All Types</option>
+                <option value="Breakfast/Lunch">Breakfast/Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Side Dish">Side Dish</option>
+                <option value="Bread/Cakes">Bread/Cakes</option>
+            </select>
+
             <select id="category-filter" class="category-filter" onchange="filterRecipes()">
                 <option value="all">All Categories</option>
             </select>
@@ -767,6 +925,16 @@
                 <div class="form-group">
                     <label for="recipe-name">Recipe Name</label>
                     <input type="text" id="recipe-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipe-type">Type</label>
+                    <select id="recipe-type" required>
+                        <option value="">Select Type</option>
+                        <option value="Breakfast/Lunch">Breakfast/Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Side Dish">Side Dish</option>
+                        <option value="Bread/Cakes">Bread/Cakes</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="recipe-category">Categories</label>
@@ -851,6 +1019,16 @@
                 <div class="form-group">
                     <label for="edit-recipe-name">Recipe Name</label>
                     <input type="text" id="edit-recipe-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-recipe-type">Type</label>
+                    <select id="edit-recipe-type" required>
+                        <option value="">Select Type</option>
+                        <option value="Breakfast/Lunch">Breakfast/Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Side Dish">Side Dish</option>
+                        <option value="Bread/Cakes">Bread/Cakes</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="edit-recipe-category">Categories</label>
@@ -950,6 +1128,13 @@
         let blockRecipeClicksUntil = 0;
 
         let scrollPosition = 0; // Variable to store the scroll position
+
+        const typeToCategories = {
+            "Breakfast/Lunch": ["Eggs", "Bread", "Other"],
+            "Dinner": ["Mexi", "Asian", "Fast Food", "Pasta", "Rice", "Canned Food", "Frozen", "Other"],
+            "Side Dish": ["Salat", "Other"],
+            "Bread/Cakes": ["Bread", "Cake", "Other"]
+        };
 
         function initializeRatingFilter() {
             const starsContainer = document.getElementById('rating-filter-stars');
@@ -1121,7 +1306,7 @@
 
             filteredRecipes.forEach(recipe => {
                 const card = document.createElement('div');
-                card.className = 'recipe-card';
+                card.className = `recipe-card ${recipe.type === 'Dinner' ? 'dinner-type' : ''} ${recipe.type === 'Breakfast/Lunch' ? 'breakfast-lunch' : ''} ${recipe.type === 'Side Dish' ? 'side-dish' : ''} ${recipe.type === 'Bread/Cakes' ? 'bread-cakes' : ''}`;
                 card.onclick = () => viewRecipe(recipe.id);
                 
                 // Create category tags HTML
@@ -1133,6 +1318,9 @@
                 const servingsTag = recipe.servings && recipe.servings !== "" 
                     ? `<span class="servings-tag">${getServingsDisplay(recipe.servings, recipe.servingsUnit)}</span>`
                     : '';
+
+                // Add the type display
+                const typeDisplay = `<div class="recipe-type">${recipe.type}</div>`;
 
                 card.innerHTML = `
                     <div class="recipe-card-left">
@@ -1154,6 +1342,7 @@
                             </div>
                         </div>
                     </div>
+                    ${typeDisplay}
                 `;
                 container.appendChild(card);
             });
@@ -1221,11 +1410,9 @@
             if (recipe) {
                 document.getElementById('edit-recipe-id').value = recipe.id || '';
                 document.getElementById('edit-recipe-name').value = recipe.name || '';
-                
-                // Create category options with selected categories
-                const categories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
-                createCategoryOptions('edit-recipe-category-options', categories);
-                
+                document.getElementById('edit-recipe-type').value = recipe.type || '';
+                // Use the recipe's type to show the correct categories
+                createCategoryOptions('edit-recipe-category-options', recipe.category, recipe.type);
                 document.getElementById('edit-recipe-servings').value = recipe.servings || '';
                 document.getElementById('edit-recipe-servings-unit').value = recipe.servingsUnit || (recipe.servings === "1" ? "person" : "persons");
                 document.getElementById('edit-recipe-ingredients').value = recipe.ingredients || '';
@@ -1298,12 +1485,13 @@
 
         // Add Recipe Modal functions
         function openAddRecipeModal() {
-            scrollPosition = window.scrollY; // Store the current scroll position
-            document.body.style.position = 'fixed'; // Fix the body position
-            document.body.style.top = `-${scrollPosition}px`; // Set the top to the negative scroll position
+            scrollPosition = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollPosition}px`;
             document.getElementById('add-recipe-modal').style.display = 'block';
             document.body.classList.add('modal-open');
-            createCategoryOptions('recipe-category-options');
+            const type = document.getElementById('recipe-type').value;
+            createCategoryOptions('recipe-category-options', [], type);
         }
 
         function closeAddRecipeModal() {
@@ -1316,9 +1504,9 @@
 
         // Edit Recipe Modal functions
         function openEditRecipeModal() {
-            scrollPosition = window.scrollY; // Store the current scroll position
-            document.body.style.position = 'fixed'; // Fix the body position
-            document.body.style.top = `-${scrollPosition}px`; // Set the top to the negative scroll position
+            scrollPosition = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollPosition}px`;
             document.getElementById('edit-recipe-modal').style.display = 'block';
             document.body.classList.add('modal-open');
         }
@@ -1345,6 +1533,9 @@
             const servingsAmount = document.getElementById(formPrefix + 'servings').value;
             const servingsUnit = document.getElementById(formPrefix + 'servings-unit').value;
 
+            // Get the selected type
+            const type = document.getElementById(formPrefix + 'type').value;
+
             // Get the instructions and remove any existing numbering
             let instructions = document.getElementById(formPrefix + 'instructions').value.trim();
             instructions = instructions.replace(/^\d+\.\s*/gm, ''); // Remove existing numbering if present
@@ -1352,6 +1543,7 @@
             const recipe = {
                 id: isEdit ? parseInt(document.getElementById('edit-recipe-id').value) : Date.now(),
                 name: document.getElementById(formPrefix + 'name').value.trim(),
+                type: type,
                 category: selectedCategories,
                 servings: servingsAmount,
                 servingsUnit: servingsUnit,
@@ -1382,24 +1574,22 @@
             circle.classList.toggle('selected');
         }
 
-        function createCategoryOptions(containerId, selectedCategories = []) {
-            const categories = [
-                'Breakfast/Lunch',
-                'Dinner',
-                'Mexi',
-                'Asian',
-                'Fast Food',
-                'Pasta',
-                'Rice',
-                'Canned Food',
-                'Frozen',
-                'Bread/Cakes',
-                'Other'
-            ];
-
+        function createCategoryOptions(containerId, selectedCategories = [], type = null) {
             const container = document.getElementById(containerId);
-            container.innerHTML = '';
+            container.innerHTML = ''; // Clear previous options
             container.className = 'category-options';
+
+            if (!type) {
+                // Display a message if no type is selected
+                const message = document.createElement('div');
+                message.className = 'category-option message'; // Apply the new class
+                message.textContent = 'Select a type before choosing a category'; // Updated message
+                container.appendChild(message);
+                return; // Exit the function early
+            }
+
+            // Use the selected type to get the corresponding categories
+            const categories = typeToCategories[type] || [];
 
             categories.forEach(category => {
                 const option = document.createElement('div');
@@ -1501,25 +1691,20 @@
 
         // Update category filter with counts
         function updateCategoryFilter() {
+            const typeFilter = document.getElementById('type-filter');
             const categoryFilter = document.getElementById('category-filter');
             const currentSelection = categoryFilter.value; // Store current selection
-            const categories = [
-                'All Categories',
-                'Breakfast/Lunch',
-                'Dinner',
-                'Mexi',
-                'Asian',
-                'Fast Food',
-                'Pasta',
-                'Rice',
-                'Canned Food',
-                'Frozen',
-                'Bread/Cakes',
-                'Other'
-            ];
+            const selectedType = typeFilter.value; // Get the selected type
+            const categories = typeToCategories[selectedType] || []; // Get categories based on selected type
 
-            // Count recipes per category that match the rating and difficulty filters
-            const categoryCounts = {};
+            // Count recipes per type that match the rating and difficulty filters
+            const typeCounts = {
+                "Breakfast/Lunch": 0,
+                "Dinner": 0,
+                "Side Dish": 0,
+                "Bread/Cakes": 0
+            };
+
             const recipesMatchingFilters = recipes.filter(recipe => {
                 const recipeRating = parseFloat(recipe.rating || 0);
                 const matchesRating = currentRatingFilter === 0 || recipeRating >= currentRatingFilter;
@@ -1529,26 +1714,36 @@
                 return matchesRating && matchesDifficulty;
             });
 
+            // Count recipes for each type
             recipesMatchingFilters.forEach(recipe => {
-                const recipeCategories = Array.isArray(recipe.category) ? recipe.category : [recipe.category];
-                recipeCategories.forEach(category => {
-                    categoryCounts[category] = (categoryCounts[category] || 0) + 1;
-                });
+                typeCounts[recipe.type] = (typeCounts[recipe.type] || 0) + 1;
             });
 
-            // Keep the "All Categories" option
-            categoryFilter.innerHTML = `<option value="all">All Categories (${recipesMatchingFilters.length})</option>`;
+            // Update type filter options with counts
+            typeFilter.innerHTML = `
+                <option value="all">All Types (${recipesMatchingFilters.length})</option>
+                <option value="Breakfast/Lunch">Breakfast/Lunch (${typeCounts["Breakfast/Lunch"]})</option>
+                <option value="Dinner">Dinner (${typeCounts["Dinner"]})</option>
+                <option value="Side Dish">Side Dish (${typeCounts["Side Dish"]})</option>
+                <option value="Bread/Cakes">Bread/Cakes (${typeCounts["Bread/Cakes"]})</option>
+            `;
 
-            // Add categories with counts
-            categories.slice(1).forEach(category => {
-                const count = categoryCounts[category] || 0;
+            // Set the selected type in the type filter
+            typeFilter.value = selectedType; // Ensure the correct type is displayed
+
+            // Update category filter based on selected type
+            const totalRecipesInType = recipesMatchingFilters.filter(recipe => recipe.type === selectedType).length;
+            categoryFilter.innerHTML = `<option value="all">All Categories (${recipesMatchingFilters.length})</option>`;
+            
+            categories.forEach(category => {
+                const count = recipesMatchingFilters.filter(recipe => recipe.category.includes(category)).length;
                 const option = document.createElement('option');
                 option.value = category;
                 option.textContent = `${category} (${count})`;
                 categoryFilter.appendChild(option);
             });
 
-            // Restore previous selection
+            // Restore previous selection for category filter
             categoryFilter.value = currentSelection;
         }
 
@@ -1561,7 +1756,7 @@
                 return;
             }
 
-            if (unitSelect.value === "person" || unitSelect.value === "persons") {
+            if (unitSelect.value === "person(s)" || unitSelect.value === "person" || unitSelect.value === "persons") {
                 unitSelect.value = amount === "1" ? "person" : "persons";
             }
         }
@@ -1694,6 +1889,14 @@
             }
             return `${servings} ${servingsUnit}`;
         }
+
+        document.getElementById('recipe-type').addEventListener('change', function() {
+            createCategoryOptions('recipe-category-options', [], this.value);
+        });
+
+        document.getElementById('edit-recipe-type').addEventListener('change', function() {
+            createCategoryOptions('edit-recipe-category-options', [], this.value);
+        });
     </script>
 </body>
 </html> 
