@@ -492,12 +492,74 @@
         }
 
         @media (max-width: 768px) {
+            .modal-content {
+                max-width: 90%;
+            }
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content h3 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+        }
+
+        .modal-content pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: inherit;
+            margin-bottom: 30px;
+        }
+
+        .instruction-step {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .instruction-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-content .recipe-section {
+            margin-bottom: 40px;
+        }
+
+        .modal-content .recipe-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--color-primary);
+        }
+
+        .success-message {
+            display: none;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
             .search-container {
                 display: grid;
                 grid-template-areas:
                     "add-btn refresh-btn dice-btn"
                     "search-input search-input search-input"
-                    "type-filter type-filter type-filter"
                     "category-filter category-filter category-filter"
                     "filters-group filters-group filters-group"
                     "clear-filters-btn clear-filters-btn clear-filters-btn";
@@ -505,9 +567,24 @@
                 grid-row-gap: 10px;
                 align-items: center;
             }
-            #type-filter { 
-                grid-area: type-filter;
-                width: 100%;
+            #add-btn { 
+                grid-area: add-btn; 
+                width: 100%; /* Ensure it takes full width */
+            }
+            #refresh-btn { 
+                grid-area: refresh-btn; 
+                white-space: nowrap; /* Prevent text from wrapping */
+                width: 100%; /* Set a fixed width to ensure it fits in one line */
+                text-align: center; /* Center the text */
+            }
+            #dice-btn { 
+                grid-area: dice-btn; 
+                justify-self: end; /* Align to the right */
+            }
+            #clear-filters-btn {
+                grid-area: clear-filters-btn; 
+                width: auto; /* Set to normal width */
+                justify-self: center; /* Center the button */
             }
             .search-input { grid-area: search-input; }
             .category-filter { grid-area: category-filter; }
