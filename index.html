@@ -1672,7 +1672,7 @@
 
             // Update category filter based on selected type
             const totalRecipesInType = recipesMatchingFilters.filter(recipe => recipe.type === selectedType).length;
-            categoryFilter.innerHTML = `<option value="all">All Categories (${recipesMatchingFilters.length})</option>`;
+            categoryFilter.innerHTML = `<option value="all">All Categories (${totalRecipesInType})</option>`;
             
             categories.forEach(category => {
                 const count = recipesMatchingFilters.filter(recipe => recipe.category.includes(category) && recipe.type === selectedType).length; // Ensure it matches the selected type
