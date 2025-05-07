@@ -1845,7 +1845,12 @@
                     setTimeout(() => {
                         diceEmoji.classList.remove('dice-rolling');
 
-                        const filteredRecipes = getFilteredRecipes();
+                        // Get the currently filtered recipes based on the selected type
+                        const selectedType = document.getElementById('type-filter').value;
+                        const filteredRecipes = getFilteredRecipes().filter(recipe => 
+                            selectedType === 'all' || recipe.type === selectedType
+                        );
+
                         if (!filteredRecipes || !filteredRecipes.length) {
                             alert('No recipes match your filters!');
                             return;
