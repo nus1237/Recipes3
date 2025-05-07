@@ -486,9 +486,9 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-height: 80vh;
             overflow-y: auto;
+            overflow-x: hidden;
             position: relative;
             word-wrap: break-word;
-            overflow-x: hidden;
         }
 
         .close {
@@ -809,6 +809,25 @@
             margin: 10px 0; /* Margin for spacing */
             display: none; /* Initially hidden */
             transition: opacity 0.3s ease; /* Smooth transition for visibility */
+        }
+
+        /* Make <pre> wrap text and not overflow horizontally */
+        .recipe-section pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-x: auto;
+            margin-bottom: 18px; /* Add space after pre blocks */
+        }
+
+        /* Add space between instruction steps and next header */
+        .instruction-step {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* Add space between recipe sections in the modal */
+        .recipe-section {
+            margin-bottom: 24px;
         }
     </style>
 </head>
