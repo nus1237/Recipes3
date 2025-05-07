@@ -325,6 +325,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            margin-bottom: 18px;
         }
 
         .category-tag,
@@ -830,6 +831,14 @@
         .recipe-section {
             margin-bottom: 24px;
         }
+
+        .recipe-type-label {
+            margin-bottom: 10px;
+        }
+
+        .recipe-type-display {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -898,7 +907,14 @@
     <div id="recipe-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()" style="position: absolute; top: 10px; right: 20px; cursor: pointer;">&times;</span>
-            <div id="modal-content"></div>
+            <div id="modal-content">
+                <div class="recipe-type-label">
+                    Type: <span id="recipe-type-display"></span>
+                </div>
+                <div class="recipe-card-tags">
+                    <!-- Existing category tags will go here -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1364,6 +1380,7 @@
             modalContent.innerHTML = `
                 <h2>${recipe.name}</h2>
                 <div class="recipe-section">
+                    <p><strong>Type:</strong> <span id="recipe-type-display">${recipe.type}</span></p>
                     <p><strong>Categories:</strong> ${categoryDisplay}</p>
                     ${servingsDisplay}
                     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;"><strong>Rating:</strong><span class="stars-container" style="margin:0;">${displayStars(parseFloat(recipe.rating || 0))}</span></div>
