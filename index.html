@@ -881,6 +881,15 @@
 
             <select id="category-filter" class="category-filter" onchange="filterRecipes()">
                 <option value="all">All Categories</option>
+                <option value="Eggs">Eggs</option>
+                <option value="Bread">Bread</option>
+                <option value="Oats">Oats</option>
+                <option value="Other">Other</option>
+                <option value="Fundamentals">Fundamentals</option>
+                <option value="Salat">Salat</option>
+                <option value="Dressing">Dressing</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Bread/Cakes">Bread/Cakes</option>
             </select>
             <div class="filters-group filters-row-mobile" style="flex-direction: row; gap: 10px; align-items: center;">
                 <div class="filters-row" style="gap: 5px;">
@@ -1139,9 +1148,9 @@
         let scrollPosition = 0; // Variable to store the scroll position
 
         const typeToCategories = {
-            "Breakfast/Lunch": ["Eggs", "Bread", "Other"],
+            "Breakfast/Lunch": ["Eggs", "Bread", "Oats", "Other"],
             "Dinner": ["Mexi", "Asian", "Fast Food", "Pasta", "Rice", "Canned Food", "Frozen", "Other"],
-            "Side Dish": ["Salat", "Other"],
+            "Side Dish": ["Fundamentals", "Salat", "Dressing", "Other"],
             "Bread/Cakes": ["Bread", "Cake", "Other"]
         };
 
