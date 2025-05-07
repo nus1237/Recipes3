@@ -494,7 +494,7 @@
         .close {
             position: absolute; /* Position it absolutely within the modal content */
             top: 10px; /* Adjust the distance from the top */
-            right: 10px; /* Adjust the distance from the right */
+            right: 20px; /* Adjust the distance from the right to 20px */
             font-size: 24px; /* Adjust the size of the close button */
             color: black; /* Change color to black */
             cursor: pointer; /* Change cursor to pointer */
@@ -811,18 +811,19 @@
             transition: opacity 0.3s ease; /* Smooth transition for visibility */
         }
 
-        /* Make <pre> wrap text and not overflow horizontally */
+        /* More space between instruction steps */
+        .instruction-step {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* Add padding to <pre> to prevent text from being cut off by rounded corners */
         .recipe-section pre {
             white-space: pre-wrap;
             word-break: break-word;
             overflow-x: auto;
-            margin-bottom: 18px; /* Add space after pre blocks */
-        }
-
-        /* Add space between instruction steps and next header */
-        .instruction-step {
-            display: block;
-            margin-bottom: 6px;
+            margin-bottom: 18px;
+            border-radius: 0; /* Make corners square */
         }
 
         /* Add space between recipe sections in the modal */
@@ -896,7 +897,7 @@
 
     <div id="recipe-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">&times;</span>
+            <span class="close" onclick="closeModal()" style="position: absolute; top: 10px; right: 20px; cursor: pointer;">&times;</span>
             <div id="modal-content"></div>
         </div>
     </div>
