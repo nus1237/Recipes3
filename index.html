@@ -1769,9 +1769,8 @@
                 return;
             }
 
-            if (unitSelect.value === "person(s)" || unitSelect.value === "person" || unitSelect.value === "persons") {
-                unitSelect.value = amount === "1" ? "person" : "persons";
-            }
+            // Set the unit to "person(s)" when a valid amount is selected
+            unitSelect.value = "person(s)";
         }
 
         // Add event listeners for servings amount changes
