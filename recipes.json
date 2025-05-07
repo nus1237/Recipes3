@@ -1,18 +1,274 @@
 [
   {
-    "id": 1746100571197,
-    "name": "Bare pomfritter",
+    "id": 1746630469299,
+    "name": "Zombie Kartofler",
     "type": "Dinner",
     "category": [
-      "Fast Food"
+      "Other"
     ],
     "servings": "",
     "servingsUnit": "person(s)",
-    "ingredients": "pomfritter...\nevt. snitzel",
+    "ingredients": "kartofler\nkylling/veggie kylling\nrevet ost\navokado\nmajs\ntomat\nsyltede rødløg\n\nguac\ncreme fraiche\nevt. salsa\n\nolie\nsalt, peber, kryderier\n\nevt. fancy frisk grønt pynt",
+    "instructions": "https://mydailyspace.dk/2023/01/zombiekartofler-med-kylling-og-avocado/\n\nsådan ish med flere toppings",
+    "rating": "4",
+    "difficulty": "medium",
+    "lastModified": "2025-05-07T15:07:49.299Z"
+  },
+  {
+    "id": 1746630197927,
+    "name": "Amerikanske Pandekager",
+    "type": "Breakfast/Lunch",
+    "category": [
+      "Other"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "???",
+    "instructions": "",
+    "rating": "4.5",
+    "difficulty": "hard",
+    "lastModified": "2025-05-07T15:03:17.927Z"
+  },
+  {
+    "id": 1746008780094,
+    "name": "Kua Kling – sydøstasiatisk biksemad",
+    "type": "Dinner",
+    "category": [
+      "Asian",
+      "Rice"
+    ],
+    "servings": "4",
+    "servingsUnit": "person(s)",
+    "ingredients": "https://vegetariskhverdag.dk/2024/03/kua-kling-sydoestasiatisk-biksemad/\n\n÷ for meget chili (evt. bare halvt glas curry paste)",
+    "instructions": "",
+    "rating": "3",
+    "difficulty": "medium",
+    "lastModified": "2025-05-07T15:02:49.714Z"
+  },
+  {
+    "id": 1746630140504,
+    "name": "Mozzarella & Tomat Salat",
+    "type": "Side Dish",
+    "category": [
+      "Salat"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "tomat i skiver\nfrisk mozzarella i skiver\npesto\nolie\nflagesalt, peber\nfrisk basilikum",
+    "instructions": "",
+    "rating": "3.5",
+    "difficulty": "easy",
+    "lastModified": "2025-05-07T15:02:20.504Z"
+  },
+  {
+    "id": 1746630059019,
+    "name": "Tusind Øer Dressing",
+    "type": "Side Dish",
+    "category": [
+      "Dressing"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "creme fraiche/mayo??\nkatchup\nhakkede syltede agurker\nsalt, peber, citronsaft",
+    "instructions": "",
+    "rating": "3.5",
+    "difficulty": "easy",
+    "lastModified": "2025-05-07T15:00:59.019Z"
+  },
+  {
+    "id": 1746629955459,
+    "name": "Guac",
+    "type": "Side Dish",
+    "category": [
+      "Dressing"
+    ],
+    "servings": "1",
+    "servingsUnit": "person(s)",
+    "ingredients": "1 avokado\ngod bløb creme fraiche\nklat salsa\nsquish citron saft\nsalt, peber, chili\n\nevt. fint hakket rødløg + hvidløg",
+    "instructions": "",
+    "rating": "4.5",
+    "difficulty": "easy",
+    "lastModified": "2025-05-07T14:59:15.459Z"
+  },
+  {
+    "id": 1746629741165,
+    "name": "Syltede Rødløg",
+    "type": "Side Dish",
+    "category": [
+      "Other"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "rødløg\nlage\n...??",
+    "instructions": "",
+    "rating": "4.5",
+    "difficulty": "medium",
+    "lastModified": "2025-05-07T14:55:41.165Z"
+  },
+  {
+    "id": 1746629508502,
+    "name": "Grønkåls Salat",
+    "type": "Side Dish",
+    "category": [
+      "Salat"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "Grønkål\nappelsin/æble\ngranatæbler\nristede valnødder\ntynd olie/dressing af en art??",
+    "instructions": "",
+    "rating": "3",
+    "difficulty": "medium",
+    "lastModified": "2025-05-07T19:11:03.961Z"
+  },
+  {
+    "id": 1746629680717,
+    "name": "Syltet Agurkesalat",
+    "type": "Side Dish",
+    "category": [
+      "Salat"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "agurk\nlage\n...??",
+    "instructions": "",
+    "rating": "2",
+    "difficulty": "medium",
+    "lastModified": "2025-05-07T14:54:40.717Z"
+  },
+  {
+    "id": 1746629597093,
+    "name": "Mormor Salat",
+    "type": "Side Dish",
+    "category": [
+      "Salat"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "salat\nmormor dressing",
+    "instructions": "",
+    "rating": "2",
+    "difficulty": "easy",
+    "lastModified": "2025-05-07T14:53:17.093Z"
+  },
+  {
+    "id": 1746629414251,
+    "name": "Lasagne",
+    "type": "Dinner",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "dunno??",
+    "instructions": "",
+    "rating": "4",
+    "difficulty": "hard",
+    "lastModified": "2025-05-07T14:50:14.251Z"
+  },
+  {
+    "id": 1746629380979,
+    "name": "Ris",
+    "type": "Side Dish",
+    "category": [
+      "Fundamentals"
+    ],
+    "servings": "1",
+    "servingsUnit": "person(s)",
+    "ingredients": "1dl ris (fx jasmin)\n1,5dl vand (evt lidt mindre)\nsalt",
+    "instructions": "skyl ris 3-4 gange og hæld vand fra\nkom passende mængde vand til risene med salt\nkom i kog, hvorefter der skrues ned på 3 og sættes låg på i 12 minutter\nsluk blusset og lad stå i 10 min med låg",
+    "rating": "2.5",
+    "difficulty": "easy",
+    "lastModified": "2025-05-07T14:49:40.979Z"
+  },
+  {
+    "id": 1746629107449,
+    "name": "Tortilla Pandekager",
+    "type": "Side Dish",
+    "category": [
+      "Fundamentals"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "Jonas' mystiske tortilla pandekage opskrift eller lignende",
+    "instructions": "",
+    "rating": "3.5",
+    "difficulty": "medium",
+    "lastModified": "2025-05-07T14:45:07.450Z"
+  },
+  {
+    "id": 1746629028251,
+    "name": "Nudler",
+    "type": "Breakfast/Lunch",
+    "category": [
+      "Other"
+    ],
+    "servings": "1",
+    "servingsUnit": "person(s)",
+    "ingredients": "1 pak nudler\nevt. stegt tofu\nevt. tomatillo\n\nrandom blanding af:\nsoya\nhoisin\nchili sauce\nbrunfarin\nsirup\ncitron saft\nsalt, peber, chili",
+    "instructions": "kog nudler og fjern vand\nhæld sovs blanding over\nevt. top med stegt tofu og frisk tomatillo",
+    "rating": "2.5",
+    "difficulty": "easy",
+    "lastModified": "2025-05-07T14:43:48.251Z"
+  },
+  {
+    "id": 1746114406025,
+    "name": "Banan Pandekager",
+    "type": "Breakfast/Lunch",
+    "category": [
+      "Other"
+    ],
+    "servings": "1",
+    "servingsUnit": "person(s)",
+    "ingredients": "1 banan\n1-2 æg (tykke/mini)\n\nrandom blanding af:\nmel\nhavregryn\nkanel\nkakao pulver\nvaniljesukker\nmælk/plantemælk\nsalt\nevt. bagepulver\n\nJoshua Weissman 3-Ingredient Pancakes:\nhttps://www.joshuaweissman.com/post/3-ingredient-pancakes",
+    "instructions": "",
+    "rating": "3.5",
+    "difficulty": "medium",
+    "lastModified": "2025-05-07T19:11:12.721Z"
+  },
+  {
+    "id": 1746628616174,
+    "name": "Grillede Peberfrugtsovs Pasta",
+    "type": "Dinner",
+    "category": [
+      "Pasta"
+    ],
+    "servings": "3",
+    "servingsUnit": "person(s)",
+    "ingredients": "375g pasta\n5 peberfrugter (rød, orange eller gul)\n1 stort løg\n5 fed hvidløg\n2 dåser kikærter\n1dl bullion\n2,5dl madlavningsfløde\n2 spsk pikant smørost\ncitronsaft\nolie\nsalt, peber, paprika, røget paprika, spidskommen, chiliflager",
+    "instructions": "tænd ovn på 225 grader varmluft\nhak peberfrugt groft og kom i ovnen på bagepapir beklædt bageplade med skind siden opad i ca 25 min til skindet får farve/sort\nherefter skyld 2 dåser kikærter og kom på bagepapirbeklædt bageplade med lidt olie og godt med salt, peber og paprika/røget paprika og kom i ovnen til sprøde\nhak løg og hvidløg. når peberfrugter mangler 5 min kommes løg og hvidløg i gryde, hvorefter der tilføjes kryderier, og steges til løg er bløde\nsæt imens pasta over\ni blender kom peberfrugter (med skind), løg blanding, bullion, pikant smøreost og citronsaft og blend godt\nkom sovsen tilbage i løg gryden med madlavningsfløde og opvarm/fortykne til pasta hældes i",
+    "rating": "3.5",
+    "difficulty": "medium",
+    "lastModified": "2025-05-07T14:36:56.174Z"
+  },
+  {
+    "id": 1746114797724,
+    "name": "Havregryn",
+    "type": "Breakfast/Lunch",
+    "category": [
+      "Oats"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "",
+    "instructions": "",
+    "rating": "1",
+    "difficulty": "easy",
+    "lastModified": "2025-05-07T14:25:26.748Z"
+  },
+  {
+    "id": 1746114829019,
+    "name": "Tykmælk",
+    "type": "Breakfast/Lunch",
+    "category": [
+      "Oats"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "",
     "instructions": "",
     "rating": "2.5",
     "difficulty": "easy",
-    "lastModified": "2025-05-06T11:59:20.867Z"
+    "lastModified": "2025-05-07T14:24:56.537Z"
   },
   {
     "id": 1746114210209,
@@ -28,6 +284,21 @@
     "rating": "3",
     "difficulty": "medium",
     "lastModified": "2025-05-07T14:24:45.815Z"
+  },
+  {
+    "id": 1746100571197,
+    "name": "Bare pomfritter",
+    "type": "Dinner",
+    "category": [
+      "Fast Food"
+    ],
+    "servings": "",
+    "servingsUnit": "person(s)",
+    "ingredients": "pomfritter...\nevt. snitzel",
+    "instructions": "",
+    "rating": "2.5",
+    "difficulty": "easy",
+    "lastModified": "2025-05-06T11:59:20.867Z"
   },
   {
     "id": 1746006671218,
@@ -170,36 +441,6 @@
     "lastModified": "2025-05-06T11:57:40.441Z"
   },
   {
-    "id": 1746114829019,
-    "name": "Tykmælk",
-    "type": "Breakfast/Lunch",
-    "category": [
-      "Oats"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "",
-    "instructions": "",
-    "rating": "2.5",
-    "difficulty": "easy",
-    "lastModified": "2025-05-07T14:24:56.537Z"
-  },
-  {
-    "id": 1746114797724,
-    "name": "Havregryn",
-    "type": "Breakfast/Lunch",
-    "category": [
-      "Oats"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "",
-    "instructions": "",
-    "rating": "1",
-    "difficulty": "easy",
-    "lastModified": "2025-05-07T14:25:26.748Z"
-  },
-  {
     "id": 1746114837114,
     "name": "Æg",
     "type": "Breakfast/Lunch",
@@ -229,21 +470,6 @@
     "rating": "5",
     "difficulty": "medium",
     "lastModified": "2025-05-06T11:57:12.325Z"
-  },
-  {
-    "id": 1746114406025,
-    "name": "Banan Pandekager",
-    "type": "Breakfast/Lunch",
-    "category": [
-      "Other"
-    ],
-    "servings": "1",
-    "servingsUnit": "person(s)",
-    "ingredients": "1 banan\n1-2 æg (tykke/mini)\n\nrandom blanding af:\nmel\nhavregryn\nkanel\nkakao pulver\nvaniljesukker\nmælk/plantemælk\nsalt\nevt. bagepulver\n\nJoshua Weissman 3-Ingredient Pancakes:\nhttps://www.joshuaweissman.com/post/3-ingredient-pancakes",
-    "instructions": "",
-    "rating": "3.5",
-    "difficulty": "hard",
-    "lastModified": "2025-05-07T14:39:12.928Z"
   },
   {
     "id": 1746008865801,
@@ -476,22 +702,6 @@
     "lastModified": "2025-05-06T11:54:36.026Z"
   },
   {
-    "id": 1746008780094,
-    "name": "Kua Kling – sydøstasiatisk biksemad",
-    "type": "Dinner",
-    "category": [
-      "Asian",
-      "Rice"
-    ],
-    "servings": "4",
-    "servingsUnit": "person(s)",
-    "ingredients": "https://vegetariskhverdag.dk/2024/03/kua-kling-sydoestasiatisk-biksemad/\n\n÷ for meget chili (evt. bare halvt glas curry paste)",
-    "instructions": "",
-    "rating": "3",
-    "difficulty": "medium",
-    "lastModified": "2025-05-07T15:02:49.714Z"
-  },
-  {
     "id": 1746008628936,
     "name": "Halloumi Stroganoff",
     "type": "Dinner",
@@ -520,215 +730,5 @@
     "rating": "3.5",
     "difficulty": "hard",
     "lastModified": "2025-05-06T11:53:56.399Z"
-  },
-  {
-    "id": 1746628616174,
-    "name": "Grillede Peberfrugtsovs Pasta",
-    "type": "Dinner",
-    "category": [
-      "Pasta"
-    ],
-    "servings": "3",
-    "servingsUnit": "person(s)",
-    "ingredients": "375g pasta\n5 peberfrugter (rød, orange eller gul)\n1 stort løg\n5 fed hvidløg\n2 dåser kikærter\n1dl bullion\n2,5dl madlavningsfløde\n2 spsk pikant smørost\ncitronsaft\nolie\nsalt, peber, paprika, røget paprika, spidskommen, chiliflager",
-    "instructions": "tænd ovn på 225 grader varmluft\nhak peberfrugt groft og kom i ovnen på bagepapir beklædt bageplade med skind siden opad i ca 25 min til skindet får farve/sort\nherefter skyld 2 dåser kikærter og kom på bagepapirbeklædt bageplade med lidt olie og godt med salt, peber og paprika/røget paprika og kom i ovnen til sprøde\nhak løg og hvidløg. når peberfrugter mangler 5 min kommes løg og hvidløg i gryde, hvorefter der tilføjes kryderier, og steges til løg er bløde\nsæt imens pasta over\ni blender kom peberfrugter (med skind), løg blanding, bullion, pikant smøreost og citronsaft og blend godt\nkom sovsen tilbage i løg gryden med madlavningsfløde og opvarm/fortykne til pasta hældes i",
-    "rating": "3.5",
-    "difficulty": "medium",
-    "lastModified": "2025-05-07T14:36:56.174Z"
-  },
-  {
-    "id": 1746629028251,
-    "name": "Nudler",
-    "type": "Breakfast/Lunch",
-    "category": [
-      "Other"
-    ],
-    "servings": "1",
-    "servingsUnit": "person(s)",
-    "ingredients": "1 pak nudler\nevt. stegt tofu\nevt. tomatillo\n\nrandom blanding af:\nsoya\nhoisin\nchili sauce\nbrunfarin\nsirup\ncitron saft\nsalt, peber, chili",
-    "instructions": "kog nudler og fjern vand\nhæld sovs blanding over\nevt. top med stegt tofu og frisk tomatillo",
-    "rating": "2.5",
-    "difficulty": "easy",
-    "lastModified": "2025-05-07T14:43:48.251Z"
-  },
-  {
-    "id": 1746629107449,
-    "name": "Tortilla Pandekager",
-    "type": "Side Dish",
-    "category": [
-      "Fundamentals"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "Jonas' mystiske tortilla pandekage opskrift eller lignende",
-    "instructions": "",
-    "rating": "3.5",
-    "difficulty": "medium",
-    "lastModified": "2025-05-07T14:45:07.450Z"
-  },
-  {
-    "id": 1746629380979,
-    "name": "Ris",
-    "type": "Side Dish",
-    "category": [
-      "Fundamentals"
-    ],
-    "servings": "1",
-    "servingsUnit": "person(s)",
-    "ingredients": "1dl ris (fx jasmin)\n1,5dl vand (evt lidt mindre)\nsalt",
-    "instructions": "skyl ris 3-4 gange og hæld vand fra\nkom passende mængde vand til risene med salt\nkom i kog, hvorefter der skrues ned på 3 og sættes låg på i 12 minutter\nsluk blusset og lad stå i 10 min med låg",
-    "rating": "2.5",
-    "difficulty": "easy",
-    "lastModified": "2025-05-07T14:49:40.979Z"
-  },
-  {
-    "id": 1746629414251,
-    "name": "Lasagne",
-    "type": "Dinner",
-    "category": [
-      "Pasta"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "dunno??",
-    "instructions": "",
-    "rating": "4",
-    "difficulty": "hard",
-    "lastModified": "2025-05-07T14:50:14.251Z"
-  },
-  {
-    "id": 1746629508502,
-    "name": "Grønkåls Salat",
-    "type": "Side Dish",
-    "category": [
-      "Salat"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "Grønkål\nappelsin/æble\ngranatæbler\nristede valnødder\ntynd olie/dressing af en art??",
-    "instructions": "",
-    "rating": "3",
-    "difficulty": "hard",
-    "lastModified": "2025-05-07T14:54:52.513Z"
-  },
-  {
-    "id": 1746629597093,
-    "name": "Mormor Salat",
-    "type": "Side Dish",
-    "category": [
-      "Salat"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "salat\nmormor dressing",
-    "instructions": "",
-    "rating": "2",
-    "difficulty": "easy",
-    "lastModified": "2025-05-07T14:53:17.093Z"
-  },
-  {
-    "id": 1746629680717,
-    "name": "Syltet Agurkesalat",
-    "type": "Side Dish",
-    "category": [
-      "Salat"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "agurk\nlage\n...??",
-    "instructions": "",
-    "rating": "2",
-    "difficulty": "medium",
-    "lastModified": "2025-05-07T14:54:40.717Z"
-  },
-  {
-    "id": 1746629741165,
-    "name": "Syltede Rødløg",
-    "type": "Side Dish",
-    "category": [
-      "Other"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "rødløg\nlage\n...??",
-    "instructions": "",
-    "rating": "4.5",
-    "difficulty": "medium",
-    "lastModified": "2025-05-07T14:55:41.165Z"
-  },
-  {
-    "id": 1746629955459,
-    "name": "Guac",
-    "type": "Side Dish",
-    "category": [
-      "Dressing"
-    ],
-    "servings": "1",
-    "servingsUnit": "person(s)",
-    "ingredients": "1 avokado\ngod bløb creme fraiche\nklat salsa\nsquish citron saft\nsalt, peber, chili\n\nevt. fint hakket rødløg + hvidløg",
-    "instructions": "",
-    "rating": "4.5",
-    "difficulty": "easy",
-    "lastModified": "2025-05-07T14:59:15.459Z"
-  },
-  {
-    "id": 1746630059019,
-    "name": "Tusind Øer Dressing",
-    "type": "Side Dish",
-    "category": [
-      "Dressing"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "creme fraiche/mayo??\nkatchup\nhakkede syltede agurker\nsalt, peber, citronsaft",
-    "instructions": "",
-    "rating": "3.5",
-    "difficulty": "easy",
-    "lastModified": "2025-05-07T15:00:59.019Z"
-  },
-  {
-    "id": 1746630140504,
-    "name": "Mozzarella & Tomat Salat",
-    "type": "Side Dish",
-    "category": [
-      "Salat"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "tomat i skiver\nfrisk mozzarella i skiver\npesto\nolie\nflagesalt, peber\nfrisk basilikum",
-    "instructions": "",
-    "rating": "3.5",
-    "difficulty": "easy",
-    "lastModified": "2025-05-07T15:02:20.504Z"
-  },
-  {
-    "id": 1746630197927,
-    "name": "Amerikanske Pandekager",
-    "type": "Breakfast/Lunch",
-    "category": [
-      "Other"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "???",
-    "instructions": "",
-    "rating": "4.5",
-    "difficulty": "hard",
-    "lastModified": "2025-05-07T15:03:17.927Z"
-  },
-  {
-    "id": 1746630469299,
-    "name": "Zombie Kartofler",
-    "type": "Dinner",
-    "category": [
-      "Other"
-    ],
-    "servings": "",
-    "servingsUnit": "person(s)",
-    "ingredients": "kartofler\nkylling/veggie kylling\nrevet ost\navokado\nmajs\ntomat\nsyltede rødløg\n\nguac\ncreme fraiche\nevt. salsa\n\nolie\nsalt, peber, kryderier\n\nevt. fancy frisk grønt pynt",
-    "instructions": "https://mydailyspace.dk/2023/01/zombiekartofler-med-kylling-og-avocado/\n\nsådan ish med flere toppings",
-    "rating": "4",
-    "difficulty": "medium",
-    "lastModified": "2025-05-07T15:07:49.299Z"
   }
 ]
