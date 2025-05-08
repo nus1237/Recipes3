@@ -563,6 +563,9 @@
                 max-width: calc(100vw - 20px); /* Prevents overflow, keeps margin */
                 width: auto;
             }
+            #edit-recipe-time {
+                margin-left: 0; /* Remove margin-left on mobile */
+            }
         }
 
         @media (min-width: 769px) {
@@ -1164,19 +1167,22 @@
                             <option value="person(s)">person(s)</option>
                             <option value="stk.">stk.</option>
                         </select>
-                        <select id="edit-recipe-time" style="flex: 0 0 calc(50% - 12px); margin-left: 14px;"> <!-- Adjusted width and margin -->
-                            <option value="">Select Time</option>
-                            <option value="5">5 minutes</option>
-                            <option value="10">10 minutes</option>
-                            <option value="15">15 minutes</option>
-                            <option value="20">20 minutes</option>
-                            <option value="30">30 minutes</option>
-                            <option value="45">45 minutes</option>
-                            <option value="60">60 minutes</option>
-                            <option value="90">90 minutes</option>
-                            <option value="120">120 minutes</option>
-                        </select>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="edit-recipe-time">Time</label> <!-- Moved label here -->
+                    <select id="edit-recipe-time" style="flex: 0 0 calc(50% - 12px); margin-left: 14px;"> <!-- Adjusted width and margin -->
+                        <option value="">Select Time</option>
+                        <option value="5">5 minutes</option>
+                        <option value="10">10 minutes</option>
+                        <option value="15">15 minutes</option>
+                        <option value="20">20 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">60 minutes</option>
+                        <option value="90">90 minutes</option>
+                        <option value="120">120 minutes</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="edit-recipe-rating">Rating</label>
