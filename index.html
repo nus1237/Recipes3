@@ -838,6 +838,7 @@
         /* Add space between recipe sections in the modal */
         .recipe-section {
             margin-bottom: 24px;
+            padding-bottom: 12px; /* or whatever value looks good */
         }
 
         .recipe-type-label {
@@ -851,6 +852,15 @@
         /* Add this CSS rule to increase the margin below the header in the recipe modal */
         #modal-content h2 {
             margin-bottom: 20px; /* Adjust the value as needed */
+        }
+
+        .recipe-section {
+            border-radius: 0; /* Ensure no rounding on corners */
+            overflow: visible; /* Allow overflow to show the full SVG */
+        }
+
+        .recipe-section svg {
+            border-radius: 0; /* Ensure the SVG itself has square corners */
         }
     </style>
 </head>
@@ -1405,15 +1415,30 @@
                     <p><strong>Type:</strong> <span id="recipe-type-display">${recipe.type}</span></p>
                     <p><strong>Categories:</strong> ${categoryDisplay}</p>
                     ${servingsDisplay}
-                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;"><strong>Rating:</strong><span class="stars-container" style="margin:0;">${displayStars(parseFloat(recipe.rating || 0))}</span></div>
-                    <div style="display: flex; align-items: center; gap: 8px;"><strong>Difficulty:</strong><span class="difficulty-indicator" style="position:static; margin:0;">${displayDifficultyChefs(recipe.difficulty)}</span></div>
-                </div>
-                ${recipe.ingredients ? `
-                    <div class="recipe-section">
-                        <h3>Ingredients:</h3>
-                        <pre>${recipe.ingredients}</pre>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">
+                        <strong>Rating:</strong>
+                        <span class="stars-container" style="margin:0;">${displayStars(parseFloat(recipe.rating || 0))}</span>
                     </div>
-                ` : ''}
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <strong>Difficulty:</strong>
+                        <span class="difficulty-indicator" style="position:static; margin:0;">${displayDifficultyChefs(recipe.difficulty)}</span>
+                    </div>
+                </div>
+                <div class="recipe-section" style="padding-bottom: 12px; border-radius: 0;"> <!-- Ensure no border-radius -->
+                  <svg width="100%" height="8" viewBox="0 0 100 8" preserveAspectRatio="none" style="display:block; margin: 10px 0;">
+                    <defs>
+                      <linearGradient id="modal-fade-accent" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#f4a235" stop-opacity="1" />
+                        <stop offset="80%" stop-color="#f4a235" stop-opacity="0.5" />
+                        <stop offset="100%" stop-color="#f4a235" stop-opacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <polygon points="0,5 100,7 100,8 0,8" fill="url(#modal-fade-accent)" />
+                  </svg>
+                </div>
+                
+                <h3>Ingredients:</h3>
+                <pre>${recipe.ingredients}</pre>
                 ${recipe.instructions ? `
                     <div class="recipe-section">
                         <h3>Instructions:</h3>
