@@ -563,8 +563,9 @@
                 max-width: calc(100vw - 20px); /* Prevents overflow, keeps margin */
                 width: auto;
             }
-            #edit-recipe-time {
-                margin-left: 0; /* Remove margin-left on mobile */
+            #edit-recipe-time,
+            #add-recipe-time {
+                margin-left: 0 !important; /* Remove margin-left on mobile for both */
             }
         }
 
@@ -914,6 +915,74 @@
                 width: 100%;
             }
         }
+
+        /* General styles for the select element */
+        #edit-recipe-time,
+        #add-recipe-time {
+            flex: 0 0 calc(50% - 12px);
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            #edit-recipe-time,
+            #add-recipe-time {
+                margin-left: 0; /* No margin-left on mobile */
+            }
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            #edit-recipe-time {
+                margin-left: 14px; /* Apply margin-left on desktop */
+            }
+            #add-recipe-time {
+                margin-left: 14px !important; /* Apply margin-left on desktop */
+            }
+            #recipe-servings-unit {
+                margin-right: 14px; /* Apply margin-right on desktop for serving unit */
+            }
+        }
+
+        /* Hide the mobile time label on desktop, show on mobile */
+        .mobile-time-label {
+            display: none;
+            margin-bottom: 4px;
+            color: var(--color-primary);
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            /* Hide the original time label in the .servings-labels row */
+            .servings-labels .time-label {
+                display: none;
+            }
+            .mobile-time-label {
+                display: block;
+            }
+        }
+
+        /* This could be causing the issue */
+        #add-recipe-time {
+            margin-left: 0 !important; /* This will override the 14px margin */
+        }
+
+        /* Ensure this is applied correctly */
+        @media (min-width: 768px) {
+            #add-recipe-time {
+                margin-left: 14px; /* This should apply on desktop */
+            }
+        }
+
+        /* More specific selector */
+        .container #add-recipe-time {
+            margin-left: 14px; /* Apply margin-left on desktop */
+        }
+
+        @media (min-width: 768px) {
+            #add-recipe-time {
+                margin-left: 14px !important; /* Ensure this applies on desktop */
+            }
+        }
     </style>
 </head>
 <body>
@@ -1058,7 +1127,8 @@
                             <option value="person(s)">person(s)</option>
                             <option value="stk.">stk.</option>
                         </select>
-                        <select id="recipe-time" style="flex: 0 0 calc(50% - 12px); margin-left: 14px;"> <!-- Adjusted width and margin -->
+                        <label for="recipe-time" class="mobile-time-label">Time</label>
+                        <select id="recipe-time" style="flex: 0 0 calc(50% - 12px);"> <!-- Adjusted width without margin-left -->
                             <option value="">Select Time</option>
                             <option value="5">5 minutes</option>
                             <option value="10">10 minutes</option>
@@ -1167,22 +1237,20 @@
                             <option value="person(s)">person(s)</option>
                             <option value="stk.">stk.</option>
                         </select>
+                        <label for="edit-recipe-time" class="mobile-time-label">Time</label>
+                        <select id="edit-recipe-time" style="flex: 0 0 calc(50% - 12px);"> <!-- Adjusted width without margin-left -->
+                            <option value="">Select Time</option>
+                            <option value="5">5 minutes</option>
+                            <option value="10">10 minutes</option>
+                            <option value="15">15 minutes</option>
+                            <option value="20">20 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">60 minutes</option>
+                            <option value="90">90 minutes</option>
+                            <option value="120">120 minutes</option>
+                        </select>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="edit-recipe-time">Time</label> <!-- Moved label here -->
-                    <select id="edit-recipe-time" style="flex: 0 0 calc(50% - 12px); margin-left: 14px;"> <!-- Adjusted width and margin -->
-                        <option value="">Select Time</option>
-                        <option value="5">5 minutes</option>
-                        <option value="10">10 minutes</option>
-                        <option value="15">15 minutes</option>
-                        <option value="20">20 minutes</option>
-                        <option value="30">30 minutes</option>
-                        <option value="45">45 minutes</option>
-                        <option value="60">60 minutes</option>
-                        <option value="90">90 minutes</option>
-                        <option value="120">120 minutes</option>
-                    </select>
                 </div>
                 <div class="form-group">
                     <label for="edit-recipe-rating">Rating</label>
