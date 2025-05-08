@@ -488,7 +488,7 @@
         .modal-content {
             background-color: var(--color-white);
             margin: 50px auto;
-            padding: 20px;
+            padding: 20px; /* Adjust as needed */
             border-radius: 24px;
             max-width: 600px;
             width: auto;
@@ -879,16 +879,17 @@
         }
 
         .servings-labels .time-label {
-            text-align: right;
+            text-align: left; /* Ensure alignment is left */
+            margin-left: 24px; /* Set left margin to 24px */
         }
 
         .servings-time-row {
             display: flex;
-            gap: 10px;
+            gap: 10px; /* Maintain the gap between dropdowns */
         }
 
         .servings-time-row select {
-            min-width: 0;
+            min-width: 0; /* Allow the dropdowns to shrink */
         }
 
         @media (max-width: 768px) {
@@ -1026,8 +1027,8 @@
                         <label for="recipe-servings">Servings</label>
                         <label for="recipe-time" class="time-label">Time</label>
                     </div>
-                    <div class="servings-time-row">
-                        <select id="recipe-servings" style="flex: 1;">
+                    <div class="servings-time-row" style="display: flex; gap: 10px;">
+                        <select id="recipe-servings" style="flex: 0 0 calc(25% - 11px);"> <!-- Adjusted width -->
                             <option value="">Amount</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -1050,11 +1051,11 @@
                             <option value="19">19</option>
                             <option value="20">20</option>
                         </select>
-                        <select id="recipe-servings-unit" style="flex: 1;">
+                        <select id="recipe-servings-unit" style="flex: 0 0 calc(25% - 11px);"> <!-- Adjusted width -->
                             <option value="person(s)">person(s)</option>
                             <option value="stk.">stk.</option>
                         </select>
-                        <select id="recipe-time" style="flex: 1;">
+                        <select id="recipe-time" style="flex: 0 0 calc(50% - 12px); margin-left: 14px;"> <!-- Adjusted width and margin -->
                             <option value="">Select Time</option>
                             <option value="5">5 minutes</option>
                             <option value="10">10 minutes</option>
@@ -1101,21 +1102,6 @@
                     <label for="recipe-instructions">Instructions (Optional)</label>
                     <textarea id="recipe-instructions"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="recipe-time">Time</label> <!-- Label remains the same -->
-                    <select id="recipe-time">
-                        <option value="">Select Time</option>
-                        <option value="5">5 minutes</option>
-                        <option value="10">10 minutes</option>
-                        <option value="15">15 minutes</option>
-                        <option value="20">20 minutes</option>
-                        <option value="30">30 minutes</option>
-                        <option value="45">45 minutes</option>
-                        <option value="60">60 minutes</option>
-                        <option value="90">90 minutes</option> <!-- 1.5 hours -->
-                        <option value="120">120 minutes</option> <!-- 2 hours -->
-                    </select>
-                </div>
                 <button type="submit">Add Recipe</button>
             </form>
         </div>
@@ -1150,8 +1136,8 @@
                         <label for="edit-recipe-servings">Servings</label>
                         <label for="edit-recipe-time" class="time-label">Time</label>
                     </div>
-                    <div class="servings-time-row">
-                        <select id="edit-recipe-servings" style="flex: 1;">
+                    <div class="servings-time-row" style="display: flex; gap: 10px;">
+                        <select id="edit-recipe-servings" style="flex: 0 0 calc(25% - 11px);"> <!-- Adjusted width -->
                             <option value="">Amount</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -1174,11 +1160,11 @@
                             <option value="19">19</option>
                             <option value="20">20</option>
                         </select>
-                        <select id="edit-recipe-servings-unit" style="flex: 1;">
+                        <select id="edit-recipe-servings-unit" style="flex: 0 0 calc(25% - 11px);"> <!-- Adjusted width -->
                             <option value="person(s)">person(s)</option>
                             <option value="stk.">stk.</option>
                         </select>
-                        <select id="edit-recipe-time" style="flex: 1;">
+                        <select id="edit-recipe-time" style="flex: 0 0 calc(50% - 12px); margin-left: 14px;"> <!-- Adjusted width and margin -->
                             <option value="">Select Time</option>
                             <option value="5">5 minutes</option>
                             <option value="10">10 minutes</option>
@@ -1224,21 +1210,6 @@
                 <div class="form-group">
                     <label for="edit-recipe-instructions">Instructions (Optional)</label>
                     <textarea id="edit-recipe-instructions"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="edit-recipe-time">Time</label> <!-- Label remains the same -->
-                    <select id="edit-recipe-time">
-                        <option value="">Select Time</option>
-                        <option value="5">5 minutes</option>
-                        <option value="10">10 minutes</option>
-                        <option value="15">15 minutes</option>
-                        <option value="20">20 minutes</option>
-                        <option value="30">30 minutes</option>
-                        <option value="45">45 minutes</option>
-                        <option value="60">60 minutes</option>
-                        <option value="90">90 minutes</option> <!-- 1.5 hours -->
-                        <option value="120">120 minutes</option> <!-- 2 hours -->
-                    </select>
                 </div>
                 <button type="submit">Update Recipe</button>
             </form>
@@ -1517,6 +1488,9 @@
                 ? `<p><strong>Servings:</strong> ${getServingsDisplay(recipe.servings, recipe.servingsUnit)}</p>`
                 : '';
             
+            // Check if time is present
+            const timeDisplay = recipe.time ? `<p><strong>Time:</strong> ${recipe.time} minutes</p>` : '';
+
             // Initialize the content variable
             let content = `
                 <h2>${recipe.name}</h2>
@@ -1524,7 +1498,7 @@
                     <p><strong>Type:</strong> <span id="recipe-type-display">${recipe.type}</span></p>
                     <p><strong>Categories:</strong> ${categoryDisplay}</p>
                     ${servingsDisplay}
-                    <p><strong>Time:</strong> ${recipe.time} minutes</p> <!-- Display cooking time -->
+                    ${timeDisplay} <!-- Only display if time is present -->
                     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">
                         <strong>Rating:</strong>
                         <span class="stars-container" style="margin:0;">${displayStars(parseFloat(recipe.rating || 0))}</span>
