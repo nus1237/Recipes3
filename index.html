@@ -936,10 +936,7 @@
                 margin-left: 14px; /* Apply margin-left on desktop */
             }
             #add-recipe-time {
-                margin-left: 14px !important; /* Apply margin-left on desktop */
-            }
-            #recipe-servings-unit {
-                margin-right: 14px; /* Apply margin-right on desktop for serving unit */
+                margin-left: 14px; /* Apply margin-left on desktop */
             }
         }
 
@@ -982,6 +979,23 @@
             #add-recipe-time {
                 margin-left: 14px !important; /* Ensure this applies on desktop */
             }
+        }
+
+        .modal-header {
+            text-align: center;
+            color: var(--color-primary); /* Use the dark blue color */
+        }
+
+        #recipe-modal .modal-content {
+            border-radius: 10px; /* Set corners to 10px */
+        }
+
+        #recipe-modal .rating-container {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
         }
     </style>
 </head>
@@ -1061,11 +1075,23 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()" style="position: absolute; top: 10px; right: 20px; cursor: pointer;">&times;</span>
             <div id="modal-content">
-                <div class="recipe-type-label">
-                    Type: <span id="recipe-type-display"></span>
+                <h2 class="modal-header">Recipe Details</h2>
+                <div class="recipe-type-label" style="text-align: center; color: black;">
+                    Type: <span id="recipe-type-display">${recipe.type}</span>
                 </div>
-                <div class="recipe-card-tags">
-                    <!-- Existing category tags will go here -->
+                <div class="recipe-categories" style="text-align: center; color: grey;">
+                    <i class="fas fa-tag" style="margin-right: 5px;"></i> <!-- Tag icon -->
+                    <span id="recipe-categories-display">${getUniqueCategories(recipe.category)}</span>
+                </div>
+                <div class="servings-info" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                    <div style="display: flex; align-items: center;">
+                        <i class="fas fa-user-friends" style="margin-right: 5px;"></i> <!-- User friends icon -->
+                        <span>${getServingsDisplay(recipe.servings, recipe.servingsUnit)}</span>
+                    </div>
+                    <div class="rating-container" style="display: flex; align-items: center; justify-content: flex-end;">
+                        <strong style="margin-right: 5px;">Rating:</strong>
+                        <span class="stars-container">${displayStars(parseFloat(recipe.rating || 0))}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1074,7 +1100,7 @@
     <div id="add-recipe-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeAddRecipeModal()">&times;</span>
-            <h2 style="margin-bottom: 20px;">Add New Recipe</h2>
+            <h2 class="modal-header">Add New Recipe</h2>
             <form id="recipe-form" onsubmit="handleRecipeSubmit(event, false)">
                 <div class="form-group">
                     <label for="recipe-name">Recipe Name</label>
@@ -1183,7 +1209,7 @@
     <div id="edit-recipe-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeEditRecipeModal()">&times;</span>
-            <h2 style="margin-bottom: 20px;">Edit Recipe</h2>
+            <h2 class="modal-header">Edit Recipe</h2>
             <form id="edit-recipe-form" onsubmit="handleRecipeSubmit(event, true)">
                 <input type="hidden" id="edit-recipe-id">
                 <div class="form-group">
@@ -1557,28 +1583,39 @@
             const modal = document.getElementById('recipe-modal');
             const modalContent = document.getElementById('modal-content');
             
-            const categoryDisplay = Array.isArray(recipe.category) ? recipe.category.join(', ') : recipe.category;
             const servingsDisplay = recipe.servings && recipe.servings !== "" 
                 ? `<p><strong>Servings:</strong> ${getServingsDisplay(recipe.servings, recipe.servingsUnit)}</p>`
                 : '';
             
-            // Check if time is present
-            const timeDisplay = recipe.time ? `<p><strong>Time:</strong> ${recipe.time} minutes</p>` : '';
+            // Check if time is present with updated margins
+            const timeDisplay = recipe.time ? `<i class="fas fa-clock" style="margin-right: 7px; margin-left: 2px;"></i> ${recipe.time} min` : '';
 
             // Initialize the content variable
             let content = `
-                <h2>${recipe.name}</h2>
-                <div class="recipe-section">
-                    <p><strong>Type:</strong> <span id="recipe-type-display">${recipe.type}</span></p>
-                    <p><strong>Categories:</strong> ${categoryDisplay}</p>
-                    ${servingsDisplay}
-                    ${timeDisplay} <!-- Only display if time is present -->
-                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">
-                        <strong>Rating:</strong>
-                        <span class="stars-container" style="margin:0;">${displayStars(parseFloat(recipe.rating || 0))}</span>
+                <h2 style="text-align: center; color: var(--color-primary); margin-bottom: 10px;">${recipe.name}</h2>
+                <div class="recipe-type-label" style="text-align: center; color: black; margin-bottom: 5px;">
+                    Type: <span id="recipe-type-display">${recipe.type}</span>
+                </div>
+                <div class="recipe-categories" style="text-align: center; color: grey;">
+                    <i class="fas fa-tag" style="margin-right: 5px;"></i> <!-- Tag icon -->
+                    <span id="recipe-categories-display">${getUniqueCategories(recipe.category)}</span>
+                </div>
+                <div class="servings-info" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                    <div style="display: flex; align-items: center;">
+                        <i class="fas fa-user-friends" style="margin-right: 5px;"></i> <!-- User friends icon -->
+                        <span>${getServingsDisplay(recipe.servings, recipe.servingsUnit)}</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <strong>Difficulty:</strong>
+                    <div class="rating-container" style="display: flex; align-items: center; justify-content: flex-end;">
+                        <strong style="margin-right: 5px;">Rating:</strong>
+                        <span class="stars-container">${displayStars(parseFloat(recipe.rating || 0))}</span>
+                    </div>
+                </div>
+                <div class="time-difficulty-info" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; margin-right: 49.7px;"> <!-- Changed margin-right to 49.7px -->
+                    <div style="display: flex; align-items: center;">
+                        ${timeDisplay}
+                    </div>
+                    <div class="difficulty-indicator" style="display: flex; align-items: center; font-size: 1em;">
+                        <strong style="margin-right: 5px;">Difficulty:</strong>
                         <span class="difficulty-indicator" style="position:static; margin:0;">${displayDifficultyChefs(recipe.difficulty)}</span>
                     </div>
                 </div>
@@ -1587,11 +1624,11 @@
             // Check if ingredients or instructions are present
             const hasIngredients = recipe.ingredients && recipe.ingredients.trim() !== '';
             const hasInstructions = recipe.instructions && recipe.instructions.trim() !== '';
-
+            
             // Add the line only if there are ingredients or instructions
             if (hasIngredients || hasInstructions) {
                 content += `
-                    <div class="recipe-section" style="padding-bottom: 12px; border-radius: 0;"> <!-- Ensure no border-radius -->
+                    <div class="recipe-section" style="padding-bottom: 12px; border-radius: 0;">
                       <svg width="100%" height="8" viewBox="0 0 100 8" preserveAspectRatio="none" style="display:block; margin: 10px 0;">
                         <defs>
                           <linearGradient id="modal-fade-accent" x1="0" y1="0" x2="1" y2="0">
@@ -2157,6 +2194,11 @@
             // Update the category options based on the selected type
             updateCategoryFilter();
         });
+
+        function getUniqueCategories(categories) {
+            // Remove duplicates and join them into a string
+            return [...new Set(categories)].join(', ');
+        }
     </script>
 </body>
 </html> 
